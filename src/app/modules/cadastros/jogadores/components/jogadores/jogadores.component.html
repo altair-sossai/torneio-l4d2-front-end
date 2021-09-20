@@ -1,0 +1,5 @@
+<div class="jogadores">
+    <ng-container *ngFor="let jogador of jogadores">
+        <app-jogador [jogador]="jogador" (excluido)="remover(jogador)"></app-jogador>
+    </ng-container>
+</div>

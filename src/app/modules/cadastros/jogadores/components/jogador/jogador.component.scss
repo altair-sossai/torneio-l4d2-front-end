@@ -1,0 +1,50 @@
+.card {
+    display: grid;
+    grid-template-rows: 184px auto auto auto;
+    width: 200px;
+    height: 305px;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+
+    img {
+        width: 182px;
+        height: 182px;
+        justify-self: center;
+    }
+
+    table {
+        align-self: start;
+    }
+
+    tr {
+        font-size: 12px;
+    }
+
+    th {
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    nz-divider {
+        margin: 7px 0;
+    }
+
+    .botoes {
+        display: flex;
+        justify-content: space-evenly;
+
+        button,
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
