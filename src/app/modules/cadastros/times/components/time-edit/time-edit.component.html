@@ -1,0 +1,25 @@
+<form nz-form (ngSubmit)="salvar()" *ngIf="command">
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired nzFor="codigo">Código</nz-form-label>
+        <nz-form-control>
+            <input nz-input name="codigo" [(ngModel)]="command.codigo" placeholder="Código" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzRequired nzFor="nome">Nome</nz-form-label>
+        <nz-form-control>
+            <input nz-input name="nome" [(ngModel)]="command.nome" placeholder="Nome" />
+        </nz-form-control>
+    </nz-form-item>
+</form>
+
+<nz-alert nzType="error" [nzMessage]="error.error.allErros[0]" *ngIf="error?.error?.allErros[0]" nzShowIcon></nz-alert>
+
+<div *ngIf="!command" style="text-align: center;">
+    <nz-spin nzSimple nzTip="Carregando..."></nz-spin>
+</div>
+
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="close()">Cancelar</button>
+    <button nz-button nzType="primary" (click)="salvar()" [disabled]="!command" [nzLoading]="busy">Salvar</button>
+</div>

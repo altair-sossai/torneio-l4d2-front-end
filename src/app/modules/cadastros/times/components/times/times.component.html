@@ -1,0 +1,14 @@
+<div class="container">
+    <button nz-button nzType="primary" (click)="adicionar()" [nzLoading]="loading">
+        <i nz-icon nzType="user-add"></i>
+        Adicionar um novo time
+    </button>
+
+    <p>Total de times: {{times.length}}</p>
+
+    <div class="times">
+        <ng-container *ngFor="let time of times">
+            <app-time [time]="time" (novo)="atualizar()" (excluido)="remover(time)"></app-time>
+        </ng-container>
+    </div>
+</div>

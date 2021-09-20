@@ -8,7 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { NZ_I18N, pt_BR } from 'ng-zorro-antd/i18n';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzMessageModule } from 'ng-zorro-antd/message';
@@ -19,6 +21,9 @@ import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { JogadorComponent } from './modules/cadastros/jogadores/components/jogador/jogador.component';
 import { JogadoresComponent } from './modules/cadastros/jogadores/components/jogadores/jogadores.component';
+import { TimeEditComponent } from './modules/cadastros/times/components/time-edit/time-edit.component';
+import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
+import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 
 registerLocaleData(pt);
@@ -27,7 +32,10 @@ registerLocaleData(pt);
   declarations: [
     AppComponent,
     JogadoresComponent,
-    JogadorComponent
+    JogadorComponent,
+    TimesComponent,
+    TimeComponent,
+    TimeEditComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,10 @@ registerLocaleData(pt);
     NzSpinModule,
     NzAlertModule,
     NzMessageModule,
-    NzModalModule
+    NzModalModule,
+    NzInputModule,
+    NzFormModule,
+    NzAlertModule
   ],
   providers: [{ provide: NZ_I18N, useValue: pt_BR }],
   bootstrap: [AppComponent]

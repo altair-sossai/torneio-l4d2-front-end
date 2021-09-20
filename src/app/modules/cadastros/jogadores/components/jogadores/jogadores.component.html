@@ -4,6 +4,8 @@
         Adicionar um novo jogador
     </button>
 
+    <p>Total de jogadores: {{jogadores.length}}</p>
+
     <div class="jogadores">
         <ng-container *ngFor="let jogador of jogadores">
             <app-jogador [jogador]="jogador" (excluido)="remover(jogador)"></app-jogador>

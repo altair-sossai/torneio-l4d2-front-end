@@ -1,0 +1,30 @@
+.card {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    width: 200px;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+
+    table {
+        align-self: start;
+    }
+
+    tr {
+        font-size: 12px;
+    }
+
+    th {
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    nz-divider {
+        margin: 7px 0;
+    }
+
+    .botoes {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
