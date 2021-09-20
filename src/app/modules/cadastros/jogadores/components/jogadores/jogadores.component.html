@@ -1,5 +1,12 @@
-<div class="jogadores">
-    <ng-container *ngFor="let jogador of jogadores">
-        <app-jogador [jogador]="jogador" (excluido)="remover(jogador)"></app-jogador>
-    </ng-container>
+<div class="container">
+    <button nz-button nzType="primary" (click)="adicionar()" [nzLoading]="loading">
+        <i nz-icon nzType="user-add"></i>
+        Adicionar um novo jogador
+    </button>
+
+    <div class="jogadores">
+        <ng-container *ngFor="let jogador of jogadores">
+            <app-jogador [jogador]="jogador" (excluido)="remover(jogador)"></app-jogador>
+        </ng-container>
+    </div>
 </div>

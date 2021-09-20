@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { JogadorCommand } from '../../commands/jogador.command';
 import { Jogador } from '../../models/jogador';
 import { JogadorService } from '../../services/jogador.service';
 
@@ -9,12 +11,43 @@ import { JogadorService } from '../../services/jogador.service';
 })
 export class JogadoresComponent implements OnInit {
 
-  jogadores: Jogador[] | undefined;
+  loading = false;
+  jogadores: Jogador[] = [];
 
-  constructor(private jogadorService: JogadorService) { }
+  constructor(private messageService: NzMessageService,
+    private jogadorService: JogadorService
+  ) { }
 
   ngOnInit(): void {
-    this.jogadorService.get().subscribe(jogadores => this.jogadores = jogadores);
+    this.atualizar();
+  }
+
+  atualizar(): void {
+    this.loading = true;
+
+    this.jogadorService.get().subscribe(jogadores => {
+      this.jogadores = jogadores;
+      this.loading = false;
+    });
+  }
+
+  adicionar(): void {
+    const user = prompt('Informe a URL ou ID da Steam do jogador');
+    if (!user)
+      return;
+
+    const command = new JogadorCommand();
+    command.user = user;
+
+    this.loading = true;
+    this.jogadorService.post(command).subscribe(_ => {
+      this.atualizar();
+      this.messageService.create('success', 'Jogador adicionado com sucesso');
+    }, err => {
+      this.loading = false;
+      this.messageService.create('error', err.message || 'Ocorreu um erro');
+      console.log(err);
+    });
   }
 
   remover(jogador: Jogador): void {

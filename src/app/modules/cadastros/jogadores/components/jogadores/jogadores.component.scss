@@ -1,6 +1,15 @@
-.jogadores {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    button {
+        margin: 10px 15px;
+    }
+
+    .jogadores {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
