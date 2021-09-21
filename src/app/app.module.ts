@@ -25,6 +25,8 @@ import { TimeEditComponent } from './modules/cadastros/times/components/time-edi
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
 import { AppRoutingModule } from './routes/app-routing.module';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { VincularJogadorComponent } from './modules/cadastros/times/components/vincular-jogador/vincular-jogador.component';
 
 registerLocaleData(pt);
 
@@ -35,7 +37,8 @@ registerLocaleData(pt);
     JogadorComponent,
     TimesComponent,
     TimeComponent,
-    TimeEditComponent
+    TimeEditComponent,
+    VincularJogadorComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ registerLocaleData(pt);
     NzModalModule,
     NzInputModule,
     NzFormModule,
-    NzAlertModule
+    NzAlertModule,
+    NzPopoverModule
   ],
   providers: [{ provide: NZ_I18N, useValue: pt_BR }],
   bootstrap: [AppComponent]

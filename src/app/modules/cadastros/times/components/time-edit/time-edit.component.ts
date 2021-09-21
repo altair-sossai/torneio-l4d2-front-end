@@ -14,7 +14,7 @@ export class TimeEditComponent implements OnInit {
 
   command: TimeCommand | undefined;
   busy = false;
-  error: any;
+  errors: any;
 
   constructor(
     private modal: NzModalRef,
@@ -53,7 +53,7 @@ export class TimeEditComponent implements OnInit {
       this.busy = false;
     }, result => {
       this.busy = false;
-      this.error = result;
+      this.errors = result.error.errors;
       console.log(result);
     });
   }

@@ -8,7 +8,7 @@
 
     <div class="times">
         <ng-container *ngFor="let time of times">
-            <app-time [time]="time" (novo)="atualizar()" (excluido)="remover(time)"></app-time>
+            <app-time [time]="time" (atualizar)="atualizar()"></app-time>
         </ng-container>
     </div>
 </div>

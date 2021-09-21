@@ -1,19 +1,19 @@
 <form nz-form (ngSubmit)="salvar()" *ngIf="command">
     <nz-form-item>
         <nz-form-label [nzSpan]="4" nzRequired nzFor="codigo">Código</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzValidateStatus]="errors?.codigo ? 'error' : ''"
+            [nzErrorTip]="errors?.codigo && errors?.codigo[0]">
             <input nz-input name="codigo" [(ngModel)]="command.codigo" placeholder="Código" />
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
         <nz-form-label [nzSpan]="4" nzRequired nzFor="nome">Nome</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzValidateStatus]="errors?.nome ? 'error' : ''"
+            [nzErrorTip]="errors?.nome && errors?.nome[0]">
             <input nz-input name="nome" [(ngModel)]="command.nome" placeholder="Nome" />
         </nz-form-control>
     </nz-form-item>
 </form>
-
-<nz-alert nzType="error" [nzMessage]="error.error.allErros[0]" *ngIf="error?.error?.allErros[0]" nzShowIcon></nz-alert>
 
 <div *ngIf="!command" style="text-align: center;">
     <nz-spin nzSimple nzTip="Carregando..."></nz-spin>

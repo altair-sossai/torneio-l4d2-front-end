@@ -1,5 +1,5 @@
 export class Jogador {
-    public steamId: string | undefined;
+    public steamId!: string;
     public nome: string | undefined;
     public urlFotoPerfil: string | undefined;
     public urlPerfilSteam: string | undefined;

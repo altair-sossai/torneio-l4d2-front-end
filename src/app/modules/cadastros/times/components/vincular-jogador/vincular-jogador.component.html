@@ -1,0 +1,9 @@
+<div class="jogadores">
+    <div *ngFor="let jogador of jogadores" class="item">
+        <app-jogador [jogador]="jogador" [podeExcluir]="false" [podeAtualizar]="false"></app-jogador>
+        <button nz-button nzType="primary" (click)="selecionar(jogador)">
+            <i nz-icon nzType="check"></i>
+            Selecionar
+        </button>
+    </div>
+</div>

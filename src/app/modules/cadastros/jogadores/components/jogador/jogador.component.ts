@@ -14,6 +14,8 @@ export class JogadorComponent {
   loading = false;
 
   @Input() jogador!: Jogador;
+  @Input() podeExcluir = true;
+  @Input() podeAtualizar = true;
   @Output() excluido = new EventEmitter<Jogador>();
 
   constructor(

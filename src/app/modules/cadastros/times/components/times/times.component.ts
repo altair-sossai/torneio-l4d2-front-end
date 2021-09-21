@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Time } from '../../models/time';
-import { TimeService } from '../../services/time.service';
+import { TimesJogadores } from '../../models/times-jogadores';
+import { TimeJogadorService } from '../../services/time-jogador.service';
 import { TimeEditComponent } from '../time-edit/time-edit.component';
 
 @Component({
@@ -14,7 +15,7 @@ export class TimesComponent implements OnInit {
   loading = false;
   times: Time[] = [];
 
-  constructor(private timesService: TimeService,
+  constructor(private timesJogadorService: TimeJogadorService,
     private modalService: NzModalService
   ) { }
 
@@ -25,8 +26,11 @@ export class TimesComponent implements OnInit {
   atualizar(): void {
     this.loading = true;
 
-    this.timesService.get().subscribe(times => {
-      this.times = times;
+    this.timesJogadorService.get().subscribe(data => {
+      const timesJogadores = new TimesJogadores(data);
+      timesJogadores.vincular();
+
+      this.times = timesJogadores.times;
       this.loading = false;
     });
   }
@@ -37,15 +41,5 @@ export class TimesComponent implements OnInit {
       nzContent: TimeEditComponent,
       nzOnOk: () => this.atualizar()
     });
-  }
-
-  remover(time: Time): void {
-    if (this.times == null || time == null)
-      return;
-
-    const index: number = this.times.indexOf(time);
-    if (index !== -1) {
-      this.times.splice(index, 1);
-    }
   }
 }

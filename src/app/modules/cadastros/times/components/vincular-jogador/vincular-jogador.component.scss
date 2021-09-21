@@ -1,0 +1,9 @@
+.jogadores {
+    display: flex;
+    overflow-x: auto;
+
+    .item {
+        text-align: center;
+        margin: 10px;
+    }
+}

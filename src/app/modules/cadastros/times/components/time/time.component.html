@@ -1,17 +1,38 @@
 <div class="card">
     <table>
         <tr>
-            <th>Código:</th>
-            <td>{{time.codigo}}</td>
-        </tr>
-        <tr>
             <th>Nome:</th>
             <td>{{time.nome}}</td>
         </tr>
+        <tr>
+            <th>Jogadores:</th>
+            <td>{{time.jogadores?.length || 0}} / 4</td>
+        </tr>
     </table>
     <nz-divider></nz-divider>
+    <table>
+        <tr *ngFor="let jogador of time.jogadores" nz-popover nzPopoverTitle="Dados do jogador"
+            [nzPopoverContent]="contentTemplate" nzPopoverPlacement="rightTop">
+            <td>{{jogador.nome}}</td>
+            <td class="text-right slim">
+                <small *ngIf="jogador.totalHoras">{{jogador.totalHoras}} horas</small>
+            </td>
+            <td class="slim">
+                <i class="delete" nz-icon nzType="close" nzTheme="outline" nz-tooltip
+                    nzTooltipTitle="Remover jogador do time" (click)="removerJogador(jogador)"></i>
+            </td>
+            <ng-template #contentTemplate>
+                <app-jogador [jogador]="jogador" [podeExcluir]="false" [podeAtualizar]="false"></app-jogador>
+            </ng-template>
+        </tr>
+    </table>
     <nz-divider></nz-divider>
     <div class="botoes">
+        <button nz-button nzType="default" nzShape="circle" nz-tooltip nzTooltipTitle="Adicionar jogador"
+            [disabled]="loading" (click)="adicionarJogador()">
+            <i nz-icon nzType="user-add"></i>
+        </button>
+
         <button nz-button nzType="default" nzShape="circle" nz-tooltip nzTooltipTitle="Editar" [disabled]="loading"
             (click)="editar()">
             <i nz-icon nzType="edit"></i>
