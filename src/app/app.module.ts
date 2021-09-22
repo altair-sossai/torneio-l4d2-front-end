@@ -15,18 +15,20 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
+import { ConfrontoComponent } from './modules/cadastros/confrontos/components/confronto/confronto.component';
+import { ConfrontosComponent } from './modules/cadastros/confrontos/components/confrontos/confrontos.component';
 import { JogadorComponent } from './modules/cadastros/jogadores/components/jogador/jogador.component';
 import { JogadoresComponent } from './modules/cadastros/jogadores/components/jogadores/jogadores.component';
 import { TimeEditComponent } from './modules/cadastros/times/components/time-edit/time-edit.component';
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
-import { AppRoutingModule } from './routes/app-routing.module';
-import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { VincularJogadorComponent } from './modules/cadastros/times/components/vincular-jogador/vincular-jogador.component';
+import { AppRoutingModule } from './routes/app-routing.module';
 
 registerLocaleData(pt);
 
@@ -38,7 +40,9 @@ registerLocaleData(pt);
     TimesComponent,
     TimeComponent,
     TimeEditComponent,
-    VincularJogadorComponent
+    VincularJogadorComponent,
+    ConfrontoComponent,
+    ConfrontosComponent
   ],
   imports: [
     BrowserModule,
