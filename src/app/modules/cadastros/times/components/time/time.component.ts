@@ -3,7 +3,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { Time } from '../../models/time';
-import { TimeJogadorService } from '../../services/time-jogador.service';
 import { TimeService } from '../../services/time.service';
 import { TimeEditComponent } from '../time-edit/time-edit.component';
 import { VincularJogadorComponent } from '../vincular-jogador/vincular-jogador.component';
@@ -23,8 +22,7 @@ export class TimeComponent {
   constructor(
     private messageService: NzMessageService,
     private modalService: NzModalService,
-    private timeService: TimeService,
-    private timeJogadorService: TimeJogadorService
+    private timeService: TimeService
   ) { }
 
   adicionarJogador(): void {
@@ -42,11 +40,11 @@ export class TimeComponent {
       nzTitle: 'Deseja realmente remover o jogador do time?',
       nzOnOk: () => {
         this.loading = true;
-        this.timeJogadorService.desvincular(this.time.codigo, jogador.steamId).subscribe(_ => {
+        this.timeService.desvincular(this.time.codigo, jogador.steamId).subscribe(_ => {
           this.loading = false;
           this.atualizar.emit();
           this.messageService.create('success', 'Removido com sucesso');
-        }, err => {
+        }, (err: any) => {
           this.loading = false;
           this.messageService.create('error', 'Ocorreu um erro');
           console.log(err);

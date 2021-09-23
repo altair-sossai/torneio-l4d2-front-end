@@ -3,7 +3,7 @@ import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { JogadorService } from '../../../jogadores/services/jogador.service';
 import { TimeJogadorCommand } from '../../commands/time-jogador.command';
-import { TimeJogadorService } from '../../services/time-jogador.service';
+import { TimeService } from '../../services/time.service';
 
 @Component({
   selector: 'app-vincular-jogador',
@@ -19,7 +19,7 @@ export class VincularJogadorComponent implements OnInit {
   constructor(
     private modal: NzModalRef,
     private jogadorService: JogadorService,
-    private timeJogadorService: TimeJogadorService
+    private timeService: TimeService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +33,6 @@ export class VincularJogadorComponent implements OnInit {
     command.time = this.codigo;
     command.jogador = jogador.steamId;
 
-    this.timeJogadorService.vincular(command).subscribe(_ => this.modal.triggerOk());
+    this.timeService.vincular(command).subscribe(_ => this.modal.triggerOk());
   }
 }
