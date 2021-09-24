@@ -1,3 +1,4 @@
-<p>
-    {{confronto.timeA}} vs {{confronto.timeB}} - {{campanha.nomeOriginal}} {{campanha.pontuacaoMaxima}} pts
-</p>
+<div class="container">
+    <app-confronto-campanha [campanha]="confronto.campanha"></app-confronto-campanha>
+    <app-confronto-corpo [confronto]="confronto"></app-confronto-corpo>
+</div>

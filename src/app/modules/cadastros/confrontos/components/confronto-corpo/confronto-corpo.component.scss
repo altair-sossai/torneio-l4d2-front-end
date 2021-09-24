@@ -1,0 +1,8 @@
+.corpo {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto;
+    nz-divider {
+        margin: 5px;
+    }
+}

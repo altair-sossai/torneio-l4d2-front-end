@@ -1,0 +1,8 @@
+.container {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+
+    app-confronto-corpo {
+        margin-left: 10px;
+    }
+}

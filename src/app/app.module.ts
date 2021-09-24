@@ -16,12 +16,23 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
+import { ConfrontoCampanhaComponent } from './modules/cadastros/confrontos/components/confronto-campanha/confronto-campanha.component';
+import { ConfrontoCorpoComponent } from './modules/cadastros/confrontos/components/confronto-corpo/confronto-corpo.component';
+import { ConfrontoHeaderComponent } from './modules/cadastros/confrontos/components/confronto-header/confronto-header.component';
+import { ConfrontoResumoComponent } from './modules/cadastros/confrontos/components/confronto-resumo/confronto-resumo.component';
+import { ConfrontoTimeComponent } from './modules/cadastros/confrontos/components/confronto-time/confronto-time.component';
+import { ConfrontoTimesComponent } from './modules/cadastros/confrontos/components/confronto-times/confronto-times.component';
 import { ConfrontoComponent } from './modules/cadastros/confrontos/components/confronto/confronto.component';
 import { ConfrontosComponent } from './modules/cadastros/confrontos/components/confrontos/confrontos.component';
+import { CorStatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/cor-status-confronto.pipe';
+import { StatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/status-confronto.pipe';
 import { JogadorComponent } from './modules/cadastros/jogadores/components/jogador/jogador.component';
 import { JogadoresComponent } from './modules/cadastros/jogadores/components/jogadores/jogadores.component';
 import { TimeEditComponent } from './modules/cadastros/times/components/time-edit/time-edit.component';
@@ -42,7 +53,15 @@ registerLocaleData(pt);
     TimeEditComponent,
     VincularJogadorComponent,
     ConfrontoComponent,
-    ConfrontosComponent
+    ConfrontosComponent,
+    ConfrontoCampanhaComponent,
+    ConfrontoHeaderComponent,
+    ConfrontoCorpoComponent,
+    ConfrontoTimesComponent,
+    ConfrontoResumoComponent,
+    StatusConfrontoPipe,
+    CorStatusConfrontoPipe,
+    ConfrontoTimeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +82,10 @@ registerLocaleData(pt);
     NzInputModule,
     NzFormModule,
     NzAlertModule,
-    NzPopoverModule
+    NzPopoverModule,
+    NzTabsModule,
+    NzProgressModule,
+    NzTagModule
   ],
   providers: [{ provide: NZ_I18N, useValue: pt_BR }],
   bootstrap: [AppComponent]

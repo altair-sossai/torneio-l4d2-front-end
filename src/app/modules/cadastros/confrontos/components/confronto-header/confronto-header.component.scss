@@ -1,0 +1,10 @@
+.header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    i,
+    label {
+        margin-left: 5px;
+    }
+}

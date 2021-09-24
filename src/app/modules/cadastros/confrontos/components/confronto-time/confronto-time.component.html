@@ -1,0 +1,14 @@
+<div class="time">
+    <h3>{{time.nome}}</h3>
+    <p *ngFor="let jogador of time.jogadores" nz-popover nzPopoverTitle="Dados do jogador"
+        [nzPopoverContent]="contentTemplate">
+        {{jogador.nome}}
+        <ng-template #contentTemplate>
+            <app-jogador [jogador]="jogador" [podeExcluir]="false" [podeAtualizar]="false"></app-jogador>
+        </ng-template>
+    </p>
+    <nz-tag [nzColor]="color" *ngIf="confronto.status !== StatusConfronto.Aguardando">
+        <i nz-icon [nzType]="icon"></i>
+        <span>{{text}}</span>
+    </nz-tag>
+</div>

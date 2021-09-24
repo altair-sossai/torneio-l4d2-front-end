@@ -2,14 +2,13 @@ import { Component, Input } from '@angular/core';
 import { Confronto } from '../../models/confronto';
 
 @Component({
-  selector: 'app-confronto',
-  templateUrl: './confronto.component.html',
-  styleUrls: ['./confronto.component.scss']
+  selector: 'app-confronto-corpo',
+  templateUrl: './confronto-corpo.component.html',
+  styleUrls: ['./confronto-corpo.component.scss']
 })
-export class ConfrontoComponent {
+export class ConfrontoCorpoComponent {
 
   @Input() confronto!: Confronto;
 
   constructor() { }
-
 }
