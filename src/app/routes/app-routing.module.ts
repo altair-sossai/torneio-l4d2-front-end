@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConfrontosComponent } from '../modules/cadastros/confrontos/components/confrontos/confrontos.component';
 import { JogadoresComponent } from '../modules/cadastros/jogadores/components/jogadores/jogadores.component';
 import { TimesComponent } from '../modules/cadastros/times/components/times/times.component';
+import { InstitucionalComponent } from '../modules/institucional/components/institucional/institucional.component';
 
 const routes: Routes = [
+    { path: '', component: InstitucionalComponent },
     {
         path: 'cadastros',
         children: [

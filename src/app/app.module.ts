@@ -40,6 +40,7 @@ import { TimeComponent } from './modules/cadastros/times/components/time/time.co
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
 import { VincularJogadorComponent } from './modules/cadastros/times/components/vincular-jogador/vincular-jogador.component';
 import { AppRoutingModule } from './routes/app-routing.module';
+import { InstitucionalComponent } from './modules/institucional/components/institucional/institucional.component';
 
 registerLocaleData(pt);
 
@@ -61,7 +62,8 @@ registerLocaleData(pt);
     ConfrontoResumoComponent,
     StatusConfrontoPipe,
     CorStatusConfrontoPipe,
-    ConfrontoTimeComponent
+    ConfrontoTimeComponent,
+    InstitucionalComponent
   ],
   imports: [
     BrowserModule,
