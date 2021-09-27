@@ -23,6 +23,11 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
+import { AdminComponent } from './layouts/admin/admin.component';
+import { AuthComponent } from './layouts/auth/auth.component';
+import { EmptyComponent } from './layouts/empty/empty.component';
+import { AuthGuard } from './modules/auth/guards/auth-guard';
+import { LoginComponent } from './modules/auth/login/components/login/login.component';
 import { ConfrontoCampanhaComponent } from './modules/cadastros/confrontos/components/confronto-campanha/confronto-campanha.component';
 import { ConfrontoCorpoComponent } from './modules/cadastros/confrontos/components/confronto-corpo/confronto-corpo.component';
 import { ConfrontoHeaderComponent } from './modules/cadastros/confrontos/components/confronto-header/confronto-header.component';
@@ -39,14 +44,17 @@ import { TimeEditComponent } from './modules/cadastros/times/components/time-edi
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
 import { VincularJogadorComponent } from './modules/cadastros/times/components/vincular-jogador/vincular-jogador.component';
-import { AppRoutingModule } from './routes/app-routing.module';
 import { InstitucionalComponent } from './modules/institucional/components/institucional/institucional.component';
+import { AppRoutingModule } from './routes/app-routing.module';
 
 registerLocaleData(pt);
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminComponent,
+    AuthComponent,
+    EmptyComponent,
     JogadoresComponent,
     JogadorComponent,
     TimesComponent,
@@ -63,7 +71,8 @@ registerLocaleData(pt);
     StatusConfrontoPipe,
     CorStatusConfrontoPipe,
     ConfrontoTimeComponent,
-    InstitucionalComponent
+    InstitucionalComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +98,10 @@ registerLocaleData(pt);
     NzProgressModule,
     NzTagModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: pt_BR }],
+  providers: [
+    { provide: NZ_I18N, useValue: pt_BR },
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

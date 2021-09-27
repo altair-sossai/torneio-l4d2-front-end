@@ -1,0 +1,30 @@
+<div style="text-align: center;">
+    <h4>Acesso ao sistema</h4>
+    <p>Informe seu usuário e senha para prosseguir</p>
+</div>
+<form nz-form (ngSubmit)="login()" *ngIf="command">
+    <nz-form-item>
+        <nz-form-control [nzValidateStatus]="errors?.email ? 'error' : ''"
+            [nzErrorTip]="errors?.email && errors?.email[0]">
+            <nz-input-group nzPrefixIcon="user">
+                <input type="email" nz-input name="email" [(ngModel)]="command.email" placeholder="E-mail"
+                    appAutoFocus />
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control [nzValidateStatus]="errors?.password ? 'error' : ''"
+            [nzErrorTip]="errors?.password && errors?.password[0]">
+            <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input name="password" [(ngModel)]="command.password" placeholder="Password" />
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button nzSize="large" nzType="primary" [disabled]="!command" [nzLoading]="busy">Acessar</button>
+</form>
+
+<div *ngIf="!command" style="text-align: center;">
+    <nz-spin nzSimple nzTip="Carregando..."></nz-spin>
+</div>
