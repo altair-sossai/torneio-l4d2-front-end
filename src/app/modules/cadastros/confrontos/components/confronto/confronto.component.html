@@ -1,4 +1,5 @@
 <div class="container">
     <app-confronto-campanha [campanha]="confronto.campanha"></app-confronto-campanha>
-    <app-confronto-corpo [confronto]="confronto"></app-confronto-corpo>
+    <app-confronto-corpo [confronto]="confronto" [podeEditar]="podeEditar" (atualizado)="atualizar()">
+    </app-confronto-corpo>
 </div>

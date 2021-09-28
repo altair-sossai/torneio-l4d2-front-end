@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Confronto } from '../../models/confronto';
 
 @Component({
@@ -9,6 +9,12 @@ import { Confronto } from '../../models/confronto';
 export class ConfrontoCorpoComponent {
 
   @Input() confronto!: Confronto;
+  @Input() podeEditar = false;
+  @Output() atualizado = new EventEmitter<any>();
 
   constructor() { }
+
+  atualizar(): void {
+    this.atualizado.emit();
+  }
 }

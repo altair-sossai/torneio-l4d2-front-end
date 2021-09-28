@@ -1,0 +1,122 @@
+<form nz-form (ngSubmit)="salvar()" *ngIf="command">
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzFor="rodada">Rodada</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.rodada ? 'error' : ''"
+            [nzErrorTip]="errors?.rodada && errors?.rodada[0]">
+            <nz-input-number [(ngModel)]="command.rodada" name="rodada" [nzMin]="1" [nzMax]="10" [nzStep]="1"
+                placeholder="Rodada">
+            </nz-input-number>
+        </nz-form-control>
+
+        <nz-form-label [nzSpan]="2" nzFor="data">Data</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.data ? 'error' : ''"
+            [nzErrorTip]="errors?.data && errors?.data[0]">
+            <nz-date-picker [(ngModel)]="command.data" [nzShowTime]="{ nzFormat: 'HH:mm' }" nzFormat="dd/MM/yyyy HH:mm"
+                name="data" [nzInputReadOnly]="true"></nz-date-picker>
+        </nz-form-control>
+
+        <nz-form-label [nzSpan]="2" nzFor="status">Status</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.status ? 'error' : ''"
+            [nzErrorTip]="errors?.status && errors?.status[0]">
+            <nz-select [(ngModel)]="command.status" name="status" placeholder="Status">
+                <nz-option *ngFor="let status of tiposStatus" [nzValue]="status" [nzLabel]="status|statusConfronto">
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzFor="codigoCampanha">Campanha</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.codigoCampanha ? 'error' : ''"
+            [nzErrorTip]="errors?.codigoCampanha && errors?.codigoCampanha[0]">
+            <nz-select [(ngModel)]="command.codigoCampanha" name="codigoCampanha" placeholder="Campanha">
+                <nz-option *ngFor="let campanha of campanhas" [nzValue]="campanha.codigo"
+                    nzLabel="{{campanha.nome + ' - ' + campanha.pontuacaoMaxima + ' pts'}}">
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzFor="codigoTimeA">Time A</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.codigoTimeA ? 'error' : ''"
+            [nzErrorTip]="errors?.codigoTimeA && errors?.codigoTimeA[0]">
+            <nz-select [(ngModel)]="command.codigoTimeA" name="codigoTimeA" placeholder="Time A">
+                <nz-option *ngFor="let time of times" [nzValue]="time.codigo" [nzLabel]="time.nome">
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+
+        <nz-form-label [nzSpan]="3" nzFor="codigoTimeB">Time B</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.codigoTimeB ? 'error' : ''"
+            [nzErrorTip]="errors?.codigoTimeB && errors?.codigoTimeB[0]">
+            <nz-select [(ngModel)]="command.codigoTimeB" name="codigoTimeB" placeholder="Time B">
+                <nz-option *ngFor="let time of times" [nzValue]="time.codigo" [nzLabel]="time.nome">
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item *ngIf="command.status !== StatusConfronto.Aguardando">
+        <nz-form-label [nzSpan]="4" nzFor="pontosConquistadosTimeA">
+            Pontos Time A
+        </nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.pontosConquistadosTimeA ? 'error' : ''"
+            [nzErrorTip]="errors?.pontosConquistadosTimeA && errors?.pontosConquistadosTimeA[0]">
+            <nz-input-number [(ngModel)]="command.pontosConquistadosTimeA" name="pontosConquistadosTimeA" [nzMin]="0"
+                [nzMax]="5000" [nzStep]="1" placeholder="Pontos conquistados pelo time A">
+            </nz-input-number>
+        </nz-form-control>
+
+        <nz-form-label [nzSpan]="3" nzFor="pontosConquistadosTimeB">
+            Time B
+        </nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.pontosConquistadosTimeB ? 'error' : ''"
+            [nzErrorTip]="errors?.pontosConquistadosTimeB && errors?.pontosConquistadosTimeB[0]">
+            <nz-input-number [(ngModel)]="command.pontosConquistadosTimeB" name="pontosConquistadosTimeB" [nzMin]="0"
+                [nzMax]="5000" [nzStep]="1" placeholder="Pontos conquistados pelo time B">
+            </nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item *ngIf="command.status !== StatusConfronto.Aguardando">
+        <nz-form-label [nzSpan]="4" nzFor="penalidadeTimeA">
+            Penalidade Time A
+        </nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.penalidadeTimeA ? 'error' : ''"
+            [nzErrorTip]="errors?.penalidadeTimeA && errors?.penalidadeTimeA[0]">
+            <nz-input-number [(ngModel)]="command.penalidadeTimeA" name="penalidadeTimeA" [nzMin]="0" [nzMax]="5000"
+                [nzStep]="1" placeholder="Penalidade time A">
+            </nz-input-number>
+        </nz-form-control>
+
+        <nz-form-label [nzSpan]="3" nzFor="penalidadeTimeB">
+            Time B
+        </nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.penalidadeTimeB ? 'error' : ''"
+            [nzErrorTip]="errors?.penalidadeTimeB && errors?.penalidadeTimeB[0]">
+            <nz-input-number [(ngModel)]="command.penalidadeTimeB" name="penalidadeTimeB" [nzMin]="0" [nzMax]="5000"
+                [nzStep]="1" placeholder="Penalidade time B">
+            </nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSpan]="4" nzFor="observacoes">
+            Observações
+        </nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.observacoes ? 'error' : ''"
+            [nzErrorTip]="errors?.observacoes && errors?.observacoes[0]">
+            <textarea rows="4" name="observacoes" nz-input [(ngModel)]="command.observacoes"></textarea>
+        </nz-form-control>
+    </nz-form-item>
+</form>
+
+<div *ngIf="!command" style="text-align: center;">
+    <nz-spin nzSimple nzTip="Carregando..."></nz-spin>
+</div>
+
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="close()">Cancelar</button>
+    <button nz-button nzType="primary" (click)="salvar()" [disabled]="!command" [nzLoading]="busy">Salvar</button>
+</div>

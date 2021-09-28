@@ -1,5 +1,6 @@
 <div class="corpo">
-    <app-confronto-header [confronto]="confronto"></app-confronto-header>
+    <app-confronto-header [confronto]="confronto" [podeEditar]="podeEditar" (atualizado)="atualizar()">
+    </app-confronto-header>
     <nz-divider></nz-divider>
     <app-confronto-times [confronto]="confronto"></app-confronto-times>
     <nz-divider></nz-divider>

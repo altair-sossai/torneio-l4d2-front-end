@@ -1,6 +1,6 @@
 export class Campanha {
     public codigo!: number;
-    public nome: string | undefined;
-    public nomeOriginal: string | undefined;
+    public nome!: string;
+    public nomeOriginal!: string;
     public pontuacaoMaxima!: number;
 }
