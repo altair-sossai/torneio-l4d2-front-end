@@ -1,0 +1,32 @@
+<nz-table #classificacaoTable [nzData]="classificacao" [nzFrontPagination]="false" nzSize="small">
+    <thead>
+        <tr>
+            <th class="text-center">Posição</th>
+            <th>Equipe</th>
+            <th class="text-center">PG</th>
+            <th class="text-center">Partidas realizadas</th>
+            <th class="text-center">Vitorias</th>
+            <th class="text-center">Derrotas</th>
+            <th class="text-center">Empates</th>
+            <th class="text-center">Pontos conquistados</th>
+            <th class="text-center">Pontos sofridos</th>
+            <th class="text-center">Penalidades</th>
+            <th class="text-center">Saldo de pontos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let time of classificacaoTable.data; let i = index">
+            <td class="text-center">{{i+1}}°</td>
+            <td>{{time.nome}}</td>
+            <td class="text-center">{{time.pontosGerais}}</td>
+            <td class="text-center">{{time.quantidadePartidasRealizadas}}</td>
+            <td class="text-center">{{time.quantidadeVitorias}}</td>
+            <td class="text-center">{{time.quantidadeDerrotas}}</td>
+            <td class="text-center">{{time.quantidadeEmpates}}</td>
+            <td class="text-center">{{time.totalPontosConquistados}}</td>
+            <td class="text-center">{{time.totalPontosSofridos}}</td>
+            <td class="text-center">{{time.totalPenalidades}}</td>
+            <td class="text-center">{{time.saldoTotalPontos}}</td>
+        </tr>
+    </tbody>
+</nz-table>

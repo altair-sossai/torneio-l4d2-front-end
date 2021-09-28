@@ -17,7 +17,7 @@
             <td class="text-right slim">
                 <small *ngIf="jogador.totalHoras">{{jogador.totalHoras}} horas</small>
             </td>
-            <td class="slim">
+            <td class="slim" *ngIf="!readonly">
                 <i class="delete" nz-icon nzType="close" nzTheme="outline" nz-tooltip
                     nzTooltipTitle="Remover jogador do time" (click)="removerJogador(jogador)"></i>
             </td>
@@ -26,8 +26,8 @@
             </ng-template>
         </tr>
     </table>
-    <nz-divider></nz-divider>
-    <div class="botoes">
+    <nz-divider *ngIf="!readonly"></nz-divider>
+    <div class="botoes" *ngIf="!readonly">
         <button nz-button nzType="default" nzShape="circle" nz-tooltip nzTooltipTitle="Adicionar jogador"
             [disabled]="loading" (click)="adicionarJogador()">
             <i nz-icon nzType="user-add"></i>

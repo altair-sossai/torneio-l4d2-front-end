@@ -1,0 +1,45 @@
+<a href="https://drive.google.com/file/d/11-AbbkogrC20ui4h03Qg08b_XJ0BLDyM/view?usp=sharing" target="_blank">
+    Acessar regras do torneio
+</a>
+
+<section>
+    <h2>Classificação geral do torneio</h2>
+    <nz-divider></nz-divider>
+    <div class="tabela-resultados" *ngIf="classificacao">
+        <app-tabela-resultados [classificacao]="classificacao"></app-tabela-resultados>
+    </div>
+</section>
+
+<section>
+    <h2>Confrontos</h2>
+    <nz-divider></nz-divider>
+    <nz-tabset *ngIf="rodadas">
+        <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
+            <ng-container *ngFor="let confronto of rodada.confrontos">
+                <app-confronto [confronto]="confronto" [podeEditar]="false"></app-confronto>
+            </ng-container>
+        </nz-tab>
+    </nz-tabset>
+</section>
+
+<section>
+    <h2>Equipes</h2>
+    <nz-divider></nz-divider>
+    <div class="times" *ngIf="times">
+        <ng-container *ngFor="let time of times">
+            <app-time [time]="time" [readonly]="true"></app-time>
+        </ng-container>
+    </div>
+</section>
+
+<section>
+    <h2>Participantes</h2>
+    <nz-divider></nz-divider>
+    <div class="jogadores" *ngIf="jogadores">
+        <ng-container *ngFor="let jogador of jogadores">
+            <app-jogador [jogador]="jogador" [podeExcluir]="false" [podeAtualizar]="false"></app-jogador>
+        </ng-container>
+    </div>
+</section>
+
+<a routerLink="/auth">Acesso ao painel administrativo</a>

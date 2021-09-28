@@ -22,6 +22,7 @@ import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
@@ -30,6 +31,7 @@ import { IconsProviderModule } from './icons-provider.module';
 import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { EmptyComponent } from './layouts/empty/empty.component';
+import { PublicComponent } from './layouts/public/public.component';
 import { AuthGuard } from './modules/auth/guards/auth-guard';
 import { LoginComponent } from './modules/auth/login/components/login/login.component';
 import { ConfrontoCampanhaComponent } from './modules/cadastros/confrontos/components/confronto-campanha/confronto-campanha.component';
@@ -49,7 +51,8 @@ import { TimeEditComponent } from './modules/cadastros/times/components/time-edi
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
 import { VincularJogadorComponent } from './modules/cadastros/times/components/vincular-jogador/vincular-jogador.component';
-import { InstitucionalComponent } from './modules/institucional/components/institucional/institucional.component';
+import { HomeComponent } from './modules/institucional/components/home/home.component';
+import { TabelaResultadosComponent } from './modules/institucional/components/tabela-resultados/tabela-resultados.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { AppHttpInterceptor } from './shared/http-interceptor';
 
@@ -61,6 +64,7 @@ registerLocaleData(pt);
     AdminComponent,
     AuthComponent,
     EmptyComponent,
+    PublicComponent,
     JogadoresComponent,
     JogadorComponent,
     TimesComponent,
@@ -77,9 +81,10 @@ registerLocaleData(pt);
     StatusConfrontoPipe,
     CorStatusConfrontoPipe,
     ConfrontoTimeComponent,
-    InstitucionalComponent,
-    LoginComponent,
     ConfrontoEditComponent,
+    LoginComponent,
+    HomeComponent,
+    TabelaResultadosComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,7 +112,8 @@ registerLocaleData(pt);
     NzInputNumberModule,
     NzDatePickerModule,
     NzSelectModule,
-    NzSkeletonModule
+    NzSkeletonModule,
+    NzTableModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR },

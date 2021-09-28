@@ -23,6 +23,10 @@ export class TimeService {
         return this.http.get<Time[]>(`${environment.apiUrl}/api/times`);
     }
 
+    classificacao(): Observable<Time[]> {
+        return this.http.get<Time[]>(`${environment.apiUrl}/api/classificacao`);
+    }
+
     post(command: TimeCommand): Observable<Time> {
         return this.http.post<Time>(`${environment.apiUrl}/api/times`, command);
     }

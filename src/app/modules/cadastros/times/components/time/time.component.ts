@@ -17,6 +17,7 @@ export class TimeComponent {
   loading = false;
 
   @Input() time!: Time;
+  @Input() readonly = false;
   @Output() atualizar = new EventEmitter<any>();
 
   constructor(
