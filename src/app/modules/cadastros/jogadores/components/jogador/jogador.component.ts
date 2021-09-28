@@ -37,7 +37,6 @@ export class JogadorComponent {
     }, err => {
       this.loading = false;
       this.messageService.create('error', 'Ocorreu um erro');
-      console.log(err);
     });
   }
 
@@ -50,10 +49,9 @@ export class JogadorComponent {
           this.loading = false;
           this.excluido.emit(this.jogador);
           this.messageService.create('success', 'Excluido com sucesso');
-        }, err => {
+        }, _ => {
           this.loading = false;
           this.messageService.create('error', 'Ocorreu um erro');
-          console.log(err);
         });
       }
     });

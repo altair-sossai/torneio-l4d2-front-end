@@ -1,7 +1,9 @@
-<nz-tabset nzTabPosition="left">
+<nz-tabset nzTabPosition="left" *ngIf="!busy">
     <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
         <ng-container *ngFor="let confronto of rodada.confrontos">
             <app-confronto [confronto]="confronto" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-confronto>
         </ng-container>
     </nz-tab>
 </nz-tabset>
+
+<nz-skeleton [nzActive]="true" *ngIf="busy"></nz-skeleton>

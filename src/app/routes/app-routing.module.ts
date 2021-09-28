@@ -32,7 +32,7 @@ const routes: Routes = [
         children: [
             { path: 'jogadores', component: JogadoresComponent },
             { path: 'times', component: TimesComponent },
-            { path: 'confrontos', component: ConfrontosComponent }
+            { path: 'confrontos', component: ConfrontosComponent, data: { podeEditar: true } }
         ]
     }
 ];

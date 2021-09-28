@@ -14,7 +14,9 @@ export class ConfrontoHeaderComponent {
   @Input() podeEditar = false;
   @Output() atualizado = new EventEmitter<any>();
 
-  constructor(private modalService: NzModalService) { }
+  constructor(
+    private modalService: NzModalService) {
+  }
 
   editar(): void {
     this.modalService.create({

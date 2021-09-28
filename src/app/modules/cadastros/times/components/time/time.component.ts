@@ -44,10 +44,9 @@ export class TimeComponent {
           this.loading = false;
           this.atualizar.emit();
           this.messageService.create('success', 'Removido com sucesso');
-        }, (err: any) => {
+        }, (_: any) => {
           this.loading = false;
           this.messageService.create('error', 'Ocorreu um erro');
-          console.log(err);
         });
       }
     });
@@ -71,10 +70,9 @@ export class TimeComponent {
           this.loading = false;
           this.atualizar.emit(this.time);
           this.messageService.create('success', 'Excluido com sucesso');
-        }, err => {
+        }, _ => {
           this.loading = false;
           this.messageService.create('error', 'Ocorreu um erro');
-          console.log(err);
         });
       }
     });

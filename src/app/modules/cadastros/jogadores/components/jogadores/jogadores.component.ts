@@ -46,7 +46,6 @@ export class JogadoresComponent implements OnInit {
     }, err => {
       this.loading = false;
       this.messageService.create('error', err.message || 'Ocorreu um erro');
-      console.log(err);
     });
   }
 

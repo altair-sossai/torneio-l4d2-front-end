@@ -54,7 +54,6 @@ export class TimeEditComponent implements OnInit {
     }, result => {
       this.busy = false;
       this.errors = result.error.errors;
-      console.log(result);
     });
   }
 
