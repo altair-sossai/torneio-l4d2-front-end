@@ -5,7 +5,7 @@ export class ConfrontoCommand {
     public rodada: number | undefined;
     public data: Date | undefined;
     public status!: StatusConfronto;
-    public codigoCampanha!: number;
+    public codigoCampanha: number | undefined;
     public codigoTimeA: string | undefined;
     public codigoTimeB: string | undefined;
     public pontosConquistadosTimeA!: number;

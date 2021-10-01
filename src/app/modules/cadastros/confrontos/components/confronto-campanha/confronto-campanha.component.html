@@ -1,3 +1,10 @@
-<img src="../../../../../../assets/campanhas/{{campanha.codigo}}.jpg" />
-<h3>{{campanha.nomeOriginal}}</h3>
-<small>{{campanha.nome}}</small>
+<ng-container *ngIf="campanha">
+    <img src="../../../../../../assets/campanhas/{{campanha.codigo}}.jpg" />
+    <h3>{{campanha.nomeOriginal}}</h3>
+    <small>{{campanha.nome}}</small>
+</ng-container>
+<ng-container *ngIf="!campanha">
+    <img src="../../../../../../assets/imgs/empty.png" />
+    <h3>Vazio</h3>
+    <small>Aguardando definição da campanha</small>
+</ng-container>

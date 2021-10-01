@@ -42,7 +42,7 @@ export class ConfrontoResumoComponent {
     const pontosConquistados = this.pontosConquistados(time);
     const penalidade = this.penalidade(time);
     const pontos = pontosConquistados - penalidade;
-    const progresso = Math.max(0, Math.min(1, pontos / this.confronto.campanha.pontuacaoMaxima)) * 100;
+    const progresso = Math.max(0, Math.min(1, pontos / (this.confronto.campanha?.pontuacaoMaxima || 0))) * 100;
 
     return progresso;
   }

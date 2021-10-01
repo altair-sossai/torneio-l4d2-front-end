@@ -7,7 +7,7 @@ export class Confronto {
     public rodada: number | undefined;
     public data: Date | undefined;
     public status!: StatusConfronto;
-    public codigoCampanha!: number;
+    public codigoCampanha: number | undefined;;
     public codigoTimeA: string | undefined;
     public codigoTimeB: string | undefined;
     public codigoTimeVencedor: string | undefined;
@@ -16,7 +16,7 @@ export class Confronto {
     public penalidadeTimeA!: number;
     public penalidadeTimeB!: number;
     public observacoes: string | undefined;
-    public campanha!: Campanha;
+    public campanha: Campanha | undefined;;
     public timeA!: Time;
     public timeB!: Time;
     public timeVencedor!: Time;

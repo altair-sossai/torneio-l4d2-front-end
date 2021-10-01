@@ -8,7 +8,7 @@ import { Campanha } from '../../../campanhas/models/campanha';
 })
 export class ConfrontoCampanhaComponent {
 
-  @Input() campanha!: Campanha;
+  @Input() campanha: Campanha | undefined;;
 
   constructor() { }
 }

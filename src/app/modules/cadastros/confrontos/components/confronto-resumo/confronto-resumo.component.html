@@ -12,7 +12,7 @@
         </td>
         <td class="slim text-center">/</td>
         <td class="slim text-center bold">
-            {{confronto.campanha.pontuacaoMaxima}}
+            {{confronto.campanha?.pontuacaoMaxima || 0}}
         </td>
         <td class="slim text-center bold danger" *ngIf="penalidade(time)">
             Penalidade: -{{penalidade(time)}} pts
