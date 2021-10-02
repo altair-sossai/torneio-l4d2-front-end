@@ -1,29 +1,47 @@
-table {
-    width: 100%;
+.bold {
+    font-weight: bold;
+}
 
-    .slim {
-        white-space: nowrap;
-        width: 1px;
-        padding-right: 15px;
-    }
+.text-justify {
+    text-align: justify;
+}
 
-    td {
-        padding-right: 15px;
-    }
+p {
+    padding: 0;
+    margin: 0;
+}
 
-    .text-center {
-        text-align: center;
-    }
+section {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 5px;
+    column-gap: 10px;
+    align-items: center;
 
-    .text-right {
+    .time {
+        font-weight: bold;
         text-align: right;
     }
 
-    .bold {
+    .pontos {
+        text-align: right;
+    }
+
+    .penalidade {
+        color: red;
         font-weight: bold;
     }
 
-    .danger {
-        color: red;
+    .observacoes {
+        margin-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+        grid-template-columns: auto 1fr;
+
+        .pontos,
+        .penalidade {
+            margin-bottom: 15px;
+        }
     }
 }

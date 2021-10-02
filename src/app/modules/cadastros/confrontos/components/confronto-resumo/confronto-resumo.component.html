@@ -1,27 +1,18 @@
-<table>
-    <tr *ngFor="let time of [confronto.timeA, confronto.timeB]">
-        <th class="slim text-right">
-            {{time.nome}}:
-        </th>
-        <td>
-            <nz-progress [nzPercent]="progresso(time)" [nzFormat]="formatar" nzSize="small" [nzStatus]="status(time)">
-            </nz-progress>
-        </td>
-        <td class="slim text-center">
-            {{pontosConquistados(time)}}
-        </td>
-        <td class="slim text-center">/</td>
-        <td class="slim text-center bold">
-            {{confronto.campanha?.pontuacaoMaxima || 0}}
-        </td>
-        <td class="slim text-center bold danger" *ngIf="penalidade(time)">
-            Penalidade: -{{penalidade(time)}} pts
-        </td>
-    </tr>
-    <tr *ngIf="confronto.observacoes">
-        <th class="slim text-right">Observações:</th>
-        <td colspan="5">
-            {{confronto.observacoes}}
-        </td>
-    </tr>
-</table>
+<section>
+    <ng-container *ngFor="let time of [confronto.timeA, confronto.timeB]">
+        <p class="time">{{time.nome}}:</p>
+        <nz-progress [nzPercent]="progresso(time)" [nzFormat]="formatar" nzSize="small" [nzStatus]="status(time)">
+        </nz-progress>
+        <span class="penalidade">
+            <p *ngIf="penalidade(time)">
+                Penalidade: -{{penalidade(time)}} pts
+            </p>
+        </span>
+        <p class="pontos">
+            {{pontosConquistados(time)}} / <span class="bold">{{confronto.campanha?.pontuacaoMaxima || 0}}</span>
+        </p>
+    </ng-container>
+</section>
+<p *ngIf="confronto.observacoes" class="observacoes text-justify">
+    <span class="bold">Observações:</span> {{confronto.observacoes}}
+</p>
