@@ -1,10 +1,11 @@
-:host {
-    min-width: 510px;
-}
-
 .container {
     display: grid;
     grid-template-columns: 150px 1fr;
+
+    @media (max-width: 600px) {
+        display: flex;
+        flex-flow: column;
+    }
 
     app-confronto-corpo {
         margin-left: 10px;
