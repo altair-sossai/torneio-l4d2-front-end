@@ -1,7 +1,7 @@
 <div class="header">
     <ng-container *ngIf="confronto.data">
         <i nz-icon nzType="calendar" nzTheme="outline"></i>
-        <label>{{confronto.data|date:'dd/MM/yyyy HH:mm':'utc'}}</label>
+        <label>{{confronto.data|date:'dd/MM/yyyy HH:mm':'-7'}}</label>
     </ng-container>
     <nz-tag nzColor="{{confronto.status|corStatusConfronto}}">
         {{confronto.status|statusConfronto}}
