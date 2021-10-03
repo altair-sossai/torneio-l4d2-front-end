@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatusConfronto } from 'src/app/modules/cadastros/confrontos/enums/status-confronto';
 import { Rodada } from 'src/app/modules/cadastros/confrontos/models/rodada';
 import { ConfrontoService } from 'src/app/modules/cadastros/confrontos/services/confronto.service';
 import { Jogador } from 'src/app/modules/cadastros/jogadores/models/jogador';
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   jogadores: Jogador[] | undefined;
   times: Time[] | undefined;
   classificacao: Time[] | undefined;
+  rodadaAtual: number = 0;
   rodadas: Rodada[] | undefined;
 
   constructor(
@@ -28,6 +30,31 @@ export class HomeComponent implements OnInit {
     this.jogadorService.get().subscribe(jogadores => this.jogadores = jogadores);
     this.timeService.get().subscribe(times => this.times = times);
     this.timeService.classificacao().subscribe(classificacao => this.classificacao = classificacao);
-    this.confrontoService.rodadas().subscribe(rodadas => this.rodadas = rodadas);
+    this.confrontoService.rodadas().subscribe(rodadas => {
+      this.rodadas = rodadas;
+      this.atualizarRodadaAtual()
+    });
+  }
+
+  atualizarRodadaAtual(): void {
+    let rodadaAtual = 1;
+
+    for (const rodada of this.rodadas || []) {
+      for (const confronto of rodada.confrontos || []) {
+        if (confronto.status == StatusConfronto.Aguardando)
+          continue
+
+        rodadaAtual = Math.max(rodadaAtual, rodada.rodada || 0);
+      }
+    }
+
+    this.rodadaAtual = rodadaAtual - 1;
+  }
+
+  tituloRodada(rodada: Rodada): string {
+    if (rodada.rodada == this.rodadaAtual + 1)
+      return rodada.rodada + 'ª Rodada (Atual)';
+
+    return rodada.rodada + 'ª Rodada'
   }
 }

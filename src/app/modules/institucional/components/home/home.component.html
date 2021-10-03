@@ -1,45 +1,77 @@
-<a href="https://drive.google.com/file/d/11-AbbkogrC20ui4h03Qg08b_XJ0BLDyM/view?usp=sharing" target="_blank">
-    Acessar regras do torneio
-</a>
+<h2>1° Torneio de Left 4 Dead 2</h2>
 
 <section>
-    <h2>Classificação geral do torneio</h2>
-    <nz-divider></nz-divider>
-    <div class="tabela-resultados" *ngIf="classificacao">
-        <app-tabela-resultados [classificacao]="classificacao"></app-tabela-resultados>
-    </div>
+    <h3>Objetivo</h3>
+    <p>
+        Realizar uma disputa saudável no jogo em que a maioria dos participantes se conheceu.
+        Não temos premiação, essa é uma competição leve para reforçar os laços de amizade,
+        elevar o nível de habilidade de todos ao realizar um rodízio nos times,
+        divulgar e manter o jogo vivo e prestigiar os participantes na internet
+        (Grupos do Facebook, Comunidade da Steam e Comunidade Nit).
+        Dependendo de como ocorrer esse torneio, realizaremos outros no futuro,
+        com mais jogadores, maior alcance de divulgação e premiações.
+    </p>
+    <p>
+        Para mais informações, acesse o documento de regras do torneio:
+        <a href="https://drive.google.com/drive/folders/1flijTHNr3cFY_rUrrKJ6Q-BzDumSYS7_?usp=sharing" target="_blank">
+            Regras do torneio
+        </a>
+    </p>
 </section>
 
 <section>
-    <h2>Confrontos</h2>
-    <nz-divider></nz-divider>
-    <nz-tabset *ngIf="rodadas">
-        <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
+    <h3>Classificação geral do torneio</h3>
+    <p>
+        Abaixo é possível acompanhar a tabela geral de pontos, o total de vitorias / derrotas e pontos conquistados por
+        equipe.
+    </p>
+    <hr />
+    <div class="tabela-resultados" *ngIf="classificacao">
+        <app-tabela-resultados [classificacao]="classificacao"></app-tabela-resultados>
+    </div>
+    <nz-skeleton [nzActive]="true" *ngIf="!classificacao"></nz-skeleton>
+</section>
+
+<section>
+    <h3>Confrontos</h3>
+    <p>
+        Abaixo é possível acompanhar o resultado de todos os confrontos.
+    </p>
+    <hr />
+    <nz-tabset *ngIf="rodadas" [nzSelectedIndex]="rodadaAtual">
+        <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ tituloRodada(rodada) }}">
             <ng-container *ngFor="let confronto of rodada.confrontos">
                 <app-confronto [confronto]="confronto" [podeEditar]="false"></app-confronto>
             </ng-container>
         </nz-tab>
     </nz-tabset>
+    <nz-skeleton [nzActive]="true" *ngIf="!rodadas"></nz-skeleton>
 </section>
 
 <section>
-    <h2>Equipes</h2>
-    <nz-divider></nz-divider>
+    <h3>Equipes</h3>
+    <p>
+        Abaixo é possível visualizar todos os times participantes e seus respectivos jogadores.
+    </p>
+    <hr />
     <div class="times" *ngIf="times">
         <ng-container *ngFor="let time of times">
             <app-time [time]="time" [readonly]="true"></app-time>
         </ng-container>
     </div>
+    <nz-skeleton [nzActive]="true" *ngIf="!times"></nz-skeleton>
 </section>
 
 <section>
-    <h2>Participantes</h2>
-    <nz-divider></nz-divider>
+    <h3>Participantes</h3>
+    <p>
+        Abaixo é possível visualizar todos os participantes do torneio.
+    </p>
+    <hr />
     <div class="jogadores" *ngIf="jogadores">
         <ng-container *ngFor="let jogador of jogadores">
             <app-jogador [jogador]="jogador" [podeExcluir]="false" [podeAtualizar]="false"></app-jogador>
         </ng-container>
     </div>
+    <nz-skeleton [nzActive]="true" *ngIf="!jogadores"></nz-skeleton>
 </section>
-
-<a routerLink="/auth">Acesso ao painel administrativo</a>
