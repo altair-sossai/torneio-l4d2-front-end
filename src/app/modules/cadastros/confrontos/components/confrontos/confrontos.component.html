@@ -1,4 +1,4 @@
-<nz-tabset *ngIf="!busy">
+<nz-tabset *ngIf="!busy" [nzSelectedIndex]="rodadaAtual" (nzSelectedIndexChange)="rodadaAtual = $event">
     <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
         <ng-container *ngFor="let confronto of rodada.confrontos">
             <app-confronto [confronto]="confronto" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-confronto>

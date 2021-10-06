@@ -16,6 +16,7 @@ export class ConfrontosComponent implements OnInit {
 
   rodadas: Rodada[] = [];
   busy = false;
+  rodadaAtual = 0;
 
   constructor(
     private modalService: NzModalService,
@@ -34,7 +35,23 @@ export class ConfrontosComponent implements OnInit {
     this.confrontoService.rodadas().subscribe(rodadas => {
       this.busy = false;
       this.rodadas = rodadas;
+      this.atualizarRodadaAtual();
     });
+  }
+
+  atualizarRodadaAtual(): void {
+    let rodadaAtual = 1;
+
+    for (const rodada of this.rodadas || []) {
+      for (const confronto of rodada.confrontos || []) {
+        if (!confronto.codigoCampanha)
+          continue
+
+        rodadaAtual = Math.max(rodadaAtual, rodada.rodada || 0);
+      }
+    }
+
+    this.rodadaAtual = rodadaAtual - 1;
   }
 
   novo(): void {

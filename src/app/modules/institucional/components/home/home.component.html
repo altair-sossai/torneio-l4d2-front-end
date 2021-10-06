@@ -40,9 +40,10 @@
     <hr />
     <nz-tabset *ngIf="rodadas" [nzSelectedIndex]="rodadaAtual">
         <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ tituloRodada(rodada) }}">
-            <ng-container *ngFor="let confronto of rodada.confrontos">
-                <app-confronto [confronto]="confronto" [podeEditar]="false"></app-confronto>
-            </ng-container>
+            <div class="confrontos">
+                <app-confronto *ngFor="let confronto of rodada.confrontos" [confronto]="confronto" [podeEditar]="false">
+                </app-confronto>
+            </div>
         </nz-tab>
     </nz-tabset>
     <nz-skeleton [nzActive]="true" *ngIf="!rodadas"></nz-skeleton>

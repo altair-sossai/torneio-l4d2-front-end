@@ -30,3 +30,10 @@ app-confronto {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+@media only screen and (min-width: 1320px) {
+    .confrontos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
