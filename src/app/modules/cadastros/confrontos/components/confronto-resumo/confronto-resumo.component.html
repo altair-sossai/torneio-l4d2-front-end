@@ -3,13 +3,10 @@
         <p class="time">{{time.nome}}:</p>
         <nz-progress [nzPercent]="progresso(time)" [nzFormat]="formatar" nzSize="small" [nzStatus]="status(time)">
         </nz-progress>
-        <span class="penalidade">
-            <p *ngIf="penalidade(time)">
-                Penalidade: -{{penalidade(time)}} pts
-            </p>
-        </span>
         <p class="pontos">
-            {{pontosConquistados(time)}} / <span class="bold">{{confronto.campanha?.pontuacaoMaxima || 0}}</span>
+            {{pontosConquistados(time)}}
+            <span class="penalidade" *ngIf="penalidade(time)"> - {{penalidade(time)}}</span>
+            /<span class="bold">{{confronto.campanha?.pontuacaoMaxima || 0}}</span>
         </p>
     </ng-container>
 </section>
