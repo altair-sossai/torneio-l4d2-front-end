@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
     for (const rodada of this.rodadas || []) {
       for (const confronto of rodada.confrontos || []) {
-        if (confronto.status == StatusConfronto.Aguardando)
+        if (!confronto.codigoCampanha)
           continue
 
         rodadaAtual = Math.max(rodadaAtual, rodada.rodada || 0);
