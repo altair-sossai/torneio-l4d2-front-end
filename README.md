@@ -1,27 +1,56 @@
-# TorneioL4d2
+# Torneio de Left 4 Dead 2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
+A comunidade de **Left 4 Dead 2** onde estou inserido se organizou para realizar um campeonato com o objetivo de fortalecer as amizades dentro e fora do jogo. O torneio utiliza a regra de pontos corridos para definir os vencedores, algo muito parecido com o que acontece nos campeonatos de futebol.
 
-## Development server
+Tomei a iniciativa de desenvolver um site para auxiliar no controle dos confrontos, jogadores, times e pontuações.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+A aplicação é dividida em duas, um *front-end* feito em **Angular** e um *back-end* desenvolvido em **C#** utilizando *Azure Functions*.
+Os dados são armazenados em um *Storage Account* no *Azure*.
 
-## Code scaffolding
+## Organização
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+https://steamcommunity.com/profiles/76561198866194001/<br/>
+https://steamcommunity.com/id/XxNero_94/<br/>
+https://steamcommunity.com/id/lafert/<br/>
+https://steamcommunity.com/id/altairsossai/<br/>
 
-## Build
+## Links da aplicação
+A aplicação está disponível nos endereços abaixo:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Site do torneio:<br/>
+https://torneio-l4d2.azurewebsites.net/
 
-## Running unit tests
+Front-end:<br/>
+https://github.com/altair-sossai/torneio-l4d2-front-end
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Back-end:<br/>
+https://github.com/altair-sossai/torneio-l4d2-back-end
 
-## Running end-to-end tests
+## Recursos
+A aplicação possui os seguintes recursos:
+- Recursos administrativos:
+  - Cadastro de jogadores através do perfil da Steam
+  - Cadastro de times
+  - Vinculo dos jogadores com os times
+  - Geração automática dos confrontos
+  - Cadastro dos resultados dos confrontos
+- Recursos públicos:
+  - Acompanhar a tabela geral de pontos
+  - Acompanhar o resultado dos confrontos
+  - Visualizar os times e jogadores participantes 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Telas da aplicação
+- Tela administrativa para gerenciar os jogadores presentes no torneio.<br/><br/>
+![Cadastro dos jogadores](https://torneiol4d2.blob.core.windows.net/imgs/cadastro-jogadores.png)<br/><br/>
 
-## Further help
+- Tela administrativa para gerenciar os times e seus jogadores.<br/><br/>
+![Cadastro dos times](https://torneiol4d2.blob.core.windows.net/imgs/cadastro-times.png)<br/><br/>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Tela administrativa para gerenciar os confrontos entre os times, pontuação e penalidades.<br/><br/>
+![Cadastro dos confrontos](https://torneiol4d2.blob.core.windows.net/imgs/cadastro-confrontos.png)<br/><br/>
+
+- Tela pública para acompanhar os confrontos.<br/><br/>
+![Visualização dos confrontos](https://torneiol4d2.blob.core.windows.net/imgs/visualizacao-confrontos.png)<br/><br/>
+
+- Tela pública para acompanhar os pontos gerais do torneio.<br/><br/>
+![Tabela de pontos gerais](https://torneiol4d2.blob.core.windows.net/imgs/tabela-pontos-gerais.png)<br/><br/>
