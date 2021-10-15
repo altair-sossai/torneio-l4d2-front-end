@@ -12,5 +12,7 @@ export class ConfrontoCommand {
     public pontosConquistadosTimeB!: number;
     public penalidadeTimeA!: number;
     public penalidadeTimeB!: number;
+    public penalidadePontosGeraisTimeA!: number;
+    public penalidadePontosGeraisTimeB!: number;
     public observacoes: string | undefined;
 }

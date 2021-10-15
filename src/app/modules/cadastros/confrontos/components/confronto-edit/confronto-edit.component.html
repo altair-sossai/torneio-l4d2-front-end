@@ -102,6 +102,28 @@
         </nz-form-control>
     </nz-form-item>
 
+    <nz-form-item *ngIf="command.status !== StatusConfronto.Aguardando">
+        <nz-form-label [nzSpan]="4" nzFor="penalidadePontosGeraisTimeA">
+            Penali. P.G Time A
+        </nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.penalidadePontosGeraisTimeA ? 'error' : ''"
+            [nzErrorTip]="errors?.penalidadePontosGeraisTimeA && errors?.penalidadePontosGeraisTimeA[0]">
+            <nz-input-number [(ngModel)]="command.penalidadePontosGeraisTimeA" name="penalidadePontosGeraisTimeA" [nzMin]="0" [nzMax]="10"
+                [nzStep]="1" placeholder="Penalidade P.G time A">
+            </nz-input-number>
+        </nz-form-control>
+
+        <nz-form-label [nzSpan]="3" nzFor="penalidadePontosGeraisTimeB">
+            Time B
+        </nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.penalidadePontosGeraisTimeB ? 'error' : ''"
+            [nzErrorTip]="errors?.penalidadePontosGeraisTimeB && errors?.penalidadePontosGeraisTimeB[0]">
+            <nz-input-number [(ngModel)]="command.penalidadePontosGeraisTimeB" name="penalidadePontosGeraisTimeB" [nzMin]="0" [nzMax]="10"
+                [nzStep]="1" placeholder="Penalidade P.G time B">
+            </nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+
     <nz-form-item>
         <nz-form-label [nzSpan]="4" nzFor="observacoes">
             Observações
