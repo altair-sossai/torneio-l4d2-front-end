@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { StatusConfronto } from '../../enums/status-confronto';
 import { Rodada } from '../../models/rodada';
 import { ConfrontoService } from '../../services/confronto.service';
 import { ConfrontoEditComponent } from '../confronto-edit/confronto-edit.component';
@@ -16,7 +17,7 @@ export class ConfrontosComponent implements OnInit {
 
   rodadas: Rodada[] = [];
   busy = false;
-  rodadaAtual = 0;
+  rodadaAtual = -1;
 
   constructor(
     private modalService: NzModalService,
@@ -35,19 +36,21 @@ export class ConfrontosComponent implements OnInit {
     this.confrontoService.rodadas().subscribe(rodadas => {
       this.busy = false;
       this.rodadas = rodadas;
-      this.atualizarRodadaAtual();
+      if (this.rodadaAtual === -1) {
+        this.atualizarRodadaAtual();
+      }
     });
   }
 
   atualizarRodadaAtual(): void {
-    let rodadaAtual = 1;
+    let rodadaAtual = Infinity;
 
     for (const rodada of this.rodadas || []) {
       for (const confronto of rodada.confrontos || []) {
-        if (!confronto.codigoCampanha)
+        if (confronto.status !== StatusConfronto.Aguardando)
           continue
 
-        rodadaAtual = Math.max(rodadaAtual, rodada.rodada || 0);
+        rodadaAtual = Math.min(rodadaAtual, rodada.rodada || 0);
       }
     }
 

@@ -37,14 +37,14 @@ export class HomeComponent implements OnInit {
   }
 
   atualizarRodadaAtual(): void {
-    let rodadaAtual = 1;
+    let rodadaAtual = Infinity;
 
     for (const rodada of this.rodadas || []) {
       for (const confronto of rodada.confrontos || []) {
-        if (!confronto.codigoCampanha)
+        if (confronto.status !== StatusConfronto.Aguardando)
           continue
 
-        rodadaAtual = Math.max(rodadaAtual, rodada.rodada || 0);
+        rodadaAtual = Math.min(rodadaAtual, rodada.rodada || 0);
       }
     }
 
