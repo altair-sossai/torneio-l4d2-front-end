@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Time } from '../../models/time';
 import { TimeService } from '../../services/time.service';
+import { SortearJogadorComponent } from '../sortear-jogador/sortear-jogador.component';
 import { TimeEditComponent } from '../time-edit/time-edit.component';
 
 @Component({
@@ -35,6 +36,14 @@ export class TimesComponent implements OnInit {
     this.modalService.create({
       nzTitle: 'Cadastrar um novo time',
       nzContent: TimeEditComponent,
+      nzOnOk: () => this.atualizar()
+    });
+  }
+
+  sortear(): void {
+    this.modalService.create({
+      nzTitle: 'Sortear jogador',
+      nzContent: SortearJogadorComponent,
       nzOnOk: () => this.atualizar()
     });
   }

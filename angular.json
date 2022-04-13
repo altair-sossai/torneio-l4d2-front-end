@@ -40,7 +40,9 @@
               "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/roulette.min.js"
+            ]
           },
           "configurations": {
             "production": {

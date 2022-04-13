@@ -26,6 +26,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { AdminComponent } from './layouts/admin/admin.component';
@@ -47,6 +48,7 @@ import { CorStatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/cor
 import { StatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/status-confronto.pipe';
 import { JogadorComponent } from './modules/cadastros/jogadores/components/jogador/jogador.component';
 import { JogadoresComponent } from './modules/cadastros/jogadores/components/jogadores/jogadores.component';
+import { SortearJogadorComponent } from './modules/cadastros/times/components/sortear-jogador/sortear-jogador.component';
 import { TimeEditComponent } from './modules/cadastros/times/components/time-edit/time-edit.component';
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
@@ -85,6 +87,7 @@ registerLocaleData(pt);
     LoginComponent,
     HomeComponent,
     TabelaResultadosComponent,
+    SortearJogadorComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,7 +116,8 @@ registerLocaleData(pt);
     NzDatePickerModule,
     NzSelectModule,
     NzSkeletonModule,
-    NzTableModule
+    NzTableModule,
+    NzTypographyModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR },

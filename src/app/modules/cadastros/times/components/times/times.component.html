@@ -1,8 +1,15 @@
 <div class="container">
-    <button nz-button nzType="primary" (click)="adicionar()" [nzLoading]="loading">
-        <i nz-icon nzType="user-add"></i>
-        Adicionar um novo time
-    </button>
+    <div class="buttons">
+        <button nz-button nzType="primary" nzSize="large" (click)="adicionar()" [nzLoading]="loading">
+            <i nz-icon nzType="user-add"></i>
+            Adicionar um novo time
+        </button>
+
+        <button nz-button nzType="default" nzSize="large" (click)="sortear()" [nzLoading]="loading">
+            <i nz-icon nzType="user-switch"></i>
+            Sortear jogador
+        </button>
+    </div>
 
     <p>Total de times: {{times.length}}</p>
 

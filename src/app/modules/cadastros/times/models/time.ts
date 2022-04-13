@@ -12,5 +12,6 @@ export class Time {
     public totalPontosSofridos!: number;
     public totalPenalidades!: number;
     public saldoTotalPontos!: number;
+    public capitao!: Jogador;
     public jogadores: Jogador[] = [];
 }

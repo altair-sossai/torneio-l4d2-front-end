@@ -1,0 +1,35 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 5px 1fr;
+    justify-items: center;
+    grid-gap: 10px;
+
+    nz-divider {
+        height: 100%;
+    }
+
+    nz-skeleton {
+        width: 185px;
+    }
+
+    .times,
+    .jogadores {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .roulette {
+            border: 1px solid #b3b3b3;
+            border-radius: 10px;
+        }
+
+        p {
+            margin: 1em;
+            font-weight: 500;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    }
+}
