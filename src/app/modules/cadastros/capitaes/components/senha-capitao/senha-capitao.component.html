@@ -1,0 +1,31 @@
+<div #texto>
+    <p>Olá {{capitao.nome}}, tudo bem?</p>
+    <p>
+        Seja muito bem-vindo ao 2º torneio de Left 4 Dead 2, é um prazer ter você como capitão de time.<br />
+        Nesta edição desenvolvemos uma ferramenta para auxiliar na gestão dos jogos, dessa maneira você pode escolher
+        juntamente com o capitão do time adversário quais datas e horários cada uma das partidas deve ocorrer, além
+        disso,
+        na segunda fase do torneio também será possível escolher as campanhas que seu time irá jogador.
+    </p>
+    <p>
+        Para acessar a ferramenta é bem simples, basta acessar o site abaixo com login e senha informados:<br />
+        Url: <i>https://torneio-l4d2.azurewebsites.net/proximo-confronto</i><br />
+        Login: <b>{{capitao.steamId}}</b><br />
+        Senha: <b>{{senha.senhaDescriptografada}}</b>
+    </p>
+    <p>
+        <b>⚠⚠⚠:&nbsp;</b>
+        <i>Se por algum motivo precisar gerar uma nova senha fale com um dos administradores do torneio.</i>
+    </p>
+    <p>
+        <b>❔❔❔:&nbsp;</b>
+        Caso tenha alguma dúvida em relação ao uso da ferramenta, por favor, acesse o vídeo abaixo onde demonstramos o
+        uso:
+        <i>https://www.youtube.com/watch?v=KQ6zr6kCPj8</i>
+    </p>
+</div>
+
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="close()">Fechar</button>
+    <button nz-button nzType="primary" (click)="copiarTexto()">Copiar texto</button>
+</div>

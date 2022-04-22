@@ -27,6 +27,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { ClipboardModule } from 'ngx-clipboard';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { AdminComponent } from './layouts/admin/admin.component';
@@ -35,6 +36,8 @@ import { EmptyComponent } from './layouts/empty/empty.component';
 import { PublicComponent } from './layouts/public/public.component';
 import { AuthGuard } from './modules/auth/guards/auth-guard';
 import { LoginComponent } from './modules/auth/login/components/login/login.component';
+import { CapitaesComponent } from './modules/cadastros/capitaes/components/capitaes/capitaes.component';
+import { SenhaCapitaoComponent } from './modules/cadastros/capitaes/components/senha-capitao/senha-capitao.component';
 import { ConfrontoCampanhaComponent } from './modules/cadastros/confrontos/components/confronto-campanha/confronto-campanha.component';
 import { ConfrontoCorpoComponent } from './modules/cadastros/confrontos/components/confronto-corpo/confronto-corpo.component';
 import { ConfrontoEditComponent } from './modules/cadastros/confrontos/components/confronto-edit/confronto-edit.component';
@@ -88,6 +91,8 @@ registerLocaleData(pt);
     HomeComponent,
     TabelaResultadosComponent,
     SortearJogadorComponent,
+    CapitaesComponent,
+    SenhaCapitaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +101,7 @@ registerLocaleData(pt);
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
+    ClipboardModule,
     NzLayoutModule,
     NzMenuModule,
     NzButtonModule,

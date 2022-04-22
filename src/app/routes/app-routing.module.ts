@@ -5,6 +5,7 @@ import { AuthComponent } from '../layouts/auth/auth.component';
 import { PublicComponent } from '../layouts/public/public.component';
 import { AuthGuard } from '../modules/auth/guards/auth-guard';
 import { LoginComponent } from '../modules/auth/login/components/login/login.component';
+import { CapitaesComponent } from '../modules/cadastros/capitaes/components/capitaes/capitaes.component';
 import { ConfrontosComponent } from '../modules/cadastros/confrontos/components/confrontos/confrontos.component';
 import { JogadoresComponent } from '../modules/cadastros/jogadores/components/jogadores/jogadores.component';
 import { TimesComponent } from '../modules/cadastros/times/components/times/times.component';
@@ -32,7 +33,8 @@ const routes: Routes = [
         children: [
             { path: 'jogadores', component: JogadoresComponent },
             { path: 'times', component: TimesComponent },
-            { path: 'confrontos', component: ConfrontosComponent, data: { podeEditar: true } }
+            { path: 'confrontos', component: ConfrontosComponent, data: { podeEditar: true } },
+            { path: 'capitaes', component: CapitaesComponent },
         ]
     }
 ];
