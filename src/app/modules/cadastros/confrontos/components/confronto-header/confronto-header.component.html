@@ -6,6 +6,11 @@
     <nz-tag nzColor="{{confronto.status|corStatusConfronto}}">
         {{confronto.status|statusConfronto}}
     </nz-tag>
+    <button nz-button nzType="default" nzSize="small" (click)="periodo()"
+        *ngIf="confronto?.status == StatusConfronto.Aguardando">
+        <i nz-icon nzType="calendar"></i>
+        Período
+    </button>
     <button nz-button nzType="default" nzSize="small" (click)="editar()" *ngIf="podeEditar">
         <i nz-icon nzType="edit"></i>
         Editar

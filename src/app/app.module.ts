@@ -50,6 +50,7 @@ import { ConfrontoComponent } from './modules/cadastros/confrontos/components/co
 import { ConfrontosComponent } from './modules/cadastros/confrontos/components/confrontos/confrontos.component';
 import { CorStatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/cor-status-confronto.pipe';
 import { StatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/status-confronto.pipe';
+import { PeriodoConfrontoEditComponent } from './modules/cadastros/data-confronto/components/periodo-confronto-edit/periodo-confronto-edit.component';
 import { JogadorComponent } from './modules/cadastros/jogadores/components/jogador/jogador.component';
 import { JogadoresComponent } from './modules/cadastros/jogadores/components/jogadores/jogadores.component';
 import { SortearJogadorComponent } from './modules/cadastros/times/components/sortear-jogador/sortear-jogador.component';
@@ -98,6 +99,7 @@ registerLocaleData(pt);
     SenhaCapitaoComponent,
     LoginCapitaoComponent,
     ProximoConfrontoComponent,
+    PeriodoConfrontoEditComponent,
   ],
   imports: [
     BrowserModule,
