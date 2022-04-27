@@ -56,6 +56,7 @@ import { TimeEditComponent } from './modules/cadastros/times/components/time-edi
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
 import { VincularJogadorComponent } from './modules/cadastros/times/components/vincular-jogador/vincular-jogador.component';
+import { LoginCapitaoComponent } from './modules/capitaes/components/login-capitao/login-capitao.component';
 import { HomeComponent } from './modules/institucional/components/home/home.component';
 import { TabelaResultadosComponent } from './modules/institucional/components/tabela-resultados/tabela-resultados.component';
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -93,6 +94,7 @@ registerLocaleData(pt);
     SortearJogadorComponent,
     CapitaesComponent,
     SenhaCapitaoComponent,
+    LoginCapitaoComponent,
   ],
   imports: [
     BrowserModule,

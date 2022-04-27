@@ -9,6 +9,7 @@ import { CapitaesComponent } from '../modules/cadastros/capitaes/components/capi
 import { ConfrontosComponent } from '../modules/cadastros/confrontos/components/confrontos/confrontos.component';
 import { JogadoresComponent } from '../modules/cadastros/jogadores/components/jogadores/jogadores.component';
 import { TimesComponent } from '../modules/cadastros/times/components/times/times.component';
+import { LoginCapitaoComponent } from '../modules/capitaes/components/login-capitao/login-capitao.component';
 import { HomeComponent } from '../modules/institucional/components/home/home.component';
 
 const routes: Routes = [
@@ -24,6 +25,13 @@ const routes: Routes = [
         component: AuthComponent,
         children: [
             { path: 'auth', component: LoginComponent }
+        ]
+    },
+    {
+        path: '',
+        component: AuthComponent,
+        children: [
+            { path: 'capitao/login', component: LoginCapitaoComponent }
         ]
     },
     {
