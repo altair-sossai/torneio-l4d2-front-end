@@ -35,6 +35,7 @@ import { AuthComponent } from './layouts/auth/auth.component';
 import { EmptyComponent } from './layouts/empty/empty.component';
 import { PublicComponent } from './layouts/public/public.component';
 import { AuthGuard } from './modules/auth/guards/auth-guard';
+import { CapitaoGuard } from './modules/auth/guards/capitao-guard';
 import { LoginComponent } from './modules/auth/login/components/login/login.component';
 import { CapitaesComponent } from './modules/cadastros/capitaes/components/capitaes/capitaes.component';
 import { SenhaCapitaoComponent } from './modules/cadastros/capitaes/components/senha-capitao/senha-capitao.component';
@@ -57,6 +58,7 @@ import { TimeComponent } from './modules/cadastros/times/components/time/time.co
 import { TimesComponent } from './modules/cadastros/times/components/times/times.component';
 import { VincularJogadorComponent } from './modules/cadastros/times/components/vincular-jogador/vincular-jogador.component';
 import { LoginCapitaoComponent } from './modules/capitaes/components/login-capitao/login-capitao.component';
+import { ProximoConfrontoComponent } from './modules/capitaes/components/proximo-confronto/proximo-confronto.component';
 import { HomeComponent } from './modules/institucional/components/home/home.component';
 import { TabelaResultadosComponent } from './modules/institucional/components/tabela-resultados/tabela-resultados.component';
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -95,6 +97,7 @@ registerLocaleData(pt);
     CapitaesComponent,
     SenhaCapitaoComponent,
     LoginCapitaoComponent,
+    ProximoConfrontoComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +133,8 @@ registerLocaleData(pt);
   providers: [
     { provide: NZ_I18N, useValue: pt_BR },
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true, },
-    AuthGuard
+    AuthGuard,
+    CapitaoGuard
   ],
   bootstrap: [AppComponent]
 })

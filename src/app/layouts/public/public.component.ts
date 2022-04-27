@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AutenticarJogadorCommand } from 'src/app/modules/cadastros/jogadores/commands/autenticar-jogador.command';
 
 @Component({
   selector: 'app-public-root',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./public.component.scss']
 })
 export class PublicComponent {
+  capitao = AutenticarJogadorCommand.autenticado();
 }
