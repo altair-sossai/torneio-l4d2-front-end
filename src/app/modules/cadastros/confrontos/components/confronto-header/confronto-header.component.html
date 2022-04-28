@@ -7,7 +7,7 @@
         {{confronto.status|statusConfronto}}
     </nz-tag>
     <button nz-button nzType="default" nzSize="small" (click)="periodo()"
-        *ngIf="confronto?.status === StatusConfronto.Aguardando">
+        *ngIf="podeEditar && confronto?.status === StatusConfronto.Aguardando">
         <i nz-icon nzType="calendar"></i>
         Período
     </button>
