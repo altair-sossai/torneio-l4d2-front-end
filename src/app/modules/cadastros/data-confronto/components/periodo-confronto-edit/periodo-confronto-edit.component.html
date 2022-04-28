@@ -1,1 +1,69 @@
-<p>periodo-confronto-edit works!</p>
+<form nz-form (ngSubmit)="salvar()" *ngIf="command">
+
+    <nz-form-label nzFor="inicio">Deve ocorrer entre</nz-form-label>
+    <div class="periodo">
+        <nz-date-picker [(ngModel)]="command.inicio" [nzShowTime]="{ nzFormat: 'HH:mm:ss' }"
+            nzFormat="dd/MM/yyyy HH:mm:ss" name="inicio" [nzInputReadOnly]="true"></nz-date-picker>
+        <nz-form-label nzFor="fim">Até</nz-form-label>
+        <nz-date-picker [(ngModel)]="command.fim" [nzShowTime]="{ nzFormat: 'HH:mm:ss' }" nzFormat="dd/MM/yyyy HH:mm:ss"
+            name="fim" [nzInputReadOnly]="true"></nz-date-picker>
+    </div>
+
+    <nz-form-label>Sugestões de datas</nz-form-label>
+    <div class="sugestoes">
+        <div class="sugestao" *ngFor="let sugestao of command.sugestoes; index as i; first as isFirst">
+            <nz-form-item>
+                <label *ngIf="isFirst">Data</label>
+                <nz-date-picker [(ngModel)]="sugestao.data" [nzShowTime]="{ nzFormat: 'HH:mm:ss' }"
+                    nzFormat="dd/MM/yyyy HH:mm:ss" name="data_{{i}}" [nzInputReadOnly]="true">
+                </nz-date-picker>
+            </nz-form-item>
+
+            <nz-form-item>
+                <label *ngIf="isFirst">Cadastrado por</label>
+                <nz-select [(ngModel)]="sugestao.cadastradoPor" name="cadastradoPor_{{i}}" placeholder="Cadastrado por">
+                    <nz-option *ngFor="let cadastradoPor of cadastradosPor" [nzValue]="cadastradoPor"
+                        [nzLabel]="cadastradoPor|cadastradoPor">
+                    </nz-option>
+                </nz-select>
+            </nz-form-item>
+
+            <nz-form-item>
+                <label *ngIf="isFirst">Resposta time A</label>
+                <nz-select [(ngModel)]="sugestao.respostaTimeA" name="respostaTimeA_{{i}}"
+                    placeholder="Resposta time A">
+                    <nz-option *ngFor="let respostaTime of respostasTimes" [nzValue]="respostaTime"
+                        [nzLabel]="respostaTime|respostaTime">
+                    </nz-option>
+                </nz-select>
+            </nz-form-item>
+
+            <nz-form-item>
+                <label *ngIf="isFirst">Resposta time B</label>
+                <nz-select [(ngModel)]="sugestao.respostaTimeB" name="respostaTimeB_{{i}}"
+                    placeholder="Resposta time B">
+                    <nz-option *ngFor="let respostaTime of respostasTimes" [nzValue]="respostaTime"
+                        [nzLabel]="respostaTime|respostaTime">
+                    </nz-option>
+                </nz-select>
+            </nz-form-item>
+
+            <i nz-icon nzType="delete" nzShape="circle" nz-tooltip nzTooltipTitle="Excluir sugestão"
+                (click)="excluirSugestao(sugestao)"></i>
+        </div>
+
+        <button nz-button nzType="primary" (click)="novaSugestao()" [disabled]="busy" [nzLoading]="busy" type="button">
+            <i nz-icon nzType="plus"></i>
+            Adicionar nova sugestão
+        </button>
+    </div>
+</form>
+
+<div *ngIf="!command" style="text-align: center;">
+    <nz-spin nzSimple nzTip="Carregando..."></nz-spin>
+</div>
+
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="close()">Cancelar</button>
+    <button nz-button nzType="primary" (click)="salvar()" [disabled]="!command" [nzLoading]="busy">Salvar</button>
+</div>
