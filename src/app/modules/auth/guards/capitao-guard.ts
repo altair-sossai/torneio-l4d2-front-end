@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AutenticarJogadorCommand } from '../../cadastros/jogadores/commands/autenticar-jogador.command';
+import { CapitaoService } from '../../cadastros/jogadores/services/capitao.service';
 
 @Injectable()
 export class CapitaoGuard implements CanActivate {
 
-    constructor(private router: Router) { }
+    constructor(
+        private capitaoService: CapitaoService,
+        private router: Router) { }
 
     canActivate() {
-        if (!AutenticarJogadorCommand.autenticado()) {
+        if (!this.capitaoService.autenticado()) {
             this.router.navigate(['/capitao/login']);
             return false;
         }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AutenticarJogadorCommand } from 'src/app/modules/cadastros/jogadores/commands/autenticar-jogador.command';
+import { Capitao } from 'src/app/modules/cadastros/jogadores/models/capitao';
 import { JogadorService } from 'src/app/modules/cadastros/jogadores/services/jogador.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { JogadorService } from 'src/app/modules/cadastros/jogadores/services/jog
   templateUrl: './login-capitao.component.html',
   styleUrls: ['./login-capitao.component.scss']
 })
-export class LoginCapitaoComponent implements OnInit {
+export class LoginCapitaoComponent {
 
   command = new AutenticarJogadorCommand();
   errors: any;
@@ -19,10 +20,6 @@ export class LoginCapitaoComponent implements OnInit {
     private messageService: NzMessageService,
     private jogadorService: JogadorService,
     private router: Router) { }
-
-  ngOnInit(): void {
-    this.command.logOff();
-  }
 
   login(): void {
     this.busy = true;
@@ -35,7 +32,11 @@ export class LoginCapitaoComponent implements OnInit {
         return;
       }
 
-      this.command.logIn();
+      const capitao = new Capitao();
+      capitao.steamId = this.command.steamId;
+      capitao.senha = this.command.senha;
+      capitao.logIn();
+
       this.router.navigate(['/proximo-confronto']);
     }, result => {
       this.errors = result.error.errors;

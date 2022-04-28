@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CapitaoService } from '../../jogadores/services/capitao.service';
 import { NovaSugestaoDataCommand } from '../commands/nova-sugestao-data.command';
 import { ResponderSugestaoDataCommand } from '../commands/responder-sugestao-data.command';
 
@@ -10,7 +11,10 @@ import { ResponderSugestaoDataCommand } from '../commands/responder-sugestao-dat
 })
 export class PeriodoConfrontoService {
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private http: HttpClient,
+        private capitaoService: CapitaoService
+    ) {
     }
 
     sugerirNovaData(confrontoId: string, command: NovaSugestaoDataCommand): Observable<any> {
@@ -26,9 +30,10 @@ export class PeriodoConfrontoService {
     }
 
     private get headers(): HttpHeaders {
+        const capitao = this.capitaoService.current();
         const headers = new HttpHeaders()
 
-        headers.set('Authorization', localStorage.getItem('capitao-info')!);
+        headers.set('Authorization', capitao?.token!);
 
         return headers;
     }

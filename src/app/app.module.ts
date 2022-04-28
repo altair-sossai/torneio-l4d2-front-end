@@ -9,6 +9,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NZ_I18N, pt_BR } from 'ng-zorro-antd/i18n';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -134,7 +135,8 @@ registerLocaleData(pt);
     NzSelectModule,
     NzSkeletonModule,
     NzTableModule,
-    NzTypographyModule
+    NzTypographyModule,
+    NzEmptyModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR },

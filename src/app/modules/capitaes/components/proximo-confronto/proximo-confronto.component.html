@@ -1,1 +1,29 @@
-<p>proximo-confronto works!</p>
+<div *ngIf="!busy && confronto" class="proximo-confronto">
+    <h2>Próximo confronto</h2>
+    <p style="text-align: center;">
+        Seu próximo confronto será contra a equipe <b>{{adversario!.nome}}</b>,
+        <span *ngIf="confronto!.campanha"> na campanha <b>{{confronto!.campanha!.nome}}</b>, </span>
+        por favor, selecione a melhor data ou sugira uma nova.
+    </p>
+    <div class="main">
+        <div class="left">
+            <app-confronto-campanha [campanha]="confronto.campanha"></app-confronto-campanha>
+            <app-confronto-time [confronto]="confronto" [time]="adversario!"></app-confronto-time>
+        </div>
+        <nz-divider nzType="vertical"></nz-divider>
+        <div class="right"></div>
+    </div>
+</div>
+
+<nz-skeleton [nzActive]="true" *ngIf="busy"></nz-skeleton>
+
+<nz-empty *ngIf="!busy && !confronto"></nz-empty>
+
+<nz-divider></nz-divider>
+
+<div class="atualizar">
+    <button nz-button nzSize="large" nzType="primary" [disabled]="busy" [nzLoading]="busy" type="button"
+        (click)="atualizar()">
+        <i nz-icon nzType="reload" nzTheme="outline"></i> Verificar se há atualizações
+    </button>
+</div>
