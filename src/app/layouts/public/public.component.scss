@@ -28,6 +28,10 @@ nz-header {
         color: white;
         font-size: 20px;
 
+        @media (max-width: 600px) {
+            font-size: 14px;
+        }
+
         i {
             margin-left: 10px;
             font-size: 28px;

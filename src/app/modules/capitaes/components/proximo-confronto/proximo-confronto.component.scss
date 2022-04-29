@@ -26,6 +26,15 @@ nz-alert {
         display: grid;
         grid-template-columns: 1fr auto 1.25fr;
 
+        p {
+            text-align: justify;
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
         nz-divider {
             height: 100%;
         }

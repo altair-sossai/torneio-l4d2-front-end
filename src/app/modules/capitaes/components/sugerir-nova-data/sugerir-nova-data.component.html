@@ -6,7 +6,7 @@
     </p>
 
     <nz-date-picker [(ngModel)]="command.data" [nzShowTime]="{ nzFormat: 'HH:mm:ss' }" nzFormat="dd/MM/yyyy HH:mm:ss"
-        name="data"></nz-date-picker>
+        name="data" [nzInputReadOnly]="true"></nz-date-picker>
 </div>
 
 <div *nzModalFooter>
