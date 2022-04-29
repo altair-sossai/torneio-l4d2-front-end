@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        text-align: center;
+    }
+}
+
+nz-radio-group {
+    display: flex;
+    flex-direction: column;
+    label {
+        margin-bottom: 10px;
+    }
+}

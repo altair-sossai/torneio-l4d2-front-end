@@ -1,1 +1,25 @@
-<p>responder-sugestao-data works!</p>
+<div class="container">
+    <p>
+        Por favor, escolha uma das opções abaixo para a sugestão de data do dia
+        <i>{{ sugestao!.data | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</i>
+    </p>
+    <nz-radio-group [(ngModel)]="command.resposta">
+        <label nz-radio [nzValue]="RespostaTime.Aceitou">
+            Aceito a data de <b>{{ sugestao!.data | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
+        </label>
+        <label nz-radio [nzValue]="RespostaTime.Recusou">
+            Não aceito a data de <b>{{ sugestao!.data | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
+        </label>
+        <label nz-radio [nzValue]="RespostaTime.SemResposta">
+            Não responder
+        </label>
+    </nz-radio-group>
+</div>
+
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="close()">Cancelar</button>
+    <button nz-button nzType="primary" (click)="salvar()" [disabled]="busy || command.resposta === undefined"
+        [nzLoading]="busy">
+        Responder
+    </button>
+</div>

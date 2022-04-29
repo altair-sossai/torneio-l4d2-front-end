@@ -76,6 +76,9 @@ export class ProximoConfrontoComponent implements OnInit {
 
     this.periodoConfrontoService.get(confrontoId).subscribe({
       next: periodo => {
+        periodo.inicio = new Date(periodo.inicio!);
+        periodo.fim = new Date(periodo.fim!);
+
         this.busy = false;
         this.periodo = periodo;
       }, error: () => this.busy = false
@@ -138,7 +141,10 @@ export class ProximoConfrontoComponent implements OnInit {
     this.modalService.create({
       nzTitle: 'Responder sugestão de data',
       nzContent: ResponderSugestaoDataComponent,
-      nzComponentParams: { confronto: this.confronto!, sugestao },
+      nzComponentParams: {
+        confronto: this.confronto!,
+        sugestao
+      },
       nzOnOk: () => this.atualizar()
     });
   }
@@ -162,7 +168,10 @@ export class ProximoConfrontoComponent implements OnInit {
     this.modalService.create({
       nzTitle: 'Sugerir uma nova data',
       nzContent: SugerirNovaDataComponent,
-      nzComponentParams: { confronto: this.confronto! },
+      nzComponentParams: {
+        confronto: this.confronto!,
+        periodo: this.periodo!
+      },
       nzOnOk: () => this.atualizar()
     });
   }

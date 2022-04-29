@@ -1,8 +1,8 @@
-<div *ngIf="!busy && confronto" class="proximo-confronto">
+<div *ngIf="!busy && confronto && periodo!.sugestoes!.length" class="proximo-confronto">
     <h2>Próximo confronto</h2>
 
     <nz-alert nzType="info" nzMessage="Confronto agendado!"
-        nzDescription="Seu próximo confronto foi agendado para a data {{confronto.data | date : 'dd/MM/yyyy HH:mm (EEEE)'}}"
+        nzDescription="Seu próximo confronto foi agendado para a data {{confronto.data | date : 'dd/MM/yyyy HH:mm (EEEE)'}}, você pode alterar a qualquer momento sugerindo ou alterando as datas abaixo"
         nzShowIcon *ngIf="confronto.data">
     </nz-alert>
 
@@ -66,8 +66,8 @@
                         <td class="text-center">{{respostaMeuAdversario(sugestao)|respostaTime}}</td>
                         <td class="acoes">
                             <button nz-button nzType="primary" nzSize="small" nz-tooltip nzTooltipTitle="Responder"
-                                (click)="responder(sugestao)">
-                                <i nz-icon nzType="edit" nzTheme="outline"></i>
+                                (click)="responder(sugestao)" *ngIf="!sugeridoPorMim(sugestao)">
+                                <i nz-icon nzType="check-square" nzTheme="outline"></i>
                             </button>
                             <button nz-button nzType="primary" nzDanger nzSize="small" nz-tooltip
                                 nzTooltipTitle="Excluir sugestão" *ngIf="sugeridoPorMim(sugestao)"
@@ -89,7 +89,7 @@
 
 <nz-skeleton [nzActive]="true" *ngIf="busy"></nz-skeleton>
 
-<nz-empty *ngIf="!busy && !confronto"></nz-empty>
+<nz-empty *ngIf="!busy && (!confronto || !periodo!.sugestoes!.length)"></nz-empty>
 
 <nz-divider></nz-divider>
 

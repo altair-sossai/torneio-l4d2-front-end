@@ -20,6 +20,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
@@ -140,7 +141,8 @@ registerLocaleData(pt);
     NzSkeletonModule,
     NzTableModule,
     NzTypographyModule,
-    NzEmptyModule
+    NzEmptyModule,
+    NzRadioModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR },

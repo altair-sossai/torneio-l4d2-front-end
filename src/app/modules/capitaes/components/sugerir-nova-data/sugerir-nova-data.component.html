@@ -1,1 +1,16 @@
-<p>sugerir-nova-data works!</p>
+<div class="container">
+    <p>
+        Escolha no campo abaixo uma data entre
+        <b> {{ periodo!.inicio | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
+        até <b>{{ periodo!.fim | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>.
+    </p>
+
+    <nz-date-picker [(ngModel)]="command.data" [nzShowTime]="{ nzFormat: 'HH:mm:ss' }" nzFormat="dd/MM/yyyy HH:mm:ss"
+        name="data"></nz-date-picker>
+</div>
+
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="close()">Cancelar</button>
+    <button nz-button nzType="primary" (click)="salvar()" [disabled]="busy || !command.data"
+        [nzLoading]="busy">Salvar</button>
+</div>
