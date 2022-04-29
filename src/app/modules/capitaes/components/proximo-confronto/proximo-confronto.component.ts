@@ -172,12 +172,17 @@ export class ProximoConfrontoComponent implements OnInit {
         confronto: this.confronto!,
         periodo: this.periodo!
       },
-      nzOnOk: () => this.atualizar()
+      nzOnOk: () => this.atualizar(),
+      nzStyle: this.mobile() ? { top: '10px' } : undefined
     });
   }
 
   sair(): void {
     this.capitao?.logOff();
     this.router.navigate(['/']);
+  }
+
+  mobile(): boolean {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 }
