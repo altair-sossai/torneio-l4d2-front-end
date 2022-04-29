@@ -1,4 +1,4 @@
-import { RespostaTime } from "../../data-confronto/enums/resposta-time.enum";
+import { RespostaTime } from "../enums/resposta-time.enum";
 
 export class ResponderSugestaoDataCommand {
     public resposta: RespostaTime | undefined;

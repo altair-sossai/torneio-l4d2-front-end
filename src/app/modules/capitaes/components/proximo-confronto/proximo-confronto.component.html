@@ -1,5 +1,11 @@
 <div *ngIf="!busy && confronto" class="proximo-confronto">
     <h2>Próximo confronto</h2>
+
+    <nz-alert nzType="info" nzMessage="Confronto agendado!"
+        nzDescription="Seu próximo confronto foi agendado para a data {{confronto.data | date : 'dd/MM/yyyy HH:mm (EEEE)'}}"
+        nzShowIcon *ngIf="confronto.data">
+    </nz-alert>
+
     <p style="text-align: center;">
         Seu próximo confronto será contra a equipe <b>{{adversario!.nome}}</b>,
         <span *ngIf="confronto!.campanha"> na campanha <b>{{confronto!.campanha!.nome}}</b>, </span>
@@ -11,7 +17,73 @@
             <app-confronto-time [confronto]="confronto" [time]="adversario!"></app-confronto-time>
         </div>
         <nz-divider nzType="vertical"></nz-divider>
-        <div class="right"></div>
+        <div class="right">
+            <p>
+                O confronto deve ocorrer de
+                <b>{{ periodo!.inicio | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
+                até <b>{{ periodo!.fim | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>.
+            </p>
+            <p>
+                Abaixo algumas sugestões de datas que você pode aceitar ou recursar, caso queira sugerir uma nova data,
+                por favor, clique em <i>'Sugerir uma nova data'</i>.
+            </p>
+            <p>
+                No momento em que ambos os times aceitarem uma data em comum o jogo será automaticamente agendado, é
+                possível alterar as datas a qualquer momento.
+            </p>
+            <p>
+                Caso tenha alguma duvida entre em contato com os administradores.
+            </p>
+
+            <nz-table #sugestoesTable [nzData]="periodo!.sugestoes" [nzFrontPagination]="false" nzSize="small">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="text-center">Data</th>
+                        <th class="text-center">Sua resposta</th>
+                        <th class="text-center">Seu adversário</th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sugestao of sugestoesTable.data;">
+                        <td>
+                            <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
+                                *ngIf="sugestao?.cadastradoPor === CadastradoPor.Administrador"
+                                nzTooltipTitle="Data sugerida pelos administradores"></i>
+
+                            <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
+                                *ngIf="sugeridoPorMim(sugestao)" nzTooltipTitle="Data sugerida por você"></i>
+
+                            <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
+                                *ngIf="sugeridoPeloAdversario(sugestao)"
+                                nzTooltipTitle="Data sugerida pelo seu adversário"></i>
+                        </td>
+                        <td class="text-center">
+                            {{ sugestao!.data | date : 'dd/MM/yyyy HH:mm (EEEE)' }}
+                        </td>
+                        <td class="text-center">{{respostaMeuTime(sugestao)|respostaTime}}</td>
+                        <td class="text-center">{{respostaMeuAdversario(sugestao)|respostaTime}}</td>
+                        <td class="acoes">
+                            <button nz-button nzType="primary" nzSize="small" nz-tooltip nzTooltipTitle="Responder"
+                                (click)="responder(sugestao)">
+                                <i nz-icon nzType="edit" nzTheme="outline"></i>
+                            </button>
+                            <button nz-button nzType="primary" nzDanger nzSize="small" nz-tooltip
+                                nzTooltipTitle="Excluir sugestão" *ngIf="sugeridoPorMim(sugestao)"
+                                (click)="excluirSugestao(sugestao)">
+                                <i nz-icon nzType="delete" nzTheme="outline"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+
+            <button nz-button nzType="primary" [disabled]="busy" [nzLoading]="busy" type="button"
+                (click)="sugerirNovaData()">
+                <i nz-icon nzType="plus" nzTheme="outline"></i> Sugerir uma nova data
+            </button>
+        </div>
     </div>
 </div>
 
@@ -26,4 +98,9 @@
         (click)="atualizar()">
         <i nz-icon nzType="reload" nzTheme="outline"></i> Verificar se há atualizações
     </button>
+    <a target="_blank"
+        href="https://wa.me/5519996988174?text=Altair%2C%20encontrei%20um%20problema%20no%20site%20do%20torneio">
+        Encontrou um problema?
+    </a>
+    <a (click)="sair()">Sair</a>
 </div>
