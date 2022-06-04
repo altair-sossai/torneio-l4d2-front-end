@@ -1,7 +1,7 @@
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import pt from '@angular/common/locales/pt';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -146,6 +146,7 @@ registerLocaleData(pt);
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR },
+    { provide: LOCALE_ID, useValue: 'pt-br' },
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true, },
     AuthGuard,
     CapitaoGuard
