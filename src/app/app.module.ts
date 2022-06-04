@@ -53,6 +53,7 @@ import { ConfrontosComponent } from './modules/cadastros/confrontos/components/c
 import { CorStatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/cor-status-confronto.pipe';
 import { StatusConfrontoPipe } from './modules/cadastros/confrontos/pipes/status-confronto.pipe';
 import { PeriodoConfrontoEditComponent } from './modules/cadastros/data-confronto/components/periodo-confronto-edit/periodo-confronto-edit.component';
+import { RespostaTimeIconComponent } from './modules/cadastros/data-confronto/components/resposta-time-icon/resposta-time-icon.component';
 import { CadastradoPorPipe } from './modules/cadastros/data-confronto/pipes/cadastrado-por.pipe';
 import { RespostaTimePipe } from './modules/cadastros/data-confronto/pipes/resposta-time.pipe';
 import { JogadorComponent } from './modules/cadastros/jogadores/components/jogador/jogador.component';
@@ -108,6 +109,7 @@ registerLocaleData(pt);
     PeriodoConfrontoEditComponent,
     CadastradoPorPipe,
     RespostaTimePipe,
+    RespostaTimeIconComponent,
     ResponderSugestaoDataComponent,
     SugerirNovaDataComponent,
   ],
