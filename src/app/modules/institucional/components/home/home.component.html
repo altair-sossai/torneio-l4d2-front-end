@@ -42,8 +42,20 @@
     <nz-skeleton [nzActive]="true" *ngIf="!classificacao"></nz-skeleton>
 </section>
 
+<section *ngIf="confrontosAgendados && confrontosAgendados.length">
+    <h3>Próximos jogos agendados</h3>
+    <p>
+        Abaixo é possível conferir os próximos jogos do torneio.
+    </p>
+    <hr />
+    <div class="confrontos">
+        <app-confronto *ngFor="let confronto of confrontosAgendados" [confronto]="confronto" [podeEditar]="false">
+        </app-confronto>
+    </div>
+</section>
+
 <section>
-    <h3>Fase 1 - Confrontos</h3>
+    <h3>Fase 1 - Todos os confrontos</h3>
     <p>
         Abaixo é possível acompanhar o resultado de todos os confrontos.
     </p>

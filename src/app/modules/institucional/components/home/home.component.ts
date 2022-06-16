@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatusConfronto } from 'src/app/modules/cadastros/confrontos/enums/status-confronto';
+import { Confronto } from 'src/app/modules/cadastros/confrontos/models/confronto';
 import { Rodada } from 'src/app/modules/cadastros/confrontos/models/rodada';
 import { ConfrontoService } from 'src/app/modules/cadastros/confrontos/services/confronto.service';
 import { Jogador } from 'src/app/modules/cadastros/jogadores/models/jogador';
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   classificacao: Time[] | undefined;
   rodadaAtual: number = 0;
   rodadas: Rodada[] | undefined;
+  confrontosAgendados: Confronto[] | undefined;
 
   constructor(
     private jogadorService: JogadorService,
@@ -32,7 +34,8 @@ export class HomeComponent implements OnInit {
     this.timeService.classificacao().subscribe(classificacao => this.classificacao = classificacao);
     this.confrontoService.rodadas().subscribe(rodadas => {
       this.rodadas = rodadas;
-      this.atualizarRodadaAtual()
+      this.atualizarRodadaAtual();
+      this.atualizarConfrontosAgendados();
     });
   }
 
@@ -49,6 +52,13 @@ export class HomeComponent implements OnInit {
     }
 
     this.rodadaAtual = rodadaAtual - 1;
+  }
+
+  atualizarConfrontosAgendados(): void {
+    this.confrontosAgendados = this.rodadas
+      ?.reduce((confrontos, rodada) => confrontos.concat(rodada?.confrontos!), [] as Confronto[])
+      .filter(confronto => confronto.status === StatusConfronto.Aguardando && confronto.data)
+      .sort((a, b) => (a.data! > b.data!) ? 1 : -1);
   }
 
   tituloRodada(rodada: Rodada): string {
