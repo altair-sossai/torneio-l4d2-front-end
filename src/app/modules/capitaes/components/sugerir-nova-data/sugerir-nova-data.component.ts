@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Confronto } from 'src/app/modules/cadastros/confrontos/models/confronto';
@@ -11,18 +11,22 @@ import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confront
   templateUrl: './sugerir-nova-data.component.html',
   styleUrls: ['./sugerir-nova-data.component.scss']
 })
-export class SugerirNovaDataComponent {
+export class SugerirNovaDataComponent implements OnInit {
 
   @Input() confronto!: Confronto;
   @Input() periodo!: PeriodoConfrontoModel | null;
 
   busy = false;
-  command = new NovaSugestaoDataCommand();
+  command?: NovaSugestaoDataCommand | null;
 
   constructor(
     private modal: NzModalRef,
     private messageService: NzMessageService,
     private periodoConfrontoService: PeriodoConfrontoService) {
+  }
+
+  ngOnInit(): void {
+    this.command = new NovaSugestaoDataCommand(this.periodo!);
   }
 
   salvar(): void {

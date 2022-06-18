@@ -1,16 +1,41 @@
-<div class="container">
-    <p>
-        Escolha no campo abaixo uma data entre
-        <b> {{ periodo!.inicio | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
-        até <b>{{ periodo!.fim | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>.
-    </p>
+<ng-container *ngIf="command">
+    <div class="container">
+        <p>
+            Escolha no campo abaixo uma data entre
+            <b> {{ periodo!.inicio | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
+            até <b>{{ periodo!.fim | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>.
+        </p>
 
-    <nz-date-picker [(ngModel)]="command.data" [nzShowTime]="{ nzFormat: 'HH:mm:ss' }" nzFormat="dd/MM/yyyy HH:mm:ss"
-        name="data" [nzInputReadOnly]="true"></nz-date-picker>
-</div>
+        <ng-container *ngIf="command.avancado">
+            <nz-date-picker [(ngModel)]="command.data" [nzShowTime]="{ nzFormat: 'HH:mm:ss' }"
+                nzFormat="dd/MM/yyyy HH:mm:ss" name="data" [nzInputReadOnly]="true"></nz-date-picker>
 
-<div *nzModalFooter>
-    <button nz-button nzType="default" (click)="close()">Cancelar</button>
-    <button nz-button nzType="primary" (click)="salvar()" [disabled]="busy || !command.data"
-        [nzLoading]="busy">Salvar</button>
-</div>
+            <a nz-button nzType="link" (click)="command.avancado = false">Ver modo simplificado</a>
+        </ng-container>
+
+        <ng-container *ngIf="!command.avancado">
+
+            <div class="datas">
+                <nz-select [(ngModel)]="command.dia" name="dia" nzPlaceHolder="Selecione o dia">
+                    <nz-option *ngFor="let dia of command.dias" [nzValue]="dia"
+                        [nzLabel]="dia | date : 'dd/MM/yyyy (EEEE)'">
+                    </nz-option>
+                </nz-select>
+
+                <nz-select [(ngModel)]="command.horario" name="horario" nzPlaceHolder="horário">
+                    <nz-option *ngFor="let horario of command.horarios" [nzValue]="horario"
+                        [nzLabel]="horario | horario">
+                    </nz-option>
+                </nz-select>
+            </div>
+
+            <a nz-button nzType="link" (click)="command.avancado = true">Ver calendário</a>
+        </ng-container>
+    </div>
+
+    <div *nzModalFooter>
+        <button nz-button nzType="default" (click)="close()">Cancelar</button>
+        <button nz-button nzType="primary" (click)="salvar()" [disabled]="busy || !command.data"
+            [nzLoading]="busy">Salvar</button>
+    </div>
+</ng-container>

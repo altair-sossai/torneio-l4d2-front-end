@@ -3,7 +3,19 @@
     flex-direction: column;
     align-items: center;
 
+    .datas {
+        width: 350px;
+        display: grid;
+        grid-template-columns: 2fr 110px;
+        gap: 5px;
+    }
+
     p {
         text-align: center;
+    }
+
+    a {
+        margin-top: 10px;
+        font-size: 12px;
     }
 }
