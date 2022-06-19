@@ -1,102 +1,118 @@
-<div *ngIf="!busy && confronto && periodo!.sugestoes!.length" class="proximo-confronto">
-    <h2>Próximo confronto</h2>
+<div *ngIf="!busy && confronto && confrontos" class="proximo-confronto">
+    <h2>Próximos confrontos</h2>
 
-    <nz-alert nzType="info" nzMessage="Confronto agendado!"
-        nzDescription="Seu próximo confronto foi agendado para a data {{confronto.data | date : 'dd/MM/yyyy HH:mm (EEEE)'}}, você pode alterar a qualquer momento sugerindo ou alterando as datas abaixo"
-        nzShowIcon *ngIf="confronto.data">
-    </nz-alert>
+    <nz-select [(ngModel)]="confronto" (ngModelChange)="atualizar()" name="confronto">
+        <nz-option *ngFor="let confronto of confrontos" [nzValue]="confronto" nzLabel="Rodada n. {{confronto.rodada}}">
+        </nz-option>
+    </nz-select>
 
-    <p style="text-align: center;">
-        Seu próximo confronto será contra a equipe <b>{{adversario!.nome}}</b>,
-        <span *ngIf="confronto!.campanha"> na campanha <b>{{confronto!.campanha!.nome}}</b>, </span>
-        por favor, selecione a melhor data ou sugira uma nova.
-    </p>
-    <div class="main">
-        <div class="left">
-            <app-confronto-campanha [campanha]="confronto.campanha"></app-confronto-campanha>
-            <app-confronto-time [confronto]="confronto" [time]="adversario!"></app-confronto-time>
+    <ng-container>
+        <nz-alert nzType="info" nzMessage="Confronto agendado!"
+            nzDescription="Seu próximo confronto foi agendado para a data {{confronto.data | date : 'dd/MM/yyyy HH:mm (EEEE)'}}, você pode alterar a qualquer momento sugerindo ou alterando as datas abaixo"
+            nzShowIcon *ngIf="confronto.data">
+        </nz-alert>
+
+        <p style="text-align: center;" *ngIf="periodo?.sugestoes?.length">
+            Seu confronto será contra a equipe <b>{{adversario!.nome}}</b>,
+            <span *ngIf="confronto!.campanha"> na campanha <b>{{confronto!.campanha!.nome}}</b>, </span>
+            por favor, selecione a melhor data ou sugira uma nova.
+        </p>
+        <div class="main">
+            <div class="left">
+                <app-confronto-campanha [campanha]="confronto.campanha"></app-confronto-campanha>
+                <app-confronto-time [confronto]="confronto" [time]="adversario!"></app-confronto-time>
+            </div>
+            <nz-divider nzType="vertical"></nz-divider>
+            <div class="right">
+
+                <nz-empty *ngIf="!periodo?.sugestoes?.length"
+                    nzNotFoundContent="O jogo ainda não possui um período definido para ocorrer, por favor, aguarde as orientações dos administradores.">
+                </nz-empty>
+
+                <ng-container *ngIf="periodo?.sugestoes?.length">
+                    <p>
+                        O confronto deve ocorrer de
+                        <b>{{ periodo!.inicio | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
+                        até <b>{{ periodo!.fim | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>.
+                    </p>
+                    <p>
+                        Abaixo algumas sugestões de datas que você pode aceitar ou recursar, caso queira sugerir uma
+                        nova
+                        data,
+                        por favor, clique em <i>'Sugerir uma nova data'</i>.
+                    </p>
+                    <p>
+                        No momento em que ambos os times aceitarem uma data em comum o jogo será automaticamente
+                        agendado, é
+                        possível alterar as datas a qualquer momento.
+                    </p>
+                    <p>
+                        Caso tenha alguma duvida entre em contato com os administradores.
+                    </p>
+
+                    <nz-table #sugestoesTable [nzData]="periodo!.sugestoes" [nzFrontPagination]="false" nzSize="small">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-center">Data</th>
+                                <th class="text-center">Sua resposta</th>
+                                <th class="text-center">Seu adversário</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sugestao of sugestoesTable.data;">
+                                <td>
+                                    <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
+                                        *ngIf="sugestao?.cadastradoPor === CadastradoPor.Administrador"
+                                        nzTooltipTitle="Data sugerida pelos administradores"></i>
+
+                                    <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
+                                        *ngIf="sugeridoPorMim(sugestao)" nzTooltipTitle="Data sugerida por você"></i>
+
+                                    <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
+                                        *ngIf="sugeridoPeloAdversario(sugestao)"
+                                        nzTooltipTitle="Data sugerida pelo seu adversário"></i>
+                                </td>
+                                <td class="text-center">
+                                    {{ sugestao!.data | date : 'dd/MM/yyyy HH:mm' }}
+                                    <br />
+                                    {{ sugestao!.data | date : '(EEEE)' }}
+                                </td>
+                                <td class="text-center">
+                                    <app-resposta-time-icon [respostaTime]="respostaMeuTime(sugestao)">
+                                    </app-resposta-time-icon>
+                                </td>
+                                <td class="text-center">
+                                    <app-resposta-time-icon [respostaTime]="respostaMeuAdversario(sugestao)">
+                                    </app-resposta-time-icon>
+                                </td>
+                                <td class="acoes">
+                                    <button nz-button nzType="link" nzSize="small" nz-tooltip nzTooltipTitle="Responder"
+                                        (click)="responder(sugestao)" *ngIf="!sugeridoPorMim(sugestao)">
+                                        <i nz-icon nzType="edit" nzTheme="outline"></i> Responder
+                                    </button>
+                                    <button nz-button nzType="text" nzDanger nzSize="small" nz-tooltip
+                                        nzTooltipTitle="Excluir sugestão" *ngIf="sugeridoPorMim(sugestao)"
+                                        (click)="excluirSugestao(sugestao)">
+                                        <i nz-icon nzType="delete" nzTheme="outline"></i> Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+
+                    <button nz-button nzType="primary" [disabled]="busy" [nzLoading]="busy" type="button"
+                        (click)="sugerirNovaData()">
+                        <i nz-icon nzType="plus" nzTheme="outline"></i> Sugerir uma nova data
+                    </button>
+                </ng-container>
+            </div>
         </div>
-        <nz-divider nzType="vertical"></nz-divider>
-        <div class="right">
-            <p>
-                O confronto deve ocorrer de
-                <b>{{ periodo!.inicio | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>
-                até <b>{{ periodo!.fim | date : 'dd/MM/yyyy HH:mm (EEEE)' }}</b>.
-            </p>
-            <p>
-                Abaixo algumas sugestões de datas que você pode aceitar ou recursar, caso queira sugerir uma nova data,
-                por favor, clique em <i>'Sugerir uma nova data'</i>.
-            </p>
-            <p>
-                No momento em que ambos os times aceitarem uma data em comum o jogo será automaticamente agendado, é
-                possível alterar as datas a qualquer momento.
-            </p>
-            <p>
-                Caso tenha alguma duvida entre em contato com os administradores.
-            </p>
-
-            <nz-table #sugestoesTable [nzData]="periodo!.sugestoes" [nzFrontPagination]="false" nzSize="small">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th class="text-center">Data</th>
-                        <th class="text-center">Sua resposta</th>
-                        <th class="text-center">Seu adversário</th>
-                        <th class="text-center"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let sugestao of sugestoesTable.data;">
-                        <td>
-                            <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
-                                *ngIf="sugestao?.cadastradoPor === CadastradoPor.Administrador"
-                                nzTooltipTitle="Data sugerida pelos administradores"></i>
-
-                            <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
-                                *ngIf="sugeridoPorMim(sugestao)" nzTooltipTitle="Data sugerida por você"></i>
-
-                            <i nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip
-                                *ngIf="sugeridoPeloAdversario(sugestao)"
-                                nzTooltipTitle="Data sugerida pelo seu adversário"></i>
-                        </td>
-                        <td class="text-center">
-                            {{ sugestao!.data | date : 'dd/MM/yyyy HH:mm' }}
-                            <br />
-                            {{ sugestao!.data | date : '(EEEE)' }}
-                        </td>
-                        <td class="text-center">
-                            <app-resposta-time-icon [respostaTime]="respostaMeuTime(sugestao)"></app-resposta-time-icon>
-                        </td>
-                        <td class="text-center">
-                            <app-resposta-time-icon [respostaTime]="respostaMeuAdversario(sugestao)">
-                            </app-resposta-time-icon>
-                        </td>
-                        <td class="acoes">
-                            <button nz-button nzType="link" nzSize="small" nz-tooltip nzTooltipTitle="Responder"
-                                (click)="responder(sugestao)" *ngIf="!sugeridoPorMim(sugestao)">
-                                <i nz-icon nzType="edit" nzTheme="outline"></i> Responder
-                            </button>
-                            <button nz-button nzType="text" nzDanger nzSize="small" nz-tooltip
-                                nzTooltipTitle="Excluir sugestão" *ngIf="sugeridoPorMim(sugestao)"
-                                (click)="excluirSugestao(sugestao)">
-                                <i nz-icon nzType="delete" nzTheme="outline"></i> Excluir
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </nz-table>
-
-            <button nz-button nzType="primary" [disabled]="busy" [nzLoading]="busy" type="button"
-                (click)="sugerirNovaData()">
-                <i nz-icon nzType="plus" nzTheme="outline"></i> Sugerir uma nova data
-            </button>
-        </div>
-    </div>
+    </ng-container>
 </div>
 
 <nz-skeleton [nzActive]="true" *ngIf="busy"></nz-skeleton>
-
-<nz-empty *ngIf="!busy && (!confronto || !periodo!.sugestoes!.length)"></nz-empty>
 
 <nz-divider></nz-divider>
 

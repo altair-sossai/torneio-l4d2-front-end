@@ -26,6 +26,8 @@ export class ProximoConfrontoComponent implements OnInit {
   CadastradoPor = CadastradoPor;
   RespostaTime = RespostaTime;
 
+  confrontos?: Confronto[] | null;
+
   busy = false;
   capitao?: Capitao | null;
   confronto?: Confronto | null;
@@ -46,28 +48,38 @@ export class ProximoConfrontoComponent implements OnInit {
 
   ngOnInit() {
     this.capitao = this.capitaoService.current();
-    this.atualizar();
+    this.carregarConfrontos();
+  }
+
+  carregarConfrontos(): void {
+    this.confrontoService.get().subscribe({
+      next: confrontos => {
+        this.confrontos = this.proximosConfrontos(confrontos);
+        if (this.confrontos?.length === 0)
+          return;
+        console.log(this.confrontos);
+        this.confronto = this.confrontos![0];
+        this.carregarDadosConfronto();
+      }, error: () => this.busy = false
+    })
+  }
+
+  carregarDadosConfronto() {
+    if (!this.confronto)
+      return;
+
+    this.time = this.meuTime(this.confronto);
+    this.adversario = this.meuAdversario(this.confronto);
+    this.carregarPeriodo(this.confronto?.id);
   }
 
   atualizar(): void {
     this.busy = true;
-    this.confronto = null;
     this.time = null;
     this.adversario = null;
     this.periodo = null;
 
-    this.carregarConfronto();
-  }
-
-  carregarConfronto(): void {
-    this.confrontoService.get().subscribe({
-      next: confrontos => {
-        this.confronto = this.proximoConfronto(confrontos);
-        this.time = this.meuTime(this.confronto);
-        this.adversario = this.meuAdversario(this.confronto);
-        this.carregarPeriodo(this.confronto?.id);
-      }, error: () => this.busy = false
-    })
+    this.carregarDadosConfronto();
   }
 
   carregarPeriodo(confrontoId?: string): void {
@@ -85,11 +97,11 @@ export class ProximoConfrontoComponent implements OnInit {
     })
   }
 
-  proximoConfronto(confrontos?: Confronto[]): Confronto | undefined {
+  proximosConfrontos(confrontos?: Confronto[]): Confronto[] | undefined {
     if (!confrontos?.length)
       return undefined;
 
-    return confrontos.find(c => c.status == StatusConfronto.Aguardando && (c.timeA?.capitao?.steamId == this.capitao?.steamId || c.timeB.capitao?.steamId == this.capitao?.steamId));
+    return confrontos.filter(c => c.status == StatusConfronto.Aguardando && (c.timeA?.capitao?.steamId == this.capitao?.steamId || c.timeB.capitao?.steamId == this.capitao?.steamId));
   }
 
   meuTime(confronto?: Confronto): Time | undefined {
