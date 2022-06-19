@@ -26,6 +26,7 @@ export class ProximoConfrontoComponent implements OnInit {
   CadastradoPor = CadastradoPor;
   RespostaTime = RespostaTime;
 
+  confrontoSelecionado?: Confronto | null;
   confrontos?: Confronto[] | null;
 
   busy = false;
@@ -48,6 +49,18 @@ export class ProximoConfrontoComponent implements OnInit {
 
   ngOnInit() {
     this.capitao = this.capitaoService.current();
+    this.atualizar();
+  }
+
+  atualizar(): void {
+    this.confrontoSelecionado = this.confronto;
+
+    this.busy = true;
+    this.time = null;
+    this.confronto = null;
+    this.adversario = null;
+    this.periodo = null;
+
     this.carregarConfrontos();
   }
 
@@ -57,8 +70,8 @@ export class ProximoConfrontoComponent implements OnInit {
         this.confrontos = this.proximosConfrontos(confrontos);
         if (this.confrontos?.length === 0)
           return;
-        console.log(this.confrontos);
-        this.confronto = this.confrontos![0];
+
+        this.confronto = this.confrontoSelecionado ? this.confrontos?.find(f => f.id == this.confrontoSelecionado?.id) : this.confrontos![0];
         this.carregarDadosConfronto();
       }, error: () => this.busy = false
     })
@@ -71,15 +84,6 @@ export class ProximoConfrontoComponent implements OnInit {
     this.time = this.meuTime(this.confronto);
     this.adversario = this.meuAdversario(this.confronto);
     this.carregarPeriodo(this.confronto?.id);
-  }
-
-  atualizar(): void {
-    this.busy = true;
-    this.time = null;
-    this.adversario = null;
-    this.periodo = null;
-
-    this.carregarDadosConfronto();
   }
 
   carregarPeriodo(confrontoId?: string): void {
