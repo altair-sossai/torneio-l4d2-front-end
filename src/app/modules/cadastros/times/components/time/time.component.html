@@ -15,7 +15,7 @@
             [nzPopoverContent]="contentTemplate" nzPopoverPlacement="rightTop">
             <td>{{jogador.nome}}</td>
             <td class="text-right slim">
-                <small *ngIf="jogador.totalHoras">{{jogador.totalHoras}} horas</small>
+                <small *ngIf="jogador.totalHoras">{{jogador.totalHoras|number}} horas</small>
             </td>
             <td class="slim" *ngIf="!readonly">
                 <i class="delete" nz-icon nzType="close" nzTheme="outline" nz-tooltip

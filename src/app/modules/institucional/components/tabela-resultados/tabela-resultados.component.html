@@ -18,15 +18,15 @@
         <tr *ngFor="let time of classificacaoTable.data; let i = index">
             <td class="text-center">{{i+1}}°</td>
             <td>{{time.nome}}</td>
-            <td class="text-center">{{time.pontosGerais}}</td>
-            <td class="text-center">{{time.quantidadePartidasRealizadas}}</td>
-            <td class="text-center">{{time.quantidadeVitorias}}</td>
-            <td class="text-center">{{time.quantidadeDerrotas}}</td>
-            <td class="text-center">{{time.quantidadeEmpates}}</td>
-            <td class="text-center">{{time.totalPontosConquistados}}</td>
-            <td class="text-center">{{time.totalPontosSofridos}}</td>
-            <td class="text-center">{{time.totalPenalidades}}</td>
-            <td class="text-center">{{time.saldoTotalPontos}}</td>
+            <td class="text-center">{{time.pontosGerais|number}}</td>
+            <td class="text-center">{{time.quantidadePartidasRealizadas|number}}</td>
+            <td class="text-center">{{time.quantidadeVitorias|number}}</td>
+            <td class="text-center">{{time.quantidadeDerrotas|number}}</td>
+            <td class="text-center">{{time.quantidadeEmpates|number}}</td>
+            <td class="text-center">{{time.totalPontosConquistados|number}}</td>
+            <td class="text-center">{{time.totalPontosSofridos|number}}</td>
+            <td class="text-center">{{time.totalPenalidades|number}}</td>
+            <td class="text-center">{{time.saldoTotalPontos|number}}</td>
         </tr>
     </tbody>
 </nz-table>
