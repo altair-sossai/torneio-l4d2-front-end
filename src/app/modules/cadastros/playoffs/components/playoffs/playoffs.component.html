@@ -1,0 +1,16 @@
+<div *ngIf="!busy && podeEditar" class="acoes">
+    <button nz-button nzType="primary" (click)="novo()" [nzLoading]="busy">
+        <i nz-icon nzType="user-add"></i>
+        Adicionar um novo jogo
+    </button>
+</div>
+
+<nz-tabset *ngIf="!busy" [nzSelectedIndex]="rodadaAtual" (nzSelectedIndexChange)="rodadaAtual = $event">
+    <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
+        <ng-container *ngFor="let playoff of rodada.playoffs">
+            <app-playoff [playoff]="playoff" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-playoff>
+        </ng-container>
+    </nz-tab>
+</nz-tabset>
+
+<nz-skeleton [nzActive]="true" *ngIf="busy"></nz-skeleton>

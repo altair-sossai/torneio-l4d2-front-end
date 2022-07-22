@@ -1,0 +1,15 @@
+<section>
+    <ng-container *ngFor="let time of [playoff.timeA, playoff.timeB]">
+        <p class="time">{{time.nome}}:</p>
+        <nz-progress [nzPercent]="progresso(time)" [nzFormat]="formatar" nzSize="small" [nzStatus]="status(time)">
+        </nz-progress>
+        <p class="pontos">
+            {{pontosConquistados(time)|number}}
+            <span class="penalidade" *ngIf="penalidade(time)"> - {{penalidade(time)|number}}</span>
+            /<span class="bold">{{(confronto.campanha?.pontuacaoMaxima || 0)|number}}</span>
+        </p>
+    </ng-container>
+</section>
+<p *ngIf="confronto.observacoes" class="observacoes text-justify">
+    <span class="bold">Observações:</span> {{confronto.observacoes}}
+</p>

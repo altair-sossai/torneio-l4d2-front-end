@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    i,
+    label {
+        margin-left: 5px;
+    }
+
+    nz-tag {
+        margin-left: 15px;
+    }
+}

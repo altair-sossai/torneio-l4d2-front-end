@@ -9,6 +9,7 @@ import { LoginComponent } from '../modules/auth/login/components/login/login.com
 import { CapitaesComponent } from '../modules/cadastros/capitaes/components/capitaes/capitaes.component';
 import { ConfrontosComponent } from '../modules/cadastros/confrontos/components/confrontos/confrontos.component';
 import { JogadoresComponent } from '../modules/cadastros/jogadores/components/jogadores/jogadores.component';
+import { PlayoffsComponent } from '../modules/cadastros/playoffs/components/playoffs/playoffs.component';
 import { TimesComponent } from '../modules/cadastros/times/components/times/times.component';
 import { LoginCapitaoComponent } from '../modules/capitaes/components/login-capitao/login-capitao.component';
 import { ProximoConfrontoComponent } from '../modules/capitaes/components/proximo-confronto/proximo-confronto.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
             { path: 'jogadores', component: JogadoresComponent },
             { path: 'times', component: TimesComponent },
             { path: 'confrontos', component: ConfrontosComponent, data: { podeEditar: true } },
+            { path: 'playoffs', component: PlayoffsComponent, data: { podeEditar: true } },
             { path: 'capitaes', component: CapitaesComponent },
         ]
     },

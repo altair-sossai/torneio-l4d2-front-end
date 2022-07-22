@@ -58,6 +58,17 @@ import { CadastradoPorPipe } from './modules/cadastros/data-confronto/pipes/cada
 import { RespostaTimePipe } from './modules/cadastros/data-confronto/pipes/resposta-time.pipe';
 import { JogadorComponent } from './modules/cadastros/jogadores/components/jogador/jogador.component';
 import { JogadoresComponent } from './modules/cadastros/jogadores/components/jogadores/jogadores.component';
+import { PlayoffCampanhaComponent } from './modules/cadastros/playoffs/components/playoff-campanha/playoff-campanha.component';
+import { PlayoffCorpoComponent } from './modules/cadastros/playoffs/components/playoff-corpo/playoff-corpo.component';
+import { PlayoffEditComponent } from './modules/cadastros/playoffs/components/playoff-edit/playoff-edit.component';
+import { PlayoffHeaderComponent } from './modules/cadastros/playoffs/components/playoff-header/playoff-header.component';
+import { PlayoffResumoComponent } from './modules/cadastros/playoffs/components/playoff-resumo/playoff-resumo.component';
+import { PlayoffTimeComponent } from './modules/cadastros/playoffs/components/playoff-time/playoff-time.component';
+import { PlayoffTimesComponent } from './modules/cadastros/playoffs/components/playoff-times/playoff-times.component';
+import { PlayoffComponent } from './modules/cadastros/playoffs/components/playoff/playoff.component';
+import { PlayoffsComponent } from './modules/cadastros/playoffs/components/playoffs/playoffs.component';
+import { CorStatusPlayoffPipe } from './modules/cadastros/playoffs/pipes/cor-status-playoff.pipe';
+import { StatusPlayoffPipe } from './modules/cadastros/playoffs/pipes/status-playoff.pipe';
 import { SortearJogadorComponent } from './modules/cadastros/times/components/sortear-jogador/sortear-jogador.component';
 import { TimeEditComponent } from './modules/cadastros/times/components/time-edit/time-edit.component';
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
@@ -114,6 +125,17 @@ registerLocaleData(pt);
     RespostaTimeIconComponent,
     ResponderSugestaoDataComponent,
     SugerirNovaDataComponent,
+    CorStatusPlayoffPipe,
+    StatusPlayoffPipe,
+    PlayoffsComponent,
+    PlayoffComponent,
+    PlayoffCampanhaComponent,
+    PlayoffCorpoComponent,
+    PlayoffEditComponent,
+    PlayoffHeaderComponent,
+    PlayoffResumoComponent,
+    PlayoffTimeComponent,
+    PlayoffTimesComponent
   ],
   imports: [
     BrowserModule,

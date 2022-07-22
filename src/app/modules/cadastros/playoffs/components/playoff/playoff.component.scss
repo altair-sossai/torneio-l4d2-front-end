@@ -1,0 +1,19 @@
+.container {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+
+    @media (max-width: 600px) {
+        display: flex;
+        flex-flow: column;
+    }
+
+    app-playoff-corpo {
+        margin-left: 10px;
+    }
+}
+
+.acoes {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: end;
+}
