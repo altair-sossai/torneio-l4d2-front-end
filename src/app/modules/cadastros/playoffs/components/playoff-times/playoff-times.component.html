@@ -1,5 +1,8 @@
 <div class="container">
-    <app-playoff-time [playoff]="playoff" [time]="playoff.timeA"></app-playoff-time>
-    <img src="../../../../../../assets/icons/versus.png" alt="Versus" />
-    <app-playoff-time [playoff]="playoff" [time]="playoff.timeB"></app-playoff-time>
+    <app-playoff-time *ngIf="playoff.timeA" [playoff]="playoff" [time]="playoff.timeA"></app-playoff-time>
+    <div class="resultado">
+        <img src="../../../../../../assets/icons/versus.png" alt="Versus" />
+        <h3>{{playoff.quantidadeVitoriasTimeA}} - {{playoff.quantidadeVitoriasTimeB}}</h3>
+    </div>
+    <app-playoff-time *ngIf="playoff.timeB" [playoff]="playoff" [time]="playoff.timeB"></app-playoff-time>
 </div>

@@ -7,9 +7,14 @@
 
 <nz-tabset *ngIf="!busy" [nzSelectedIndex]="rodadaAtual" (nzSelectedIndexChange)="rodadaAtual = $event">
     <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
-        <ng-container *ngFor="let playoff of rodada.playoffs">
-            <app-playoff [playoff]="playoff" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-playoff>
-        </ng-container>
+
+        <nz-tabset nzTabPosition="left">
+            <nz-tab *ngFor="let playoff of rodada.playoffs"
+                nzTitle="{{ playoff.timeA?.capitao?.nome + ' vs ' + playoff.timeB?.capitao?.nome }}">
+                <app-playoff [playoff]="playoff" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-playoff>
+            </nz-tab>
+        </nz-tabset>
+
     </nz-tab>
 </nz-tabset>
 

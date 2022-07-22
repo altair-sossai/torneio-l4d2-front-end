@@ -3,8 +3,20 @@
     display: grid;
     grid-template-columns: 1fr 50px 1fr;
 
-    img {
-        width: 100%;
-        align-self: center;
+    .resultado {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img,
+        hr {
+            margin: 5px;
+        }
+
+        img {
+            width: 100%;
+            align-self: center;
+        }
     }
 }

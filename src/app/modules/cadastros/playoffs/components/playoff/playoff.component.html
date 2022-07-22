@@ -8,9 +8,12 @@
 <app-playoff-times [playoff]="playoff">
 </app-playoff-times>
 
-<div class="container" *ngFor="let confronto of playoff.confrontos">
-    <app-playoff-campanha [campanha]="confronto.campanha">
-    </app-playoff-campanha>
-    <app-playoff-corpo [playoff]="playoff" [confronto]="confronto">
-    </app-playoff-corpo>
+<div *ngFor="let confronto of playoff.confrontos; let i = index">
+    <nz-divider nzPlain nzText="{{i + 1}}º jogo"></nz-divider>
+    <div class="container">
+        <app-playoff-campanha [campanha]="confronto.campanha">
+        </app-playoff-campanha>
+        <app-playoff-corpo [playoff]="playoff" [confronto]="confronto">
+        </app-playoff-corpo>
+    </div>
 </div>

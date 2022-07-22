@@ -2,5 +2,5 @@
     <app-playoff-header [confronto]="confronto">
     </app-playoff-header>
     <nz-divider></nz-divider>
-    <app-playoff-resumo [playoff]="playoff" [confronto]="confronto"></app-playoff-resumo>
+    <app-playoff-resumo *ngIf="playoff.timeA && playoff.timeB" [playoff]="playoff" [confronto]="confronto"></app-playoff-resumo>
 </div>
