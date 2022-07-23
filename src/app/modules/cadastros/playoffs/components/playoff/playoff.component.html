@@ -1,8 +1,17 @@
-<div *ngIf="podeEditar" class="acoes">
-    <button nz-button nzType="primary" (click)="editar(playoff.id!)">
-        <i nz-icon nzType="edit"></i>
-        Editar
-    </button>
+<div *ngIf="podeEditar" class="header">
+    <div class="acoes">
+        <button nz-button nzType="primary" nzDanger (click)="excluir(playoff.id!)">
+            <i nz-icon nzType="delete"></i>
+            Excluir
+        </button>
+
+        <button nz-button nzType="primary" (click)="editar(playoff.id!)">
+            <i nz-icon nzType="edit"></i>
+            Editar
+        </button>
+    </div>
+
+    <nz-divider></nz-divider>
 </div>
 
 <app-playoff-times [playoff]="playoff">
