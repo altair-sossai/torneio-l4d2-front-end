@@ -12,6 +12,7 @@
         <nz-form-control [nzValidateStatus]="errors?.codigoTimeA ? 'error' : ''"
             [nzErrorTip]="errors?.codigoTimeA && errors?.codigoTimeA[0]">
             <nz-select [(ngModel)]="command.codigoTimeA" name="codigoTimeA" placeholder="Time A">
+                <nz-option [nzValue]="null" nzLabel="A definir"></nz-option>
                 <nz-option *ngFor="let time of times" [nzValue]="time.codigo" [nzLabel]="time.nome">
                 </nz-option>
             </nz-select>
@@ -21,6 +22,7 @@
         <nz-form-control [nzValidateStatus]="errors?.codigoTimeB ? 'error' : ''"
             [nzErrorTip]="errors?.codigoTimeB && errors?.codigoTimeB[0]">
             <nz-select [(ngModel)]="command.codigoTimeB" name="codigoTimeB" placeholder="Time B">
+                <nz-option [nzValue]="null" nzLabel="A definir"></nz-option>
                 <nz-option *ngFor="let time of times" [nzValue]="time.codigo" [nzLabel]="time.nome">
                 </nz-option>
             </nz-select>

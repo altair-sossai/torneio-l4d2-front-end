@@ -17,12 +17,14 @@
 <app-playoff-times [playoff]="playoff">
 </app-playoff-times>
 
-<div *ngFor="let confronto of playoff.confrontos; let i = index">
-    <nz-divider nzPlain nzText="{{i + 1}}º jogo"></nz-divider>
-    <div class="container">
-        <app-playoff-campanha [campanha]="confronto.campanha">
-        </app-playoff-campanha>
-        <app-playoff-corpo [playoff]="playoff" [confronto]="confronto">
-        </app-playoff-corpo>
+<ng-container *ngIf="playoff.timeA && playoff.timeB">
+    <div *ngFor="let confronto of playoff.confrontos; let i = index">
+        <nz-divider nzPlain nzText="{{i + 1}}º jogo" style="font-weight: bold"></nz-divider>
+        <div class="container">
+            <app-playoff-campanha [campanha]="confronto.campanha">
+            </app-playoff-campanha>
+            <app-playoff-corpo [playoff]="playoff" [confronto]="confronto">
+            </app-playoff-corpo>
+        </div>
     </div>
-</div>
+</ng-container>

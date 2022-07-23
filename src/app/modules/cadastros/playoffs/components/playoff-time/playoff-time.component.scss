@@ -1,4 +1,5 @@
-.time {
+.time,
+.empty {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,4 +17,9 @@
     nz-tag {
         margin-top: 15px;
     }
+}
+
+.empty {
+    justify-content: center;
+    height: 100%;
 }

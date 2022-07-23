@@ -1,4 +1,4 @@
-<div class="time">
+<div class="time" *ngIf="time">
     <h3>{{time.nome}}</h3>
     <p *ngFor="let jogador of time.jogadores" nz-popover nzPopoverTitle="Dados do jogador"
         [nzPopoverContent]="contentTemplate">
@@ -11,4 +11,7 @@
         <i nz-icon [nzType]="icon"></i>
         <span>{{text}}</span>
     </nz-tag>
+</div>
+<div class="empty" *ngIf="!time">
+    <h3>(A definir)</h3>
 </div>
