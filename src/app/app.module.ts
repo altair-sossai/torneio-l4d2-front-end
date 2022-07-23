@@ -5,6 +5,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgTournamentTreeModule } from 'ng-tournament-tree';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -62,6 +63,8 @@ import { PlayoffCampanhaComponent } from './modules/cadastros/playoffs/component
 import { PlayoffCorpoComponent } from './modules/cadastros/playoffs/components/playoff-corpo/playoff-corpo.component';
 import { PlayoffEditComponent } from './modules/cadastros/playoffs/components/playoff-edit/playoff-edit.component';
 import { PlayoffHeaderComponent } from './modules/cadastros/playoffs/components/playoff-header/playoff-header.component';
+import { PlayoffMatchComponent } from './modules/cadastros/playoffs/components/playoff-match/playoff-match.component';
+import { PlayoffMatchsComponent } from './modules/cadastros/playoffs/components/playoff-matchs/playoff-matchs.component';
 import { PlayoffResumoComponent } from './modules/cadastros/playoffs/components/playoff-resumo/playoff-resumo.component';
 import { PlayoffTimeComponent } from './modules/cadastros/playoffs/components/playoff-time/playoff-time.component';
 import { PlayoffTimesComponent } from './modules/cadastros/playoffs/components/playoff-times/playoff-times.component';
@@ -135,7 +138,9 @@ registerLocaleData(pt);
     PlayoffHeaderComponent,
     PlayoffResumoComponent,
     PlayoffTimeComponent,
-    PlayoffTimesComponent
+    PlayoffTimesComponent,
+    PlayoffMatchComponent,
+    PlayoffMatchsComponent
   ],
   imports: [
     BrowserModule,
@@ -145,6 +150,7 @@ registerLocaleData(pt);
     BrowserAnimationsModule,
     IconsProviderModule,
     ClipboardModule,
+    NgTournamentTreeModule,
     NzLayoutModule,
     NzMenuModule,
     NzButtonModule,

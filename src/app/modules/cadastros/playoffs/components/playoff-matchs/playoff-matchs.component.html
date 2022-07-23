@@ -1,0 +1,6 @@
+<ngtt-single-elimination-tree *ngIf="tournament" [tournament]="tournament" [matchTemplate]="matchTemplate">
+</ngtt-single-elimination-tree>
+
+<ng-template #matchTemplate let-match>
+    <app-playoff-match [match]="match"></app-playoff-match>
+</ng-template>
