@@ -1,9 +1,19 @@
-<div class="container">
+<div class="container" [class.time]="time" [class.playoff]="playoff">
     <ng-container *ngIf="time">
-        <p>time</p>
+        <h2>{{time.nome}}</h2>
+        <nz-divider></nz-divider>
+        <p>Classificado(a) automaticamente para as semifinais</p>
     </ng-container>
 
     <ng-container *ngIf="playoff">
-        <p>playoff</p>
+        <h2>{{playoff.timeA?.nome || 'A definir'}}</h2>
+        <h2>{{playoff.quantidadeVitoriasTimeA}}</h2>
+        <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
+            [hidden]="!playoff.codigoTimeVencedor || playoff.timeA?.codigo !== playoff.codigoTimeVencedor"></i>
+        <nz-divider></nz-divider>
+        <h2>{{playoff.timeB?.nome || 'A definir'}}</h2>
+        <h2>{{playoff.quantidadeVitoriasTimeB}}</h2>
+        <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
+            [hidden]="!playoff.codigoTimeVencedor || playoff.timeB?.codigo !== playoff.codigoTimeVencedor"></i>
     </ng-container>
 </div>

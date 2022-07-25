@@ -1,5 +1,5 @@
-import { Time } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { Time } from '../../../times/models/time';
 import { Playoff } from '../../models/playoff';
 
 @Component({
