@@ -5,6 +5,8 @@ import { Rodada } from 'src/app/modules/cadastros/confrontos/models/rodada';
 import { ConfrontoService } from 'src/app/modules/cadastros/confrontos/services/confronto.service';
 import { Jogador } from 'src/app/modules/cadastros/jogadores/models/jogador';
 import { JogadorService } from 'src/app/modules/cadastros/jogadores/services/jogador.service';
+import { Rodada as Playoff } from 'src/app/modules/cadastros/playoffs/models/rodada';
+import { PlayoffService } from 'src/app/modules/cadastros/playoffs/services/playoff.service';
 import { Time } from 'src/app/modules/cadastros/times/models/time';
 import { TimeService } from 'src/app/modules/cadastros/times/services/time.service';
 
@@ -20,12 +22,14 @@ export class HomeComponent implements OnInit {
   classificacao: Time[] | undefined;
   rodadaAtual: number = 0;
   rodadas: Rodada[] | undefined;
+  playoff: Playoff[] | undefined;
   confrontosAgendados: Confronto[] | undefined;
 
   constructor(
     private jogadorService: JogadorService,
     private timeService: TimeService,
     private confrontoService: ConfrontoService,
+    private playoffService: PlayoffService,
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +41,7 @@ export class HomeComponent implements OnInit {
       this.atualizarRodadaAtual();
       this.atualizarConfrontosAgendados();
     });
+    this.playoffService.rodadas().subscribe(playoff => this.playoff = playoff);
   }
 
   atualizarRodadaAtual(): void {

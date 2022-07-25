@@ -17,7 +17,7 @@
     </p>
     <p>
         Para mais informações, acesse o documento de regras do torneio:
-        <a href="https://drive.google.com/file/d/1K7wJK5HLuPV7cFMI-Vv2vARQ5RgMvGDe/view?usp=sharing" target="_blank">
+        <a href="https://drive.google.com/file/d/1isE3APq8751Yj-MdQKQu8KgjYbnXuSIb/view" target="_blank">
             Regras do torneio
         </a>
     </p>
@@ -27,6 +27,18 @@
             Twitch
         </a>
     </p>
+</section>
+
+<section>
+    <h3>Fase 2 - Play-off</h3>
+    <p>
+        Abaixo é possível acompanhar os jogos realizados na fase de play-off, clique no jogo para ver mais detalhes.
+    </p>
+    <hr />
+    <div *ngIf="playoff">
+        <app-playoff-matchs [rodadas]="playoff"></app-playoff-matchs>
+    </div>
+    <nz-skeleton [nzActive]="true" *ngIf="!playoff"></nz-skeleton>
 </section>
 
 <section>
