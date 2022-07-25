@@ -6,6 +6,7 @@ import { StatusPlayoff } from "../enums/status-playoff";
 export class Playoff {
     public id?: string;
     public rodada?: number;
+    public ordem?: number;
     public codigoTimeA?: string;
     public codigoTimeB?: string;
     public timeA!: Time;

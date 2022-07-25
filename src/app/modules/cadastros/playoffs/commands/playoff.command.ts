@@ -10,6 +10,7 @@ export class PlayoffCommand {
 
     public id?: string;
     public rodada?: number;
+    public ordem?: number;
     public codigoTimeA?: string;
     public codigoTimeB?: string;
     public confrontos?: Confronto[];

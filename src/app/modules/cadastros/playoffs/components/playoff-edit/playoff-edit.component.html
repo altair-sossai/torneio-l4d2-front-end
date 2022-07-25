@@ -8,6 +8,14 @@
             </nz-input-number>
         </nz-form-control>
 
+        <nz-form-label [nzSpan]="2" nzFor="ordem">Ordem</nz-form-label>
+        <nz-form-control [nzSpan]="4" [nzValidateStatus]="errors?.ordem ? 'error' : ''"
+            [nzErrorTip]="errors?.ordem && errors?.ordem[0]">
+            <nz-input-number [(ngModel)]="command.ordem" name="ordem" [nzMin]="1" [nzMax]="10" [nzStep]="1"
+                placeholder="Ordem">
+            </nz-input-number>
+        </nz-form-control>
+
         <nz-form-label [nzSpan]="3" nzFor="codigoTimeA">Time A</nz-form-label>
         <nz-form-control [nzValidateStatus]="errors?.codigoTimeA ? 'error' : ''"
             [nzErrorTip]="errors?.codigoTimeA && errors?.codigoTimeA[0]">
