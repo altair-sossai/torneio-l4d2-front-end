@@ -35,10 +35,10 @@
         Abaixo é possível acompanhar os jogos realizados na fase de play-off, clique no jogo para ver mais detalhes.
     </p>
     <hr />
-    <div *ngIf="playoff">
-        <app-playoff-matchs [rodadas]="playoff"></app-playoff-matchs>
+    <div *ngIf="playoff && classificacao">
+        <app-playoff-matchs [rodadas]="playoff" [classificacao]="classificacao"></app-playoff-matchs>
     </div>
-    <nz-skeleton [nzActive]="true" *ngIf="!playoff"></nz-skeleton>
+    <nz-skeleton [nzActive]="true" *ngIf="!playoff || !classificacao"></nz-skeleton>
 </section>
 
 <section>

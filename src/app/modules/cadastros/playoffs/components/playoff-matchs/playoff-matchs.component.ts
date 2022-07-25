@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgttTournament } from 'ng-tournament-tree';
+import { Time } from '../../../times/models/time';
+import { Rodada } from '../../models/rodada';
 
 @Component({
   selector: 'app-playoff-matchs',
@@ -8,32 +10,37 @@ import { NgttTournament } from 'ng-tournament-tree';
 })
 export class PlayoffMatchsComponent implements OnInit {
 
-  public tournament?: NgttTournament = {
-    rounds: [
-      {
-        type: 'Winnerbracket',
-        matches: [
-          'A',
-          'C vs F',
-          'B',
-          'D vs E'
-        ]
-      },
-      {
-        type: 'Winnerbracket',
-        matches: ['A vs C', 'B vs E'
-        ]
-      },
-      {
-        type: 'Final',
-        matches: ['A vs E']
-      }
-    ]
-  };
+  @Input() rodadas!: Rodada[];
+  @Input() classificacao!: Time[];
+
+  public tournament?: NgttTournament;
 
   constructor() { }
 
   ngOnInit(): void {
+    const primeiroLugar = this.classificacao[0];
+    const segundoLugar = this.classificacao[1];
+
+    const primeiraRodada = this.rodadas[0];
+    const segundoRodada = this.rodadas[1];
+    const terceiraRodada = this.rodadas[2];
+
+    this.tournament = {
+      rounds: [
+        {
+          type: 'Winnerbracket',
+          matches: [primeiroLugar, primeiraRodada.playoffs![0], segundoLugar, primeiraRodada.playoffs![1]]
+        },
+        {
+          type: 'Winnerbracket',
+          matches: [segundoRodada.playoffs![0], segundoRodada.playoffs![1]]
+        },
+        {
+          type: 'Final',
+          matches: [terceiraRodada.playoffs![0]]
+        }
+      ]
+    }
   }
 
 }
