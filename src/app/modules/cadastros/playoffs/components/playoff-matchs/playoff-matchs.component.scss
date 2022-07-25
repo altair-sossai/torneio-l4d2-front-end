@@ -1,4 +1,13 @@
-:host {
+.container {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: auto;
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 1220px) {
+    ngtt-single-elimination-tree {
+        width: 100%;
+    }
 }
