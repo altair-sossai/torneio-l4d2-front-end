@@ -1,4 +1,4 @@
-<div class="container" [class.time]="time" [class.playoff]="playoff">
+<div class="container" [class.time]="time" [class.playoff]="playoff" (click)="clicked()">
     <ng-container *ngIf="time">
         <h2>{{time.nome}}</h2>
         <nz-divider></nz-divider>

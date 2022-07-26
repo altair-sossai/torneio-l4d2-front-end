@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { Time } from '../../../times/models/time';
 import { Playoff } from '../../models/playoff';
+import { PlayoffComponent } from '../playoff/playoff.component';
 
 @Component({
   selector: 'app-playoff-match',
@@ -14,12 +16,24 @@ export class PlayoffMatchComponent implements OnInit {
   time?: Time;
   playoff?: Playoff;
 
-  constructor() { }
+  constructor(private modalService: NzModalService) {
+  }
 
   ngOnInit(): void {
     if (this.match.codigo)
       this.time = this.match;
     else
       this.playoff = this.match;
+  }
+
+  clicked(): void {
+    if (this.playoff) {
+      this.modalService.create({
+        nzTitle: 'Detalhes do jogo',
+        nzContent: PlayoffComponent,
+        nzComponentParams: { playoff: this.playoff },
+        nzWidth: 700
+      });
+    }
   }
 }
