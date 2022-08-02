@@ -11,6 +11,10 @@ export class Playoff {
     public codigoTimeB?: string;
     public timeA!: Time;
     public timeB!: Time;
+    public codigoCampanhaExcluidaTimeA?: string;
+    public codigoCampanhaExcluidaTimeB?: string;
+    public campanhaExcluidaTimeA?: Campanha;
+    public campanhaExcluidaTimeB?: Campanha;
     public quantidadeVitoriasTimeA?: number;
     public quantidadeVitoriasTimeB?: number;
     public quantidadeConfrontosRealizados?: number;

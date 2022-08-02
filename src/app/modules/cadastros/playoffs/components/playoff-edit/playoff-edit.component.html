@@ -1,6 +1,6 @@
 <form nz-form (ngSubmit)="salvar()" *ngIf="command">
     <nz-form-item>
-        <nz-form-label [nzSpan]="2" nzFor="rodada">Rodada</nz-form-label>
+        <nz-form-label [nzSpan]="3" nzFor="rodada">Rodada</nz-form-label>
         <nz-form-control [nzSpan]="4" [nzValidateStatus]="errors?.rodada ? 'error' : ''"
             [nzErrorTip]="errors?.rodada && errors?.rodada[0]">
             <nz-input-number [(ngModel)]="command.rodada" name="rodada" [nzMin]="1" [nzMax]="10" [nzStep]="1"
@@ -15,7 +15,9 @@
                 placeholder="Ordem">
             </nz-input-number>
         </nz-form-control>
+    </nz-form-item>
 
+    <nz-form-item>
         <nz-form-label [nzSpan]="3" nzFor="codigoTimeA">Time A</nz-form-label>
         <nz-form-control [nzValidateStatus]="errors?.codigoTimeA ? 'error' : ''"
             [nzErrorTip]="errors?.codigoTimeA && errors?.codigoTimeA[0]">
@@ -26,12 +28,36 @@
             </nz-select>
         </nz-form-control>
 
+        <nz-form-label [nzSpan]="5" nzFor="codigoCampanhaExcluidaTimeA">Campanha excluída</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.codigoCampanhaExcluidaTimeA ? 'error' : ''"
+            [nzErrorTip]="errors?.codigoCampanhaExcluidaTimeA && errors?.codigoCampanhaExcluidaTimeA[0]">
+            <nz-select [(ngModel)]="command.codigoCampanhaExcluidaTimeA" name="codigoCampanhaExcluidaTimeA"
+                placeholder="Campanha excluída">
+                <nz-option [nzValue]="null" nzLabel="Em definição"></nz-option>
+                <nz-option *ngFor="let campanha of campanhas" [nzValue]="campanha.codigo" [nzLabel]="campanha.nome">
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
         <nz-form-label [nzSpan]="3" nzFor="codigoTimeB">Time B</nz-form-label>
         <nz-form-control [nzValidateStatus]="errors?.codigoTimeB ? 'error' : ''"
             [nzErrorTip]="errors?.codigoTimeB && errors?.codigoTimeB[0]">
             <nz-select [(ngModel)]="command.codigoTimeB" name="codigoTimeB" placeholder="Time B">
                 <nz-option [nzValue]="null" nzLabel="A definir"></nz-option>
                 <nz-option *ngFor="let time of times" [nzValue]="time.codigo" [nzLabel]="time.nome">
+                </nz-option>
+            </nz-select>
+        </nz-form-control>
+
+        <nz-form-label [nzSpan]="5" nzFor="codigoCampanhaExcluidaTimeB">Campanha excluída</nz-form-label>
+        <nz-form-control [nzValidateStatus]="errors?.codigoCampanhaExcluidaTimeB ? 'error' : ''"
+            [nzErrorTip]="errors?.codigoCampanhaExcluidaTimeB && errors?.codigoCampanhaExcluidaTimeB[0]">
+            <nz-select [(ngModel)]="command.codigoCampanhaExcluidaTimeB" name="codigoCampanhaExcluidaTimeB"
+                placeholder="Campanha excluída">
+                <nz-option [nzValue]="null" nzLabel="Em definição"></nz-option>
+                <nz-option *ngFor="let campanha of campanhas" [nzValue]="campanha.codigo" [nzLabel]="campanha.nome">
                 </nz-option>
             </nz-select>
         </nz-form-control>

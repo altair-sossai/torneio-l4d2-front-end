@@ -13,6 +13,8 @@ export class PlayoffCommand {
     public ordem?: number;
     public codigoTimeA?: string;
     public codigoTimeB?: string;
+    public codigoCampanhaExcluidaTimeA?: string;
+    public codigoCampanhaExcluidaTimeB?: string;
     public confrontos?: Confronto[];
 }
 
