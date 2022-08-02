@@ -27,3 +27,16 @@
         margin: 10px;
     }
 }
+
+.excluidas {
+    text-align: center;
+
+    span {
+        font-style: italic;
+        margin: 0 10px;
+    }
+
+    i {
+        color: red;
+    }
+}

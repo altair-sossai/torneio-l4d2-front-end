@@ -17,6 +17,20 @@
 <app-playoff-times [playoff]="playoff">
 </app-playoff-times>
 
+<div class="excluidas" *ngIf="playoff.campanhaExcluidaTimeA || playoff.campanhaExcluidaTimeB">
+    <i nz-icon nzType="stop" nzTheme="outline"></i>
+    <i nz-icon nzType="stop" nzTheme="outline"></i>
+    <span>Campanhas excluídas:</span>
+    <i nz-icon nzType="stop" nzTheme="outline"></i>
+    <i nz-icon nzType="stop" nzTheme="outline"></i>
+    <p *ngIf="playoff.campanhaExcluidaTimeA">
+        {{playoff.campanhaExcluidaTimeA.nome}} ({{playoff.campanhaExcluidaTimeA.nomeOriginal}})
+    </p>
+    <p *ngIf="playoff.campanhaExcluidaTimeB">
+        {{playoff.campanhaExcluidaTimeB.nome}} ({{playoff.campanhaExcluidaTimeB.nomeOriginal}})
+    </p>
+</div>
+
 <ng-container *ngIf="playoff.timeA && playoff.timeB">
     <div *ngFor="let confronto of playoff.confrontos; let i = index">
         <nz-divider nzPlain nzText="{{i + 1}}º jogo" style="font-weight: bold"></nz-divider>
