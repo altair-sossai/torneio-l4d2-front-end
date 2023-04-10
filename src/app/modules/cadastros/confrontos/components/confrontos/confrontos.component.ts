@@ -64,4 +64,26 @@ export class ConfrontosComponent implements OnInit {
       nzOnOk: () => this.pesquisar()
     });
   }
+
+  limparCampanhas(): void {
+    this.modalService.confirm({
+      nzTitle: 'Deseja realmente limpar as campanhas?',
+      nzOnOk: () => {
+        this.busy = true;
+        this.rodadaAtual = -1;
+        this.confrontoService.limparCampanhas().subscribe(_ => this.pesquisar());
+      }
+    });
+  }
+
+  sortearCampanhas(): void {
+    this.modalService.confirm({
+      nzTitle: 'Deseja realmente sortear as campanhas?',
+      nzOnOk: () => {
+        this.busy = true;
+        this.rodadaAtual = -1;
+        this.confrontoService.sortearCampanhas().subscribe(_ => this.pesquisar());
+      }
+    });
+  }
 }

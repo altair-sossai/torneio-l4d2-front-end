@@ -6,3 +6,10 @@ app-confronto {
     border-radius: 10px;
     box-shadow: 1px 1px 4px #b3b3b3;
 }
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 25px;
+}
