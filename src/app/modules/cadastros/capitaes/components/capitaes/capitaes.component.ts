@@ -21,6 +21,10 @@ export class CapitaesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.pesquisar();
+  }
+
+  pesquisar(): void {
     this.jogadorService.capitaes().subscribe({
       next: (capitaes) => this.capitaes = capitaes
     })
@@ -49,6 +53,16 @@ export class CapitaesComponent implements OnInit {
       nzTitle: 'Senha de acesso',
       nzContent: SenhaCapitaoComponent,
       nzComponentParams: { capitao, senha }
+    });
+  }
+
+  sortearCapitaes(): void {
+    this.modalService.confirm({
+      nzTitle: 'Deseja realmente sortear os capitães?',
+      nzOnOk: () => {
+        this.loading = true;
+        this.jogadorService.sortearCapitaes().subscribe(_ => this.pesquisar());
+      }
     });
   }
 }

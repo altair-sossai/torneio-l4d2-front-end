@@ -1,5 +1,12 @@
 <nz-skeleton [nzActive]="true" *ngIf="!capitaes"></nz-skeleton>
 
+<div class="buttons">
+    <button nz-button nzType="primary" (click)="sortearCapitaes()">
+        <i nz-icon nzType="sync" nzTheme="outline"></i>
+        Sortear capitães
+    </button>
+</div>
+
 <div *ngIf="capitaes" class="capitaes">
     <app-jogador *ngFor="let capitao of capitaes" [jogador]="capitao" [podeExcluir]="false" [podeAtualizar]="false">
         <button nz-button nzType="default" nzShape="circle" nz-tooltip nzTooltipTitle="Gerar senha de acesso"

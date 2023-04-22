@@ -40,6 +40,14 @@ export class JogadorService {
         return this.http.post<SenhaJogador>(`${environment.apiUrl}/api/jogadores/${steamId}/gerar-senha`, {});
     }
 
+    sortearCapitaes(): Observable<any> {
+        return this.http.put<any>(`${environment.apiUrl}/api/jogadores/sortear-capitaes`, {});
+    }
+
+    sortearSuportes(): Observable<any> {
+        return this.http.put<any>(`${environment.apiUrl}/api/jogadores/sortear-suportes`, {});
+    }
+
     verificarAutenticacao(command: AutenticarJogadorCommand): Observable<AutenticarJogadorResult> {
         return this.http.post<AutenticarJogadorResult>(`${environment.apiUrl}/api/jogadores/verificar-autenticacao`, command);
     }
