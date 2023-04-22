@@ -1,0 +1,6 @@
+<nz-skeleton [nzActive]="true" *ngIf="!suportes"></nz-skeleton>
+
+<div *ngIf="suportes" class="suportes">
+    <app-jogador *ngFor="let suporte of suportes" [jogador]="suporte" [podeExcluir]="false" [podeAtualizar]="false">
+    </app-jogador>
+</div>

@@ -28,6 +28,10 @@ export class JogadorService {
         return this.http.get<Jogador[]>(`${environment.apiUrl}/api/jogadores/capitaes`);
     }
 
+    suportes(): Observable<Jogador[]> {
+        return this.http.get<Jogador[]>(`${environment.apiUrl}/api/jogadores/suportes`);
+    }
+
     post(command: JogadorCommand): Observable<Jogador> {
         return this.http.post<Jogador>(`${environment.apiUrl}/api/jogadores`, command);
     }

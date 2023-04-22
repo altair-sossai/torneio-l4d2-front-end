@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import pt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -72,6 +72,7 @@ import { PlayoffComponent } from './modules/cadastros/playoffs/components/playof
 import { PlayoffsComponent } from './modules/cadastros/playoffs/components/playoffs/playoffs.component';
 import { CorStatusPlayoffPipe } from './modules/cadastros/playoffs/pipes/cor-status-playoff.pipe';
 import { StatusPlayoffPipe } from './modules/cadastros/playoffs/pipes/status-playoff.pipe';
+import { SuportesComponent } from './modules/cadastros/suportes/components/suportes/suportes.component';
 import { SortearJogadorComponent } from './modules/cadastros/times/components/sortear-jogador/sortear-jogador.component';
 import { TimeEditComponent } from './modules/cadastros/times/components/time-edit/time-edit.component';
 import { TimeComponent } from './modules/cadastros/times/components/time/time.component';
@@ -118,6 +119,7 @@ registerLocaleData(pt);
     TabelaResultadosComponent,
     SortearJogadorComponent,
     CapitaesComponent,
+    SuportesComponent,
     SenhaCapitaoComponent,
     LoginCapitaoComponent,
     ProximoConfrontoComponent,
