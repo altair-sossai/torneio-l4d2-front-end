@@ -80,8 +80,8 @@ export class SortearJogadorComponent implements OnInit {
 
   iniciarRolateTimes() {
     const options = {
-      speed: 10,
-      duration: 3,
+      speed: 20,
+      duration: 2,
       stopImageNumber: this.times?.indexOf(this.time!),
       startCallback: () => this.command.time = this.time!.codigo,
       stopCallback: () => {
@@ -95,8 +95,8 @@ export class SortearJogadorComponent implements OnInit {
 
   iniciarRolateJogadores() {
     const options = {
-      speed: 10,
-      duration: 3,
+      speed: 20,
+      duration: 2,
       stopImageNumber: this.jogadores?.indexOf(this.jogador!),
       startCallback: () => this.command.jogador = this.jogador!.steamId,
       stopCallback: () => {
