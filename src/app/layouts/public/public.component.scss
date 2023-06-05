@@ -3,10 +3,6 @@
     height: 100vh;
 }
 
-nz-layout {
-    background-color: white;
-}
-
 nz-footer {
     text-align: center;
 }
@@ -25,7 +21,6 @@ nz-header {
         justify-content: space-between;
         align-items: center;
 
-        color: white;
         font-size: 20px;
 
         @media (max-width: 600px) {
