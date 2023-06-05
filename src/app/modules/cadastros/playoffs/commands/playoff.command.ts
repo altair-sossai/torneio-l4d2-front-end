@@ -30,6 +30,8 @@ export class Confronto {
     public codigoCampanha?: number | null;
     public data?: Date | null;
     public status?: StatusConfronto;
+    public inicioEstatistica: string | undefined;
+    public fimEstatistica: string | undefined;
     public pontosConquistadosTimeA?: number;
     public pontosConquistadosTimeB?: number;
     public penalidadeTimeA?: number;

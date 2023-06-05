@@ -11,6 +11,12 @@
         <i nz-icon nzType="calendar"></i>
         Período
     </button>
+    <a nz-button nzType="default" nzSize="small" target="_blank"
+        href="https://l4d2-playstats.azurewebsites.net/server/vanilla4mod/matches/{{confronto?.inicioEstatistica}}/{{confronto?.fimEstatistica}}/statistics"
+        *ngIf="confronto?.status === StatusConfronto.Realizado && confronto?.inicioEstatistica && confronto?.fimEstatistica">
+        <span nz-icon nzType="line-chart" nzTheme="outline"></span>
+        Estatísticas
+    </a>
     <button nz-button nzType="default" nzSize="small" (click)="editar()" *ngIf="podeEditar">
         <i nz-icon nzType="edit"></i>
         Editar

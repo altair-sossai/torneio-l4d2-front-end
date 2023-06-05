@@ -11,6 +11,8 @@ export class Confronto {
     public codigoTimeA: string | undefined;
     public codigoTimeB: string | undefined;
     public codigoTimeVencedor: string | undefined;
+    public inicioEstatistica: string | undefined;
+    public fimEstatistica: string | undefined;
     public pontosConquistadosTimeA!: number;
     public pontosConquistadosTimeB!: number;
     public penalidadeTimeA!: number;
