@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NzModalRef } from 'ng-zorro-antd/modal';
+import { PlaystatsService } from 'src/app/modules/playstats/services/playstats.service';
 import { Campanha } from '../../../campanhas/models/campanha';
 import { CampanhaService } from '../../../campanhas/services/campanha.service';
 import { Time } from '../../../times/models/time';
@@ -30,7 +31,8 @@ export class ConfrontoEditComponent implements OnInit {
     private modal: NzModalRef,
     private confrontoService: ConfrontoService,
     private campanhaService: CampanhaService,
-    private timeService: TimeService) {
+    private timeService: TimeService,
+    private playstatsService: PlaystatsService) {
     this.campanhaService.get().subscribe(campanhas => this.campanhas = campanhas);
     this.timeService.get().subscribe(times => this.times = times);
   }
@@ -55,6 +57,40 @@ export class ConfrontoEditComponent implements OnInit {
       this.command = confronto;
       this.busy = false;
     });
+  }
+
+  playstats(): void {
+    this.busy = true;
+    this.playstatsService.lastMatch().subscribe(lastMatch => {
+      if (!this.command)
+        return;
+
+      const match = lastMatch.match;
+      const statistics = match.statistics;
+
+      this.command.status = StatusConfronto.Realizado;
+      this.command.inicioEstatistica = statistics[0];
+      this.command.fimEstatistica = statistics[statistics.length - 1];
+
+      for (const team of match.teams) {
+        for (const player of team.players) {
+          for (const time of this.times) {
+            for (const jogador of time.jogadores) {
+              if (player.communityId != jogador.steamId)
+                continue;
+
+              if (this.command.codigoTimeA == time.codigo)
+                this.command.pontosConquistadosTimeA = team.score;
+
+              if (this.command.codigoTimeB == time.codigo)
+                this.command.pontosConquistadosTimeB = team.score;
+            }
+          }
+        }
+      }
+
+      this.busy = false;
+    }, () => this.busy = false);
   }
 
   salvar(): void {
