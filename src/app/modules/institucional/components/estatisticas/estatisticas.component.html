@@ -1,0 +1,52 @@
+<nz-table #jogadoresTable [nzData]="jogadores" [nzFrontPagination]="false" nzSize="small">
+    <thead>
+        <tr>
+            <th>Jogador</th>
+            <th class="text-center">Mortes</th>
+            <th class="text-center">Vezes incapacitado</th>
+            <th class="text-center">Dano recebido</th>
+            <th class="text-center">Commons - Mortos</th>
+            <th class="text-center">Infectados Especiais - Mortos</th>
+            <th class="text-center">Infectados Especiais - Dano causado</th>
+            <th class="text-center">Tank - Dano causado</th>
+            <th class="text-center">Tank - Pedras tomadas</th>
+            <th class="text-center">Witch - Dano causado</th>
+            <th class="text-center">Skeets</th>
+            <th class="text-center">Levels</th>
+            <th class="text-center">Crowns (Matar a Witch com 1 disparo)</th>
+            <th class="text-center">Fire-friend dado (FFG)</th>
+            <th class="text-center">Dano total</th>
+            <th class="text-center">Tank - Dano causado</th>
+            <th class="text-center">Dano - Spitter</th>
+            <th class="text-center">Hunter - Dano por pounces</th>
+            <th class="text-center">MVP (SI)</th>
+            <th class="text-center">MVP (Common)</th>
+            <th class="text-center">LVP (FF)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let jogador of jogadoresTable.data">
+            <td>{{jogador.nome}}</td>
+            <td class="text-center">{{jogador.died|number}}</td>
+            <td class="text-center">{{jogador.incaps|number}}</td>
+            <td class="text-center">{{jogador.dmgTaken|number}}</td>
+            <td class="text-center">{{jogador.common|number}}</td>
+            <td class="text-center">{{jogador.siKilled|number}}</td>
+            <td class="text-center">{{jogador.siDamage|number}}</td>
+            <td class="text-center">{{jogador.tankDamage|number}}</td>
+            <td class="text-center">{{jogador.rockEats|number}}</td>
+            <td class="text-center">{{jogador.witchDamage|number}}</td>
+            <td class="text-center">{{jogador.skeets|number}}</td>
+            <td class="text-center">{{jogador.levels|number}}</td>
+            <td class="text-center">{{jogador.crowns|number}}</td>
+            <td class="text-center">{{jogador.ffGiven|number}}</td>
+            <td class="text-center">{{jogador.dmgTotal|number}}</td>
+            <td class="text-center">{{jogador.dmgTank|number}}</td>
+            <td class="text-center">{{jogador.dmgSpit|number}}</td>
+            <td class="text-center">{{jogador.hunterDpDmg|number}}</td>
+            <td class="text-center">{{jogador.mvpSiDamage|number}}</td>
+            <td class="text-center">{{jogador.mvpCommon|number}}</td>
+            <td class="text-center">{{jogador.lvpFfGiven|number}}</td>
+        </tr>
+    </tbody>
+</nz-table>

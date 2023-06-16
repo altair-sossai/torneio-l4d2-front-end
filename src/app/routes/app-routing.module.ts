@@ -14,6 +14,7 @@ import { SuportesComponent } from '../modules/cadastros/suportes/components/supo
 import { TimesComponent } from '../modules/cadastros/times/components/times/times.component';
 import { LoginCapitaoComponent } from '../modules/capitaes/components/login-capitao/login-capitao.component';
 import { ProximoConfrontoComponent } from '../modules/capitaes/components/proximo-confronto/proximo-confronto.component';
+import { EstatisticasComponent } from '../modules/institucional/components/estatisticas/estatisticas.component';
 import { HomeComponent } from '../modules/institucional/components/home/home.component';
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
         path: '',
         component: PublicComponent,
         children: [
-            { path: '', component: HomeComponent }
+            { path: '', component: HomeComponent },
+            { path: 'estatisticas', component: EstatisticasComponent }
         ]
     },
     {

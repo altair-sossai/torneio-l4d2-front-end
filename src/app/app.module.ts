@@ -83,6 +83,7 @@ import { ProximoConfrontoComponent } from './modules/capitaes/components/proximo
 import { ResponderSugestaoDataComponent } from './modules/capitaes/components/responder-sugestao-data/responder-sugestao-data.component';
 import { SugerirNovaDataComponent } from './modules/capitaes/components/sugerir-nova-data/sugerir-nova-data.component';
 import { HorarioPipe } from './modules/capitaes/pipes/horario';
+import { EstatisticasComponent } from './modules/institucional/components/estatisticas/estatisticas.component';
 import { HomeComponent } from './modules/institucional/components/home/home.component';
 import { TabelaResultadosComponent } from './modules/institucional/components/tabela-resultados/tabela-resultados.component';
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -142,7 +143,8 @@ registerLocaleData(pt);
     PlayoffTimeComponent,
     PlayoffTimesComponent,
     PlayoffMatchComponent,
-    PlayoffMatchsComponent
+    PlayoffMatchsComponent,
+    EstatisticasComponent
   ],
   imports: [
     BrowserModule,
