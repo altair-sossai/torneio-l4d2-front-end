@@ -16,6 +16,12 @@
         Os seis primeiros times da tabela serão classificados para a fase de playoff (mata-mata)
     </p>
     <p>
+        Regras do torneio
+        <a href="https://github.com/altair-sossai/torneio-l4d2-regras" target="_blank">
+            Aqui
+        </a>
+    </p>
+    <p>
         Os jogos são transmitidos pela
         <a href="https://www.twitch.tv/torneiol4d2" target="_blank">
             Twitch
@@ -64,7 +70,7 @@
 </section>
 -->
 
-<section>
+<section id="primeira-fase-classificacao">
     <h3>Fase 1 - Classificação por pontos corridos</h3>
     <p>
         Abaixo é possível acompanhar a tabela geral de pontos, o total de vitorias / derrotas e pontos conquistados por
@@ -77,7 +83,7 @@
     <nz-skeleton [nzActive]="true" *ngIf="!classificacao"></nz-skeleton>
 </section>
 
-<section *ngIf="confrontosAgendados && confrontosAgendados.length">
+<section *ngIf="confrontosAgendados && confrontosAgendados.length" id="primeira-fase-proximos-jogos">
     <h3>Próximos jogos agendados</h3>
     <p>
         Abaixo é possível conferir os próximos jogos do torneio.
@@ -89,7 +95,7 @@
     </div>
 </section>
 
-<section>
+<section id="primeira-fase-confrontos">
     <h3>Fase 1 - Todos os confrontos</h3>
     <p>
         Abaixo é possível acompanhar o resultado de todos os confrontos.
@@ -106,7 +112,7 @@
     <nz-skeleton [nzActive]="true" *ngIf="!rodadas"></nz-skeleton>
 </section>
 
-<section>
+<section id="equipes">
     <h3>Equipes</h3>
     <p>
         Abaixo é possível visualizar todos os times participantes e seus respectivos jogadores.
@@ -120,7 +126,7 @@
     <nz-skeleton [nzActive]="true" *ngIf="!times"></nz-skeleton>
 </section>
 
-<section>
+<section id="participantes">
     <h3>Participantes</h3>
     <p>
         Abaixo é possível visualizar todos os participantes do torneio.
