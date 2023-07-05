@@ -28,13 +28,17 @@
 .middle {
     margin-bottom: 40px;
     width: 400px;
-    background: white;
+    background: black;
+    border: 3px solid white;
     padding: 30px 25px;
     border-radius: 10px;
 }
 
 .logo-container {
     text-align: center;
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 15px;
 }
 
 hr {
