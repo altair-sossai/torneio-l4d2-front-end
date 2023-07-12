@@ -1,0 +1,43 @@
+.container {
+    width: 200px;
+    height: 290px;
+    border: 1px solid white;
+    border-radius: 5px;
+
+    .hidden {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 85px;
+    }
+
+    .jogador {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+
+        img {
+            width: 100%;
+        }
+
+        .posicao,
+        .foto,
+        .quantidade {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .posicao {
+            margin: 8px;
+        }
+
+        .quantidade {
+            font-size: 30px;
+        }
+    }
+}

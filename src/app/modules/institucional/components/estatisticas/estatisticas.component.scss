@@ -1,3 +1,32 @@
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 10px;
+
+    nz-select {
+        width: 100%;
+    }
+
+    .jogadores {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .todos-jogadores {
+        margin-top: 25px;
+
+        nz-table {
+            width: fit-content;
+        }
+    }
+}
+
 .text-center {
     text-align: center;
+}
+
+.slim {
+    width: 1px;
+    white-space: nowrap;
 }

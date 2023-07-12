@@ -1,0 +1,13 @@
+<div class="container">
+    <div *ngIf="!jogador.show" (click)="jogador.show = true" class="hidden">
+        #{{jogador.posicao}}
+    </div>
+
+    <div *ngIf="jogador.show" class="jogador">
+        <span class="posicao">#{{jogador.posicao}} - {{jogador.nome}}</span>
+        <div class="foto">
+            <img [src]="jogador.urlFotoPerfil" [alt]="jogador.nome" />
+        </div>
+        <span class="quantidade">{{jogador.quantidade | number}}</span>
+    </div>
+</div>
