@@ -56,8 +56,9 @@
     </div>
 
 </section>
+-->
 
-<section>
+<section *ngIf="false && playoff">
     <h3>Fase 2 - Play-off</h3>
     <p>
         Abaixo é possível acompanhar os jogos realizados na fase de play-off, clique no jogo para ver mais detalhes.
@@ -68,7 +69,6 @@
     </div>
     <nz-skeleton [nzActive]="true" *ngIf="!playoff || !classificacao"></nz-skeleton>
 </section>
--->
 
 <section id="primeira-fase-classificacao">
     <h3>Fase 1 - Classificação por pontos corridos</h3>
