@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   times: Time[] | undefined;
   classificacao: Time[] | undefined;
   rodadaAtual: number = 0;
+  fase1Finalizada: boolean = false;
   rodadas: Rodada[] | undefined;
   playoff: Playoff[] | undefined;
   confrontosAgendados: Confronto[] | undefined;
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   atualizarRodadaAtual(): void {
-    let rodadaAtual = Infinity;
+    let rodadaAtual = this.rodadas?.length || Infinity;
 
     for (const rodada of this.rodadas || []) {
       for (const confronto of rodada.confrontos || []) {
@@ -57,6 +58,7 @@ export class HomeComponent implements OnInit {
     }
 
     this.rodadaAtual = rodadaAtual - 1;
+    this.fase1Finalizada = this.rodadas?.length == rodadaAtual;
   }
 
   atualizarConfrontosAgendados(): void {
