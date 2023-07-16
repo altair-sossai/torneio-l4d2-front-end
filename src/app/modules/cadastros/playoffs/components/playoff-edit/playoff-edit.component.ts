@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NzModalRef } from 'ng-zorro-antd/modal';
+import { PlaystatsService } from 'src/app/modules/playstats/services/playstats.service';
 import { Campanha } from '../../../campanhas/models/campanha';
 import { CampanhaService } from '../../../campanhas/services/campanha.service';
 import { StatusConfronto, StatusConfrontos } from '../../../confrontos/enums/status-confronto';
@@ -34,7 +35,8 @@ export class PlayoffEditComponent implements OnInit {
     private modal: NzModalRef,
     private playoffService: PlayoffService,
     private campanhaService: CampanhaService,
-    private timeService: TimeService) {
+    private timeService: TimeService,
+    private playstatsService: PlaystatsService) {
     this.campanhaService.get().subscribe(campanhas => this.campanhas = campanhas);
     this.timeService.get().subscribe(times => this.times = times);
   }
@@ -60,6 +62,44 @@ export class PlayoffEditComponent implements OnInit {
       this.command = playoff as PlayoffCommand;
       this.busy = false;
     });
+  }
+
+  playstats(): void {
+    this.busy = true;
+    this.playstatsService.lastMatch().subscribe(lastMatch => {
+      if (!this.command)
+        return;
+
+      const match = lastMatch.match;
+      const statistics = match.statistics;
+
+      const confronto = this.command.confrontos?.find(f => f.status == StatusConfronto.Aguardando);
+      if (!confronto)
+        return;
+
+      confronto.status = StatusConfronto.Realizado;
+      confronto.inicioEstatistica = statistics[0];
+      confronto.fimEstatistica = statistics[statistics.length - 1];
+
+      for (const team of match.teams) {
+        for (const player of team.players) {
+          for (const time of this.times) {
+            for (const jogador of time.jogadores) {
+              if (player.communityId != jogador.steamId)
+                continue;
+
+              if (this.command.codigoTimeA == time.codigo)
+                confronto.pontosConquistadosTimeA = team.score;
+
+              if (this.command.codigoTimeB == time.codigo)
+                confronto.pontosConquistadosTimeB = team.score;
+            }
+          }
+        }
+      }
+
+      this.busy = false;
+    }, () => this.busy = false);
   }
 
   salvar(): void {

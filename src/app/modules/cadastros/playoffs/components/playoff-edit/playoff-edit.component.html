@@ -180,5 +180,6 @@
 
 <div *nzModalFooter>
     <button nz-button nzType="default" (click)="close()">Cancelar</button>
+    <button nz-button nzType="primary" (click)="playstats()" [disabled]="!command" [nzLoading]="busy">Playstats</button>
     <button nz-button nzType="primary" (click)="salvar()" [disabled]="!command" [nzLoading]="busy">Salvar</button>
 </div>
