@@ -2,7 +2,12 @@
     <ng-container *ngIf="time">
         <h2>{{time.nome}}</h2>
         <nz-divider></nz-divider>
-        <p>Classificado(a) automaticamente para as semifinais</p>
+        <p *ngIf="!fase1Finalizada">
+            Fase de grupo ainda em andamento, o resultado pode mudar!
+        </p>
+        <p *ngIf="fase1Finalizada">
+            Classificado automaticamente para as semifinais.
+        </p>
     </ng-container>
 
     <ng-container *ngIf="playoff">

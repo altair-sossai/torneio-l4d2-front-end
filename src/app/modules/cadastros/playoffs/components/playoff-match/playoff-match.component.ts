@@ -11,6 +11,7 @@ import { PlayoffComponent } from '../playoff/playoff.component';
 })
 export class PlayoffMatchComponent implements OnInit {
 
+  @Input() fase1Finalizada!: boolean;
   @Input() match: any;
 
   time?: Time;

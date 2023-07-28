@@ -3,17 +3,14 @@
 <section>
     <h3>Objetivo</h3>
     <p>
-        Realizar uma disputa saudável no jogo em que a maioria dos participantes se conheceu.
-        Não temos premiação, essa é uma competição leve para reforçar os laços de amizade,
-        elevar o nível de habilidade de todos ao realizar um rodízio nos times,
-        divulgar e manter o jogo vivo e prestigiar os participantes na internet
-        (Grupos do Facebook, Comunidade da Steam e Comunidade Nit).
-        Dependendo de como ocorrer esse torneio, realizaremos outros no futuro,
-        com mais jogadores, maior alcance de divulgação e premiações.
+        Promover uma disputa saudável entre os participantes, que já se conhecem e possuem laços de amizade dentro e
+        fora do jogo.
+        Essa competição tem o objetivo de elevar o nível de habilidade de todos os envolvidos, proporcionando uma
+        experiência leve e agradável a todos.
     </p>
     <p>
-        O Campeonato será dividido em duas fases, uma primeira fase de pontos corridos onde todos os times se enfrentam.
-        Os seis primeiros times da tabela serão classificados para a fase de playoff (mata-mata)
+        Se o torneio for bem-sucedido, planejamos realizar mais eventos no futuro, com a participação de um número maior
+        de jogadores e uma divulgação mais ampla, além de oferecer premiações atrativas para os vencedores
     </p>
     <p>
         <span>Regras do torneio: </span>
@@ -34,6 +31,13 @@
         <a href="https://www.youtube.com/@TorneioLeft4Dead2Brasil" target="_blank">
             <span>YouTube </span>
             <i nz-icon nzType="youtube"></i>
+        </a>
+    </p>
+    <p>
+        <span>Gostaria de participar? </span>
+        <a href="https://wa.me/5519996988174?text=Desejo%20participar%20do%20torneio" target="_blank">
+            <span>Clique aqui </span>
+            <span nz-icon nzType="whats-app" nzTheme="outline"></span>
         </a>
     </p>
 </section>
@@ -67,7 +71,7 @@
 </section>
 -->
 
-<section *ngIf="fase1Finalizada && playoff">
+<section *ngIf="exibirPlayoff && playoff">
     <h3>Fase 2 - Play-off</h3>
     <p>
         Os 6 melhores times da primeira fase avançam para esta etapa, que será disputada no formato mata-mata. Os times
@@ -83,7 +87,8 @@
     </p>
     <hr />
     <div *ngIf="playoff && classificacao">
-        <app-playoff-matchs [rodadas]="playoff" [classificacao]="classificacao"></app-playoff-matchs>
+        <app-playoff-matchs [fase1Finalizada]="fase1Finalizada" [rodadas]="playoff"
+            [classificacao]="classificacao"></app-playoff-matchs>
     </div>
     <nz-skeleton [nzActive]="true" *ngIf="!playoff || !classificacao"></nz-skeleton>
 </section>

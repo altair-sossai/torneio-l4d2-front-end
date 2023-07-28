@@ -17,11 +17,13 @@ import { TimeService } from 'src/app/modules/cadastros/times/services/time.servi
 })
 export class HomeComponent implements OnInit {
 
+  fase1Finalizada: boolean = false;
+  exibirPlayoff: boolean = false;
+
   jogadores: Jogador[] | undefined;
   times: Time[] | undefined;
   classificacao: Time[] | undefined;
   rodadaAtual: number = 0;
-  fase1Finalizada: boolean = false;
   rodadas: Rodada[] | undefined;
   playoff: Playoff[] | undefined;
   confrontosAgendados: Confronto[] | undefined;
@@ -59,6 +61,7 @@ export class HomeComponent implements OnInit {
 
     this.rodadaAtual = rodadaAtual - 1;
     this.fase1Finalizada = this.rodadas?.length == rodadaAtual;
+    this.exibirPlayoff = rodadaAtual >= (this.rodadas?.length || 0) - 2;
   }
 
   atualizarConfrontosAgendados(): void {

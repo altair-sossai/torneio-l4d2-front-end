@@ -10,6 +10,7 @@ import { Rodada } from '../../models/rodada';
 })
 export class PlayoffMatchsComponent implements OnInit {
 
+  @Input() fase1Finalizada!: boolean;
   @Input() rodadas!: Rodada[];
   @Input() classificacao!: Time[];
 
