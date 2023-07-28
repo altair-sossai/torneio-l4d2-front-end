@@ -17,6 +17,11 @@
         <span nz-icon nzType="line-chart" nzTheme="outline"></span>
         Estatísticas
     </a>
+    <a nz-button nzType="default" nzSize="small" (click)="addAgenda()"
+        *ngIf="confronto?.status === StatusConfronto.Aguardando">
+        <span nz-icon nzType="calendar" nzTheme="outline"></span>
+        Add a agenda
+    </a>
     <button nz-button nzType="default" nzSize="small" (click)="editar()" *ngIf="podeEditar">
         <i nz-icon nzType="edit"></i>
         Editar
