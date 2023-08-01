@@ -18,7 +18,7 @@
         Estatísticas
     </a>
     <a nz-button nzType="default" nzSize="small" (click)="addAgenda()"
-        *ngIf="confronto?.status === StatusConfronto.Aguardando">
+        *ngIf="confronto?.status === StatusConfronto.Aguardando && confronto?.data">
         <span nz-icon nzType="calendar" nzTheme="outline"></span>
         Add a agenda
     </a>
