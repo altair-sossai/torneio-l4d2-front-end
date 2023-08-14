@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
     }
 
     this.rodadaAtual = rodadaAtual - 1;
-    this.fase1Finalizada = this.rodadas?.length == rodadaAtual;
+    this.fase1Finalizada = this.rodadas?.length == rodadaAtual && this.rodadas[this.rodadaAtual].confrontos?.filter(f => f.status == StatusConfronto.Aguardando).length === 0;
     this.exibirPlayoff = rodadaAtual >= (this.rodadas?.length || 0) - 2;
   }
 
