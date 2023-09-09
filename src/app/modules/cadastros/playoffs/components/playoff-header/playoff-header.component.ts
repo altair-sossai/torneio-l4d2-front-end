@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { StatusConfronto } from '../../../confrontos/enums/status-confronto';
 import { Confronto } from '../../models/playoff';
 
 @Component({
@@ -7,5 +8,7 @@ import { Confronto } from '../../models/playoff';
   styleUrls: ['./playoff-header.component.scss']
 })
 export class PlayoffHeaderComponent {
+  StatusConfronto = StatusConfronto;
+
   @Input() confronto!: Confronto;
 }
