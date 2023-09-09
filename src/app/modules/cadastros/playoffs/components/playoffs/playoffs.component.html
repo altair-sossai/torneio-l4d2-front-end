@@ -12,7 +12,7 @@
 
         <nz-tabset nzTabPosition="left">
             <nz-tab *ngFor="let playoff of rodada.playoffs"
-                nzTitle="{{ (playoff.timeA?.capitao?.nome || '(A definir)') + ' vs ' + (playoff.timeB?.capitao?.nome || '(A definir)') }}">
+                nzTitle="{{ (playoff.timeA?.nome || '(A definir)') + ' vs ' + (playoff.timeB?.nome || '(A definir)') }}">
                 <app-playoff [playoff]="playoff" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-playoff>
             </nz-tab>
         </nz-tabset>

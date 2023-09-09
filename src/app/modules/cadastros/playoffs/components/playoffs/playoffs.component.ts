@@ -43,10 +43,13 @@ export class PlayoffsComponent implements OnInit {
   }
 
   atualizarRodadaAtual(): void {
-    let rodadaAtual = Infinity;
+    let rodadaAtual = this.rodadas.length;
 
     for (const rodada of this.rodadas || []) {
       for (const playoff of rodada.playoffs || []) {
+        if (playoff.status == StatusPlayoff.EmAndamento)
+          rodadaAtual = Math.min(rodadaAtual, rodada.rodada || 0);
+
         if (playoff.status !== StatusPlayoff.Aguardando)
           continue
 
