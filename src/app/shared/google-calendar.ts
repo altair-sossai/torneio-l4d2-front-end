@@ -15,7 +15,7 @@ export class GoogleCalendar {
         const titulo = `[L4D2] - ${confronto.timeA.nome} vs ${confronto.timeB.nome}`;
 
         const descricao = `Venha assistir ao jogo entre as equipes ${confronto.timeA.nome} e ${confronto.timeB.nome} no torneio de Left 4 Dead 2!<br/>
-Será transmitido ao vivo no dia <b>${this.formatDate(inicio)}</b>, às <b>${this.formatTime(inicio)}</b>, na campanha <b>${confronto.campanha?.nomeOriginal}</b>, em uma eletrizante batalha da ${confronto.rodada}ª Rodada.<br/>
+Será transmitido ao vivo no dia <b>${this.formatDate(inicio)}</b>, às <b>${this.formatTime(inicio)}</b>, na campanha <b>${confronto.campanha?.nomeOriginal}</b>.<br/>
 AO VIVO EM: <a href="${twitch}" target="_blank">${twitch}</a><br/>
 Para mais informações, acesse: <a href="${site}" target="_blank">${site}</a><br/>
 Não perca essa emocionante e intensa batalha!<br/>
@@ -38,7 +38,7 @@ Organização do torneio`;
         const titulo = `[L4D2] - ${timeA.nome} vs ${timeB.nome}`;
 
         const descricao = `Venha assistir ao jogo entre as equipes ${timeA.nome} e ${timeB.nome} no torneio de Left 4 Dead 2!<br/>
-Será transmitido ao vivo no dia <b>${this.formatDate(inicio)}</b>, às <b>${this.formatTime(inicio)}</b>, na campanha <b>${confronto.campanha?.nomeOriginal}</b>, em uma eletrizante batalha da fase de mata-mata.<br/>
+Será transmitido ao vivo no dia <b>${this.formatDate(inicio)}</b>, às <b>${this.formatTime(inicio)}</b>, na campanha <b>${confronto.campanha?.nomeOriginal}</b>.<br/>
 AO VIVO EM: <a href="${twitch}" target="_blank">${twitch}</a><br/>
 Para mais informações, acesse: <a href="${site}" target="_blank">${site}</a><br/>
 Não perca essa emocionante e intensa batalha!<br/>

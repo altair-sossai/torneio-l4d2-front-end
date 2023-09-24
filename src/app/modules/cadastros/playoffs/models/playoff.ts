@@ -40,4 +40,7 @@ export class Confronto {
     public timeAVenceu?: boolean;
     public timeBVenceu?: boolean;
     public observacoes?: string;
+    public timeA?: Time;
+    public timeB?: Time;
+    public timeVencedor?: Time;
 }

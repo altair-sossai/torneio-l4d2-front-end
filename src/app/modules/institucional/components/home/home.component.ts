@@ -5,7 +5,8 @@ import { Rodada } from 'src/app/modules/cadastros/confrontos/models/rodada';
 import { ConfrontoService } from 'src/app/modules/cadastros/confrontos/services/confronto.service';
 import { Jogador } from 'src/app/modules/cadastros/jogadores/models/jogador';
 import { JogadorService } from 'src/app/modules/cadastros/jogadores/services/jogador.service';
-import { Rodada as Playoff } from 'src/app/modules/cadastros/playoffs/models/rodada';
+import { Confronto as ConfrontoPlayoff, Playoff } from 'src/app/modules/cadastros/playoffs/models/playoff';
+import { Rodada as RodadaPlayoff } from 'src/app/modules/cadastros/playoffs/models/rodada';
 import { PlayoffService } from 'src/app/modules/cadastros/playoffs/services/playoff.service';
 import { Time } from 'src/app/modules/cadastros/times/models/time';
 import { TimeService } from 'src/app/modules/cadastros/times/services/time.service';
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   classificacao: Time[] | undefined;
   rodadaAtual: number = 0;
   rodadas: Rodada[] | undefined;
-  playoff: Playoff[] | undefined;
+  playoff: RodadaPlayoff[] | undefined;
   confrontosAgendados: Confronto[] | undefined;
 
   constructor(
@@ -42,9 +43,12 @@ export class HomeComponent implements OnInit {
     this.confrontoService.rodadas().subscribe(rodadas => {
       this.rodadas = rodadas;
       this.atualizarRodadaAtual();
-      this.atualizarConfrontosAgendados();
+
+      this.playoffService.rodadas().subscribe(playoff => {
+        this.playoff = playoff;
+        this.atualizarConfrontosAgendados();
+      });
     });
-    this.playoffService.rodadas().subscribe(playoff => this.playoff = playoff);
   }
 
   atualizarRodadaAtual(): void {
@@ -65,8 +69,16 @@ export class HomeComponent implements OnInit {
   }
 
   atualizarConfrontosAgendados(): void {
-    this.confrontosAgendados = this.rodadas
-      ?.reduce((confrontos, rodada) => confrontos.concat(rodada?.confrontos!), [] as Confronto[])
+    const faseGrupos = this.rodadas
+      ?.reduce((confrontos, rodada) => confrontos.concat(rodada?.confrontos!), [] as Confronto[]);
+
+    const playoffs = this.playoff
+      ?.reduce((playoffs, rodada) => playoffs.concat(rodada?.playoffs!), [] as Playoff[])
+      ?.reduce((confrontos, rodada) => confrontos.concat(rodada?.confrontos!), [] as ConfrontoPlayoff[])
+      ?.map(confronto => confronto as Confronto);
+
+    this.confrontosAgendados = faseGrupos
+      ?.concat(playoffs!)
       .filter(confronto => confronto.status === StatusConfronto.Aguardando && confronto.data)
       .sort((a, b) => (a.data! > b.data!) ? 1 : -1);
   }

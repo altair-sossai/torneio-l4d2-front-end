@@ -3,9 +3,10 @@
 <section>
     <h3>Objetivo</h3>
     <p>
-        Promover um caos entre dois grupos formados por pessoas que já se conhecem e possuem laços de amizade dentro e fora do jogo. 
-        Essa competição tem o objetivo de dividir mais ainda a comunidade e elevar o nível de desprezo de todos os envolvidos,
-        proporcionando uma experiência horrível e desagradável a todos. <i>#piada</i>
+        Promover uma disputa saudável entre os participantes, que já se conhecem e possuem laços de amizade dentro e
+        fora do jogo.
+        Essa competição tem o objetivo de elevar o nível de habilidade de todos os envolvidos, proporcionando uma
+        experiência leve e agradável a todos.
     </p>
     <p>
         Se o torneio for bem-sucedido, planejamos realizar mais eventos no futuro, com a participação de um número maior
@@ -39,6 +40,18 @@
             <span nz-icon nzType="whats-app" nzTheme="outline"></span>
         </a>
     </p>
+</section>
+
+<section *ngIf="confrontosAgendados && confrontosAgendados.length" id="primeira-fase-proximos-jogos">
+    <h3>Próximos jogos agendados</h3>
+    <p>
+        Abaixo é possível conferir os próximos jogos do torneio.
+    </p>
+    <hr />
+    <div class="confrontos">
+        <app-confronto *ngFor="let confronto of confrontosAgendados" [confronto]="confronto" [podeEditar]="false">
+        </app-confronto>
+    </div>
 </section>
 
 <!--
@@ -110,18 +123,6 @@
         <app-tabela-resultados [classificacao]="classificacao"></app-tabela-resultados>
     </div>
     <nz-skeleton [nzActive]="true" *ngIf="!classificacao"></nz-skeleton>
-</section>
-
-<section *ngIf="confrontosAgendados && confrontosAgendados.length" id="primeira-fase-proximos-jogos">
-    <h3>Próximos jogos agendados</h3>
-    <p>
-        Abaixo é possível conferir os próximos jogos do torneio.
-    </p>
-    <hr />
-    <div class="confrontos">
-        <app-confronto *ngFor="let confronto of confrontosAgendados" [confronto]="confronto" [podeEditar]="false">
-        </app-confronto>
-    </div>
 </section>
 
 <section id="primeira-fase-confrontos">
