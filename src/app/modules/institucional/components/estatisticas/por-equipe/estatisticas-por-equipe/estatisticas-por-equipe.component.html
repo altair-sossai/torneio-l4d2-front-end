@@ -3,11 +3,28 @@
 <div class="container" *ngIf="!loading">
     <div>
         <label>Equipe:</label>
-        <nz-select [(ngModel)]="equipeAtual" name="equipeAtual" placeholder="Equipe">
+        <nz-select [(ngModel)]="equipeAtual" (ngModelChange)="chart($event)" name="equipeAtual" placeholder="Equipe">
             <nz-option *ngFor="let equipe of equipes" [nzValue]="equipe" nzLabel="{{equipe.time.nome}}">
             </nz-option>
         </nz-select>
     </div>
 
-    <pre>{{equipeAtual?.confrontos|json}}</pre>
+    <div class="charts">
+        <div>
+            <canvas baseChart [data]="charts?.mvpSiDamage.data" [options]="charts?.mvpSiDamage.options" type="line"
+                *ngIf="charts?.mvpSiDamage">
+            </canvas>
+        </div>
+
+        <div>
+            <canvas baseChart [data]="charts?.mvpCommon.data" [options]="charts?.mvpCommon.options" type="line"
+                *ngIf="charts?.mvpCommon">
+            </canvas>
+        </div>
+    </div>
+
+    <p>
+        * O jogador que ficar em primeiro lugar como MVP recebe 8pts,
+        em segundo 4pts, em terceiro 2pts e em quarto recebe 1pt
+    </p>
 </div>

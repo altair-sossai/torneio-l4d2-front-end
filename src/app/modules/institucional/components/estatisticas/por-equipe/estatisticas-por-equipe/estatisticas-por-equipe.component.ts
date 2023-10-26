@@ -13,6 +13,8 @@ export class EstatisticasPorEquipeComponent implements OnInit {
   public equipeAtual?: EquipeModel;
   public equipes?: EquipeModel[];
 
+  public charts: any = null;
+
   constructor(private estatisticasService: EstatisticasService) { }
 
   ngOnInit(): void {
@@ -22,4 +24,46 @@ export class EstatisticasPorEquipeComponent implements OnInit {
     });
   }
 
+  chart(equipe: EquipeModel): void {
+    const mvpSiDamage = {
+      data: {
+        labels: equipe.confrontos.map(m => m.adversario.nome),
+        datasets: equipe.time.jogadores.map(jogador => {
+          return {
+            label: jogador.nome,
+            data: equipe.confrontos.map(confronto => confronto.jogadores.find(f => f.steamId == jogador.steamId)?.pointsMvpSiDamage || 0)
+          }
+        })
+      },
+      options: {
+        plugins: {
+          legend: { position: 'bottom', },
+          title: { display: true, text: 'Pontos de MVP' }
+        }
+      }
+    };
+
+    const mvpCommon = {
+      data: {
+        labels: equipe.confrontos.map(m => m.adversario.nome),
+        datasets: equipe.time.jogadores.map(jogador => {
+          return {
+            label: jogador.nome,
+            data: equipe.confrontos.map(confronto => confronto.jogadores.find(f => f.steamId == jogador.steamId)?.pointsMvpCommon || 0)
+          }
+        })
+      },
+      options: {
+        plugins: {
+          legend: { position: 'bottom', },
+          title: { display: true, text: 'Pontos de MVP (Commons)' }
+        }
+      }
+    };
+
+    this.charts = {
+      mvpSiDamage: mvpSiDamage,
+      mvpCommon: mvpCommon
+    };
+  }
 }
