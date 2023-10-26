@@ -21,6 +21,7 @@
     "@angular/router": "~13.3.2",
     "ng-tournament-tree": "^2.0.2",
     "ng-zorro-antd": "^13.1.1",
+    "ng2-charts": "^3.1.2",
     "ngx-clipboard": "^15.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

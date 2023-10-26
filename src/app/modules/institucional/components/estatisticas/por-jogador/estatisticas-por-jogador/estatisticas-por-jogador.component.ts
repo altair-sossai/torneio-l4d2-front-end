@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EstatisticaJogadorModel } from 'src/app/modules/cadastros/estatisticas/models/estatistica-jogador.model';
-import { JogadorModel } from 'src/app/modules/cadastros/estatisticas/models/jogador.model';
+import { EstatisticaJogadorModel } from 'src/app/modules/cadastros/estatisticas/models/por-jogador/estatistica-jogador.model';
+import { JogadorModel } from 'src/app/modules/cadastros/estatisticas/models/por-jogador/jogador.model';
 import { EstatisticasService } from 'src/app/modules/cadastros/estatisticas/services/estatisticas.service';
 import { EstatisticaJogador, EstatisticasJogadores } from 'src/app/modules/institucional/enums/estatistica-jogador.enum';
 
@@ -32,7 +32,7 @@ export class EstatisticasPorJogadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.estatisticasService.get().subscribe(jogadores => {
+    this.estatisticasService.porJogador().subscribe(jogadores => {
       this._jogadores = jogadores;
       this.atualizarEstatisticasJogadores();
       this.loading = false;

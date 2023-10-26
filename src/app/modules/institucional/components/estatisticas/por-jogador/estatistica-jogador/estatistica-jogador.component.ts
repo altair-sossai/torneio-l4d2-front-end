@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EstatisticaJogadorModel } from 'src/app/modules/cadastros/estatisticas/models/estatistica-jogador.model';
+import { EstatisticaJogadorModel } from 'src/app/modules/cadastros/estatisticas/models/por-jogador/estatistica-jogador.model';
 
 @Component({
   selector: 'app-estatistica-jogador',

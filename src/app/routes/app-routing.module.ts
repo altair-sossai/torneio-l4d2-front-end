@@ -14,6 +14,7 @@ import { SuportesComponent } from '../modules/cadastros/suportes/components/supo
 import { TimesComponent } from '../modules/cadastros/times/components/times/times.component';
 import { LoginCapitaoComponent } from '../modules/capitaes/components/login-capitao/login-capitao.component';
 import { ProximoConfrontoComponent } from '../modules/capitaes/components/proximo-confronto/proximo-confronto.component';
+import { EstatisticasPorEquipeComponent } from '../modules/institucional/components/estatisticas/por-equipe/estatisticas-por-equipe/estatisticas-por-equipe.component';
 import { EstatisticasPorJogadorComponent } from '../modules/institucional/components/estatisticas/por-jogador/estatisticas-por-jogador/estatisticas-por-jogador.component';
 import { HomeComponent } from '../modules/institucional/components/home/home.component';
 
@@ -23,7 +24,8 @@ const routes: Routes = [
         component: PublicComponent,
         children: [
             { path: '', component: HomeComponent },
-            { path: 'estatisticas-por-jogador', component: EstatisticasPorJogadorComponent }
+            { path: 'estatisticas-por-jogador', component: EstatisticasPorJogadorComponent },
+            { path: 'estatisticas-por-equipe', component: EstatisticasPorEquipeComponent },
         ]
     },
     {
