@@ -13,6 +13,6 @@ export class EstatisticasService {
     }
 
     get(): Observable<JogadorModel[]> {
-        return this.http.get<JogadorModel[]>(`${environment.apiUrl}/api/estatisticas`);
+        return this.http.get<JogadorModel[]>(`${environment.apiUrl}/api/estatisticas/por-jogador`);
     }
 }

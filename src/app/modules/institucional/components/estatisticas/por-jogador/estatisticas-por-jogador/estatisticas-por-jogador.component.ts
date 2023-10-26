@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { EstatisticaJogadorModel } from 'src/app/modules/cadastros/estatisticas/models/estatistica-jogador.model';
 import { JogadorModel } from 'src/app/modules/cadastros/estatisticas/models/jogador.model';
 import { EstatisticasService } from 'src/app/modules/cadastros/estatisticas/services/estatisticas.service';
-import { EstatisticaJogador, EstatisticasJogadores } from '../../enums/estatistica-jogador.enum';
+import { EstatisticaJogador, EstatisticasJogadores } from 'src/app/modules/institucional/enums/estatistica-jogador.enum';
 
 @Component({
-  selector: 'app-estatisticas',
-  templateUrl: './estatisticas.component.html',
-  styleUrls: ['./estatisticas.component.scss']
+  selector: 'app-estatisticas-por-jogador',
+  templateUrl: './estatisticas-por-jogador.component.html',
+  styleUrls: ['./estatisticas-por-jogador.component.scss']
 })
-export class EstatisticasComponent implements OnInit {
+export class EstatisticasPorJogadorComponent implements OnInit {
 
   EstatisticasJogadores = EstatisticasJogadores;
 
@@ -17,7 +17,6 @@ export class EstatisticasComponent implements OnInit {
   private _jogadores?: JogadorModel[];
 
   public loading = true;
-  public exibirTodos = false;
   public top5?: EstatisticaJogadorModel[];
   public jogadores?: EstatisticaJogadorModel[];
 
@@ -41,7 +40,6 @@ export class EstatisticasComponent implements OnInit {
   }
 
   atualizarEstatisticasJogadores(): void {
-    this.exibirTodos = false;
     this.jogadores = this._jogadores
       ?.sort((a, b) => b[this.estatisticaAtual] - a[this.estatisticaAtual])
       ?.map((jogador, index) => {
