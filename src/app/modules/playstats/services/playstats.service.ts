@@ -13,6 +13,6 @@ export class PlaystatsService {
     }
 
     lastMatch(): Observable<LastMatch> {
-        return this.http.get<LastMatch>(`${environment.playstatsUrl}/api/ranking/vanilla4mod/last-match`);
+        return this.http.get<LastMatch>(`${environment.playstatsUrl}/api/ranking/l4d2-zone-server/last-match`);
     }
 }
