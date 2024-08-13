@@ -22,13 +22,25 @@ steps:
     ng build
   displayName: 'npm install and build'
 
+- script: |
+    tar -czf torneio.tar.gz -C '$(System.DefaultWorkingDirectory)/dist/torneio-l4d2' .
+  displayName: 'Compress files'
+
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'L4D2 - Resources'
     sourceFolder: '$(System.DefaultWorkingDirectory)/dist'
-    contents: '**'
-    targetFolder: '/home/torneio'
+    contents: '*.tar.gz'
+    targetFolder: '/home/devops'
     cleanTargetFolder: true
     overwrite: true
     failOnEmptySource: true
   displayName: 'Copy Build Artifacts via SSH'
+
+- task: SSH@0
+  inputs:
+    sshEndpoint: $(sshServiceConnection)
+    readyTimeout: '20000'
+    commands: |
+      tar -xzf /home/devops/torneio.tar.gz -C /home/torneio
+      rm /home/devops/*.tar.gz
