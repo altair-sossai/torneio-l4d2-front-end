@@ -39,7 +39,7 @@ steps:
 
 - task: SSH@0
   inputs:
-    sshEndpoint: $(sshServiceConnection)
+    sshEndpoint: 'L4D2 - Resources'
     readyTimeout: '20000'
     commands: |
       tar -xzf /home/devops/torneio.tar.gz -C /home/torneio
