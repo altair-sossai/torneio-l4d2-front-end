@@ -42,5 +42,6 @@ steps:
     sshEndpoint: 'L4D2 - Resources'
     readyTimeout: '20000'
     commands: |
+      rm -rf /home/torneio/*
       tar -xzf /home/devops/torneio.tar.gz -C /home/torneio
       rm /home/devops/*.tar.gz
