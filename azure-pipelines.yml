@@ -29,7 +29,7 @@ steps:
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'L4D2 - Resources'
-    sourceFolder: '$(System.DefaultWorkingDirectory)/dist'
+    sourceFolder: '$(Build.Repository.LocalPath)'
     contents: '*.tar.gz'
     targetFolder: '/home/devops'
     cleanTargetFolder: true
