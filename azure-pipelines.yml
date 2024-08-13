@@ -22,8 +22,13 @@ steps:
     ng build
   displayName: 'npm install and build'
 
-- task: PublishBuildArtifacts@1
+- task: CopyFilesOverSSH@0
   inputs:
-    PathtoPublish: 'dist'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    sshEndpoint: 'L4D2 - Resources'
+    sourceFolder: '$(System.DefaultWorkingDirectory)/dist'
+    contents: '**'
+    targetFolder: '/home/torneio'
+    cleanTargetFolder: true
+    overwrite: true
+    failOnEmptySource: true
+  displayName: 'Copy Build Artifacts via SSH'
