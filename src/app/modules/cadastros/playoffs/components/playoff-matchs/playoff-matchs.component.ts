@@ -30,7 +30,7 @@ export class PlayoffMatchsComponent implements OnInit {
       rounds: [
         {
           type: 'Winnerbracket',
-          matches: [primeiroLugar, primeiraRodada.playoffs![0], segundoLugar, primeiraRodada.playoffs![1]]
+          matches: [primeiraRodada.playoffs![0], primeiraRodada.playoffs![1], primeiraRodada.playoffs![2], primeiraRodada.playoffs![3]]
         },
         {
           type: 'Winnerbracket',
