@@ -1,26 +1,30 @@
 <div class="container" [class.time]="time" [class.playoff]="playoff" (click)="clicked()">
-    <ng-container *ngIf="time">
-        <h2>{{time.nome}}</h2>
-        <nz-divider></nz-divider>
-        <p *ngIf="!fase1Finalizada">
-            Fase de grupo ainda em andamento, o resultado pode mudar!
-        </p>
-        <p *ngIf="fase1Finalizada">
-            Classificado automaticamente para as semifinais.
-        </p>
-    </ng-container>
+  @if (time) {
+    <h2>{{time.nome}}</h2>
+    <nz-divider></nz-divider>
+    @if (!fase1Finalizada) {
+      <p>
+        Fase de grupo ainda em andamento, o resultado pode mudar!
+      </p>
+    }
+    @if (fase1Finalizada) {
+      <p>
+        Classificado automaticamente para as semifinais.
+      </p>
+    }
+  }
 
-    <ng-container *ngIf="playoff">
-        <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeA.codigo !== playoff.codigoTimeVencedor">
-            {{playoff.timeA.nome || 'A definir'}}</h2>
-        <h2>{{playoff.quantidadeVitoriasTimeA}}</h2>
-        <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
-            [hidden]="!playoff.codigoTimeVencedor || playoff.timeA.codigo !== playoff.codigoTimeVencedor"></i>
-        <nz-divider></nz-divider>
-        <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeB.codigo !== playoff.codigoTimeVencedor">
-            {{playoff.timeB.nome || 'A definir'}}</h2>
-        <h2>{{playoff.quantidadeVitoriasTimeB}}</h2>
-        <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
-            [hidden]="!playoff.codigoTimeVencedor || playoff.timeB.codigo !== playoff.codigoTimeVencedor"></i>
-    </ng-container>
+  @if (playoff) {
+    <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeA.codigo !== playoff.codigoTimeVencedor">
+    {{playoff.timeA.nome || 'A definir'}}</h2>
+    <h2>{{playoff.quantidadeVitoriasTimeA}}</h2>
+    <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
+    [hidden]="!playoff.codigoTimeVencedor || playoff.timeA.codigo !== playoff.codigoTimeVencedor"></i>
+    <nz-divider></nz-divider>
+    <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeB.codigo !== playoff.codigoTimeVencedor">
+    {{playoff.timeB.nome || 'A definir'}}</h2>
+    <h2>{{playoff.quantidadeVitoriasTimeB}}</h2>
+    <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
+    [hidden]="!playoff.codigoTimeVencedor || playoff.timeB.codigo !== playoff.codigoTimeVencedor"></i>
+  }
 </div>

@@ -26,7 +26,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzTooltipModule } from 'ng-zorro-antd/tooltip';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ClipboardModule } from 'ngx-clipboard';
@@ -160,7 +160,7 @@ registerLocaleData(pt);
         NzMenuModule,
         NzButtonModule,
         NzDividerModule,
-        NzToolTipModule,
+        NzTooltipModule,
         NzSpinModule,
         NzAlertModule,
         NzModalModule,

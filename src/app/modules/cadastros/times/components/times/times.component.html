@@ -1,21 +1,21 @@
 <div class="container">
-    <div class="buttons">
-        <button nz-button nzType="primary" nzSize="large" (click)="adicionar()" [nzLoading]="loading">
-            <i nz-icon nzType="user-add"></i>
-            Adicionar um novo time
-        </button>
+  <div class="buttons">
+    <button nz-button nzType="primary" nzSize="large" (click)="adicionar()" [nzLoading]="loading">
+      <i nz-icon nzType="user-add"></i>
+      Adicionar um novo time
+    </button>
 
-        <button nz-button nzType="default" nzSize="large" (click)="sortear()" [nzLoading]="loading">
-            <i nz-icon nzType="user-switch"></i>
-            Sortear jogador
-        </button>
-    </div>
+    <button nz-button nzType="default" nzSize="large" (click)="sortear()" [nzLoading]="loading">
+      <i nz-icon nzType="user-switch"></i>
+      Sortear jogador
+    </button>
+  </div>
 
-    <p>Total de times: {{times.length}}</p>
+  <p>Total de times: {{times.length}}</p>
 
-    <div class="times">
-        <ng-container *ngFor="let time of times">
-            <app-time [time]="time" (atualizar)="atualizar()"></app-time>
-        </ng-container>
-    </div>
+  <div class="times">
+    @for (time of times; track time) {
+      <app-time [time]="time" (atualizar)="atualizar()"></app-time>
+    }
+  </div>
 </div>

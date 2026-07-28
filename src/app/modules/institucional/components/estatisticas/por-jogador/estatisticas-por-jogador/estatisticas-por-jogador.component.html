@@ -1,38 +1,48 @@
-<nz-skeleton [nzActive]="true" *ngIf="loading"></nz-skeleton>
+@if (loading) {
+  <nz-skeleton [nzActive]="true"></nz-skeleton>
+}
 
-<div class="container" *ngIf="!loading">
+@if (!loading) {
+  <div class="container">
     <div>
-        <label>Estatística:</label>
-        <nz-select [(ngModel)]="estatisticaAtual" name="estatisticaAtual" placeholder="Estatísticas">
-            <nz-option *ngFor="let estatisticaJogador of EstatisticasJogadores" [nzValue]="estatisticaJogador"
-                nzLabel="{{estatisticaJogador|estatisticaJogador}}">
-            </nz-option>
-        </nz-select>
+      <label>Estatística:</label>
+      <nz-select [(ngModel)]="estatisticaAtual" name="estatisticaAtual" placeholder="Estatísticas">
+        @for (estatisticaJogador of EstatisticasJogadores; track estatisticaJogador) {
+          <nz-option [nzValue]="estatisticaJogador"
+            nzLabel="{{estatisticaJogador|estatisticaJogador}}">
+          </nz-option>
+        }
+      </nz-select>
     </div>
-
-    <div *ngIf="jogadores">
+    @if (jogadores) {
+      <div>
         <label>Top 5:</label>
         <div class="jogadores">
-            <app-estatistica-jogador *ngFor="let jogador of top5" [jogador]="jogador"></app-estatistica-jogador>
+          @for (jogador of top5; track jogador) {
+            <app-estatistica-jogador [jogador]="jogador"></app-estatistica-jogador>
+          }
         </div>
-
         <div class="todos-jogadores">
-            <nz-table #jogadoresTable [nzData]="jogadores" [nzFrontPagination]="false" nzSize="small">
-                <thead>
-                    <tr>
-                        <th class="slim">Posição</th>
-                        <th style="min-width: 300px;">Jogador</th>
-                        <th class="slim text-center">{{estatisticaAtual|estatisticaJogador}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let jogador of jogadoresTable.data">
-                        <td class="slim text-center">#{{jogador.posicao}}</td>
-                        <td>{{jogador.nome}}</td>
-                        <td class="slim text-center">{{jogador.quantidade|number}}</td>
-                    </tr>
-                </tbody>
-            </nz-table>
+          <nz-table #jogadoresTable [nzData]="jogadores" [nzFrontPagination]="false" nzSize="small">
+            <thead>
+              <tr>
+                <th class="slim">Posição</th>
+                <th style="min-width: 300px;">Jogador</th>
+                <th class="slim text-center">{{estatisticaAtual|estatisticaJogador}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (jogador of jogadoresTable.data; track jogador) {
+                <tr>
+                  <td class="slim text-center">#{{jogador.posicao}}</td>
+                  <td>{{jogador.nome}}</td>
+                  <td class="slim text-center">{{jogador.quantidade|number}}</td>
+                </tr>
+              }
+            </tbody>
+          </nz-table>
         </div>
-    </div>
-</div>
+      </div>
+    }
+  </div>
+}

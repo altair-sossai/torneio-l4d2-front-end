@@ -1,23 +1,31 @@
 <!-- <app-playoff-matchs></app-playoff-matchs> -->
 
-<div *ngIf="!busy && podeEditar" class="acoes">
+@if (!busy && podeEditar) {
+  <div class="acoes">
     <button nz-button nzType="primary" (click)="novo()" [nzLoading]="busy">
-        <i nz-icon nzType="user-add"></i>
-        Adicionar um novo jogo
+      <i nz-icon nzType="user-add"></i>
+      Adicionar um novo jogo
     </button>
-</div>
+  </div>
+}
 
-<nz-tabset *ngIf="!busy" [nzSelectedIndex]="rodadaAtual" (nzSelectedIndexChange)="rodadaAtual = $event">
-    <nz-tab *ngFor="let rodada of rodadas" nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
-
-        <nz-tabset nzTabPosition="left">
-            <nz-tab *ngFor="let playoff of rodada.playoffs"
-                nzTitle="{{ (playoff.timeA.nome || '(A definir)') + ' vs ' + (playoff.timeB.nome || '(A definir)') }}">
-                <app-playoff [playoff]="playoff" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-playoff>
+@if (!busy) {
+  <nz-tabs [nzSelectedIndex]="rodadaAtual" (nzSelectedIndexChange)="rodadaAtual = $event">
+    @for (rodada of rodadas; track rodada) {
+      <nz-tab nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
+        <nz-tabs nzTabPosition="left">
+          @for (playoff of rodada.playoffs; track playoff) {
+            <nz-tab
+              nzTitle="{{ (playoff.timeA.nome || '(A definir)') + ' vs ' + (playoff.timeB.nome || '(A definir)') }}">
+              <app-playoff [playoff]="playoff" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-playoff>
             </nz-tab>
-        </nz-tabset>
+          }
+        </nz-tabs>
+      </nz-tab>
+    }
+  </nz-tabs>
+}
 
-    </nz-tab>
-</nz-tabset>
-
-<nz-skeleton [nzActive]="true" *ngIf="busy"></nz-skeleton>
+@if (busy) {
+  <nz-skeleton [nzActive]="true"></nz-skeleton>
+}

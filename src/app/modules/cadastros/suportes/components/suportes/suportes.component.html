@@ -1,13 +1,19 @@
-<nz-skeleton [nzActive]="true" *ngIf="!suportes"></nz-skeleton>
+@if (!suportes) {
+  <nz-skeleton [nzActive]="true"></nz-skeleton>
+}
 
 <div class="buttons">
-    <button nz-button nzType="primary" (click)="sortearSuportes()">
-        <i nz-icon nzType="sync" nzTheme="outline"></i>
-        Sortear suportes
-    </button>
+  <button nz-button nzType="primary" (click)="sortearSuportes()">
+    <i nz-icon nzType="sync" nzTheme="outline"></i>
+    Sortear suportes
+  </button>
 </div>
 
-<div *ngIf="suportes" class="suportes">
-    <app-jogador *ngFor="let suporte of suportes" [jogador]="suporte" [podeExcluir]="false" [podeAtualizar]="false">
-    </app-jogador>
-</div>
+@if (suportes) {
+  <div class="suportes">
+    @for (suporte of suportes; track suporte) {
+      <app-jogador [jogador]="suporte" [podeExcluir]="false" [podeAtualizar]="false">
+      </app-jogador>
+    }
+  </div>
+}

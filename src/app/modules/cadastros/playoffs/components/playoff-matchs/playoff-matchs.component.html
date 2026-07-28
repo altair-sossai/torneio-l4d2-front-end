@@ -1,24 +1,30 @@
 <div class="container">
-    <div class="ngtt-se__container">
-        <div class="ngtt-se__bracket-wrapper">
-            <div class="ngtt-se__round-wrapper" *ngFor="let round of winnerRounds">
-                <div class="ngtt-se__match-wrapper" *ngFor="let match of round">
-                    <div class="ngtt-se__match-component-container">
-                        <app-playoff-match [fase1Finalizada]="fase1Finalizada" [match]="match"></app-playoff-match>
-                    </div>
-                </div>
+  <div class="ngtt-se__container">
+    <div class="ngtt-se__bracket-wrapper">
+      @for (round of winnerRounds; track round) {
+        <div class="ngtt-se__round-wrapper">
+          @for (match of round; track match) {
+            <div class="ngtt-se__match-wrapper">
+              <div class="ngtt-se__match-component-container">
+                <app-playoff-match [fase1Finalizada]="fase1Finalizada" [match]="match"></app-playoff-match>
+              </div>
             </div>
-
-            <div class="ngtt-se__round-wrapper">
-                <div class="ngtt-se__match-wrapper">
-                    <div class="ngtt-se__finale-match-wrapper">
-                        <div class="ngtt-se__finale-component-container">
-                            <app-playoff-match *ngIf="finalMatches[0]" [fase1Finalizada]="fase1Finalizada"
-                                [match]="finalMatches[0]"></app-playoff-match>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          }
         </div>
+      }
+
+      <div class="ngtt-se__round-wrapper">
+        <div class="ngtt-se__match-wrapper">
+          <div class="ngtt-se__finale-match-wrapper">
+            <div class="ngtt-se__finale-component-container">
+              @if (finalMatches[0]) {
+                <app-playoff-match [fase1Finalizada]="fase1Finalizada"
+                [match]="finalMatches[0]"></app-playoff-match>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

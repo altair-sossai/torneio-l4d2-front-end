@@ -1,30 +1,37 @@
-<nz-skeleton [nzActive]="true" *ngIf="loading"></nz-skeleton>
+@if (loading) {
+  <nz-skeleton [nzActive]="true"></nz-skeleton>
+}
 
-<div class="container" *ngIf="!loading">
+@if (!loading) {
+  <div class="container">
     <div>
-        <label>Equipe:</label>
-        <nz-select [(ngModel)]="equipeAtual" (ngModelChange)="chart($event)" name="equipeAtual" placeholder="Equipe">
-            <nz-option *ngFor="let equipe of equipes" [nzValue]="equipe" nzLabel="{{equipe.time.nome}}">
-            </nz-option>
-        </nz-select>
+      <label>Equipe:</label>
+      <nz-select [(ngModel)]="equipeAtual" (ngModelChange)="chart($event)" name="equipeAtual" placeholder="Equipe">
+        @for (equipe of equipes; track equipe) {
+          <nz-option [nzValue]="equipe" nzLabel="{{equipe.time.nome}}">
+          </nz-option>
+        }
+      </nz-select>
     </div>
-
     <div class="charts">
-        <div>
-            <canvas baseChart [data]="charts?.mvpSiDamage.data" [options]="charts?.mvpSiDamage.options" type="line"
-                *ngIf="charts?.mvpSiDamage">
-            </canvas>
-        </div>
-
-        <div>
-            <canvas baseChart [data]="charts?.mvpCommon.data" [options]="charts?.mvpCommon.options" type="line"
-                *ngIf="charts?.mvpCommon">
-            </canvas>
-        </div>
+      <div>
+        @if (charts?.mvpSiDamage) {
+          <canvas baseChart [data]="charts?.mvpSiDamage.data" [options]="charts?.mvpSiDamage.options" type="line"
+            >
+          </canvas>
+        }
+      </div>
+      <div>
+        @if (charts?.mvpCommon) {
+          <canvas baseChart [data]="charts?.mvpCommon.data" [options]="charts?.mvpCommon.options" type="line"
+            >
+          </canvas>
+        }
+      </div>
     </div>
-
     <p>
-        * O jogador que ficar em primeiro lugar como MVP recebe 8pts,
-        em segundo 4pts, em terceiro 2pts e em quarto recebe 1pt
+      * O jogador que ficar em primeiro lugar como MVP recebe 8pts,
+      em segundo 4pts, em terceiro 2pts e em quarto recebe 1pt
     </p>
-</div>
+  </div>
+}

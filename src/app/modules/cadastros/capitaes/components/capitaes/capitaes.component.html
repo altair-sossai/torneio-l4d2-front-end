@@ -1,17 +1,23 @@
-<nz-skeleton [nzActive]="true" *ngIf="!capitaes"></nz-skeleton>
+@if (!capitaes) {
+  <nz-skeleton [nzActive]="true"></nz-skeleton>
+}
 
 <div class="buttons">
-    <button nz-button nzType="primary" (click)="sortearCapitaes()">
-        <i nz-icon nzType="sync" nzTheme="outline"></i>
-        Sortear capitães
-    </button>
+  <button nz-button nzType="primary" (click)="sortearCapitaes()">
+    <i nz-icon nzType="sync" nzTheme="outline"></i>
+    Sortear capitães
+  </button>
 </div>
 
-<div *ngIf="capitaes" class="capitaes">
-    <app-jogador *ngFor="let capitao of capitaes" [jogador]="capitao" [podeExcluir]="false" [podeAtualizar]="false">
+@if (capitaes) {
+  <div class="capitaes">
+    @for (capitao of capitaes; track capitao) {
+      <app-jogador [jogador]="capitao" [podeExcluir]="false" [podeAtualizar]="false">
         <button nz-button nzType="default" nzShape="circle" nz-tooltip nzTooltipTitle="Gerar senha de acesso"
-            [disabled]="loading" (click)="gerarSenhaAcesso(capitao)">
-            <i nz-icon nzType="unlock"></i>
+          [disabled]="loading" (click)="gerarSenhaAcesso(capitao)">
+          <i nz-icon nzType="unlock"></i>
         </button>
-    </app-jogador>
-</div>
+      </app-jogador>
+    }
+  </div>
+}

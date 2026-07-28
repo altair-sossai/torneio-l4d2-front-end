@@ -1,44 +1,64 @@
 <div class="container">
-    <div class="times">
-        <h5 nz-typography>Capitão do time</h5>
-        <nz-skeleton *ngIf="!time" [nzActive]="true"></nz-skeleton>
-        <div id="times-roulette" class="roulette" *ngIf="times">
-            <img *ngFor="let time of times" [src]="time.capitao.urlFotoPerfil" [alt]="time.capitao.nome"
-                class="picture" />
-        </div>
-        <p *ngIf="timeSorteado">{{time!.capitao!.nome}}</p>
-        <button nz-button nzType="primary" nzBlock [disabled]="this.command.time" (click)="girarRolateTimes()"
-            *ngIf="time && !timeSorteado">
-            <i nz-icon nzType="sync" nzTheme="outline"></i>
-            Sortear time
-        </button>
-    </div>
+  <div class="times">
+    <h5 nz-typography>Capitão do time</h5>
+    @if (!time) {
+      <nz-skeleton [nzActive]="true"></nz-skeleton>
+    }
+    @if (times) {
+      <div id="times-roulette" class="roulette">
+        @for (time of times; track time) {
+          <img [src]="time.capitao.urlFotoPerfil" [alt]="time.capitao.nome"
+            class="picture" />
+        }
+      </div>
+    }
+    @if (timeSorteado) {
+      <p>{{time!.capitao!.nome}}</p>
+    }
+    @if (time && !timeSorteado) {
+      <button nz-button nzType="primary" nzBlock [disabled]="this.command.time" (click)="girarRolateTimes()"
+        >
+        <i nz-icon nzType="sync" nzTheme="outline"></i>
+        Sortear time
+      </button>
+    }
+  </div>
 
-    <nz-divider nzType="vertical"></nz-divider>
+  <nz-divider nzType="vertical"></nz-divider>
 
-    <div class="jogadores">
-        <h5 nz-typography>Jogador</h5>
-        <nz-skeleton *ngIf="!jogador" [nzActive]="true"></nz-skeleton>
-        <div id="jogadores-roulette" class="roulette" *ngIf="jogadores">
-            <img *ngFor="let jogador of jogadores" [src]="jogador.urlFotoPerfil" [alt]="jogador.nome" class="picture" />
-        </div>
-        <p *ngIf="jogadorSorteado">{{jogador!.nome}}</p>
-        <button nz-button nzType="primary" nzBlock [disabled]="this.command.jogador" (click)="girarRolateJogadores()"
-            *ngIf="jogador && !jogadorSorteado">
-            <i nz-icon nzType="sync" nzTheme="outline"></i>
-            Sortear jogador
-        </button>
-    </div>
+  <div class="jogadores">
+    <h5 nz-typography>Jogador</h5>
+    @if (!jogador) {
+      <nz-skeleton [nzActive]="true"></nz-skeleton>
+    }
+    @if (jogadores) {
+      <div id="jogadores-roulette" class="roulette">
+        @for (jogador of jogadores; track jogador) {
+          <img [src]="jogador.urlFotoPerfil" [alt]="jogador.nome" class="picture" />
+        }
+      </div>
+    }
+    @if (jogadorSorteado) {
+      <p>{{jogador!.nome}}</p>
+    }
+    @if (jogador && !jogadorSorteado) {
+      <button nz-button nzType="primary" nzBlock [disabled]="this.command.jogador" (click)="girarRolateJogadores()"
+        >
+        <i nz-icon nzType="sync" nzTheme="outline"></i>
+        Sortear jogador
+      </button>
+    }
+  </div>
 </div>
 
 <audio #audio>
-    <source src='../../../../../../assets/mp3/piao-do-bau.mp3' type="audio/mp3">
+  <source src='../../../../../../assets/mp3/piao-do-bau.mp3' type="audio/mp3">
 </audio>
 
 <div *nzModalFooter>
-    <button nz-button nzType="default" (click)="close()">Cancelar</button>
-    <button nz-button nzType="primary" (click)="salvar()" [disabled]="!timeSorteado || !jogadorSorteado"
-        [nzLoading]="busy">
-        Salvar
-    </button>
+  <button nz-button nzType="default" (click)="close()">Cancelar</button>
+  <button nz-button nzType="primary" (click)="salvar()" [disabled]="!timeSorteado || !jogadorSorteado"
+    [nzLoading]="busy">
+    Salvar
+  </button>
 </div>

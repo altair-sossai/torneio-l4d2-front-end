@@ -1,20 +1,24 @@
 <div class="header">
-    <ng-container *ngIf="confronto.data">
-        <i nz-icon nzType="calendar" nzTheme="outline"></i>
-        <label>{{confronto.data|date:'dd/MM/yyyy HH:mm (EEEE)':'-3'}}</label>
-    </ng-container>
-    <nz-tag nzColor="{{confronto.status|corStatusConfronto}}">
-        {{confronto.status|statusConfronto}}
-    </nz-tag>
+  @if (confronto.data) {
+    <i nz-icon nzType="calendar" nzTheme="outline"></i>
+    <label>{{confronto.data|date:'dd/MM/yyyy HH:mm (EEEE)':'-3'}}</label>
+  }
+  <nz-tag nzColor="{{confronto.status|corStatusConfronto}}">
+    {{confronto.status|statusConfronto}}
+  </nz-tag>
+  @if (confronto.status === StatusConfronto.Realizado && confronto.inicioEstatistica && confronto.fimEstatistica) {
     <a nz-button nzType="default" nzSize="small" target="_blank"
-        href="https://l4d2.com.br/last-matches/details/{{confronto.inicioEstatistica}}/{{confronto.fimEstatistica}}"
-        *ngIf="confronto?.status === StatusConfronto.Realizado && confronto?.inicioEstatistica && confronto?.fimEstatistica">
-        <span nz-icon nzType="line-chart" nzTheme="outline"></span>
-        Estatísticas
+      href="https://l4d2.com.br/last-matches/details/{{confronto.inicioEstatistica}}/{{confronto.fimEstatistica}}"
+      >
+      <span nz-icon nzType="line-chart" nzTheme="outline"></span>
+      Estatísticas
     </a>
+  }
+  @if (confronto.status === StatusConfronto.Aguardando && confronto.data) {
     <a nz-button nzType="default" nzSize="small" (click)="addAgenda()"
-        *ngIf="confronto?.status === StatusConfronto.Aguardando && confronto?.data">
-        <span nz-icon nzType="calendar" nzTheme="outline"></span>
-        Add a agenda
+      >
+      <span nz-icon nzType="calendar" nzTheme="outline"></span>
+      Add a agenda
     </a>
+  }
 </div>
