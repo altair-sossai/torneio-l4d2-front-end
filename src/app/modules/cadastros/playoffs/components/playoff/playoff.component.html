@@ -39,7 +39,7 @@
 }
 
 @if (playoff.timeA && playoff.timeB) {
-  @for (confronto of playoff.confrontos; track confronto; let i = $index) {
+  @for (confronto of playoff.confrontos || []; track confronto; let i = $index) {
     <div>
       <nz-divider nzPlain nzText="{{i + 1}}º jogo" style="font-weight: bold"></nz-divider>
       <div class="container">

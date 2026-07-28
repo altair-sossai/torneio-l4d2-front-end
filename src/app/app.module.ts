@@ -5,6 +5,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideNzNativeDateAdapter } from 'ng-zorro-antd/core/time';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -182,6 +183,7 @@ registerLocaleData(pt);
         BaseChartDirective], providers: [
         { provide: NZ_I18N, useValue: pt_BR },
         { provide: LOCALE_ID, useValue: 'pt-br' },
+        provideNzNativeDateAdapter({ locale: 'pt-BR', firstDayOfWeek: 0 }),
         { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true, },
         provideCharts(withDefaultRegisterables()),
         AuthGuard,

@@ -12,6 +12,19 @@
     box-sizing: border-box;
 }
 
+.ngtt-se__round-labels {
+    display: flex;
+    width: 800px;
+
+    h3 {
+        width: 400px;
+        margin: 0;
+        padding: 16px 25px 0;
+        color: goldenrod;
+        text-align: center;
+    }
+}
+
 .ngtt-se__bracket-wrapper {
     display: flex;
     flex-direction: row;

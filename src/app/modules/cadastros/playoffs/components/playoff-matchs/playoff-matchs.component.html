@@ -1,17 +1,19 @@
 <div class="container">
   <div class="ngtt-se__container">
+    <div class="ngtt-se__round-labels">
+      <h3>Semifinais</h3>
+      <h3>Final</h3>
+    </div>
     <div class="ngtt-se__bracket-wrapper">
-      @for (round of winnerRounds; track round) {
-        <div class="ngtt-se__round-wrapper">
-          @for (match of round; track match) {
-            <div class="ngtt-se__match-wrapper">
-              <div class="ngtt-se__match-component-container">
-                <app-playoff-match [fase1Finalizada]="fase1Finalizada" [match]="match"></app-playoff-match>
-              </div>
+      <div class="ngtt-se__round-wrapper">
+        @for (match of semifinalMatches; track match) {
+          <div class="ngtt-se__match-wrapper">
+            <div class="ngtt-se__match-component-container">
+              <app-playoff-match [fase1Finalizada]="fase1Finalizada" [match]="match"></app-playoff-match>
             </div>
-          }
-        </div>
-      }
+          </div>
+        }
+      </div>
 
       <div class="ngtt-se__round-wrapper">
         <div class="ngtt-se__match-wrapper">

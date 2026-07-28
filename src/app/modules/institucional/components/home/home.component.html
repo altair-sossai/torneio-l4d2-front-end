@@ -1,109 +1,90 @@
-<h2>4° Torneio de Left 4 Dead 2</h2>
-
-<section>
-  <h3>Objetivo</h3>
-  <p>
-    Fomentar uma disputa entre participantes que já se conhecem e possuem laços de amizade dentro e fora do jogo.
-    Esta competição visa elevar o nível de habilidade de todos os envolvidos, proporcionando uma experiência
-    divertida e memorável.
+<header class="hero">
+  <p class="hero__eyebrow">Torneio de Left 4 Dead 2</p>
+  <h1>Edição 2026</h1>
+  <p class="hero__subtitle">
+    Quatro equipes disputando semifinais e final em séries MD3 no ZoneMod v2.9.1b.
   </p>
-  <p>
-    Caso o torneio seja bem-sucedido, planejamos realizar mais eventos no futuro, com a participação de um número
-    maior de jogadores, maior divulgação, e premiações atrativas para os vencedores.
-    <p>
-      <span>Regras do torneio: </span>
-      <a href="https://github.com/altair-sossai/torneio-l4d2-regras" target="_blank">
-        <span>Consulte as regras </span>
-        <i nz-icon nzType="link"></i>
-      </a>
-    </p>
-    <p>
-      <span>Os jogos são transmitidos pela </span>
-      <a href="https://www.twitch.tv/torneiol4d2" target="_blank">
-        <span>Twitch </span>
-        <i nz-icon nzType="play-circle"></i>
-      </a>
-    </p>
-    <p>
-      <span>Todos os jogos estão disponíveis no </span>
-      <a href="https://www.youtube.com/@TorneioLeft4Dead2Brasil" target="_blank">
-        <span>YouTube </span>
-        <i nz-icon nzType="youtube"></i>
-      </a>
-    </p>
-    <p>
-      <span>Gostaria de participar? </span>
-      <a href="https://wa.me/5519996988174?text=Desejo%20participar%20do%20torneio" target="_blank">
-        <span>Clique aqui </span>
-        <span nz-icon nzType="whats-app" nzTheme="outline"></span>
-      </a>
-    </p>
+
+  <div class="hero__actions">
+    <a
+      nz-button
+      nzType="primary"
+      href="https://github.com/altair-sossai/torneio-l4d2-regras"
+      target="_blank"
+      rel="noopener noreferrer">
+      Ver regulamento no GitHub
+      <i nz-icon nzType="link"></i>
+    </a>
+    <a nz-button href="https://www.twitch.tv/torneiol4d2" target="_blank" rel="noopener noreferrer">
+      Assistir na Twitch
+      <i nz-icon nzType="play-circle"></i>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="highlights" aria-label="Resumo do torneio">
+    <article>
+      <strong>16</strong>
+      <span>jogadores</span>
+    </article>
+    <article>
+      <strong>4</strong>
+      <span>equipes</span>
+    </article>
+    <article>
+      <strong>MD3</strong>
+      <span>semifinais e final</span>
+    </article>
+    <article>
+      <strong>R$ 800</strong>
+      <span>premiação inicial</span>
+    </article>
+  </section>
+
+  <section class="rules-cta">
+    <div>
+      <p class="section-label">Regulamento oficial</p>
+      <h2>Todos os detalhes estão no GitHub</h2>
+      <p>
+        Consulte o formato completo, formação das equipes, escolha de campanhas e regras das partidas no README
+        oficial do torneio.
+      </p>
+    </div>
+    <a
+      nz-button
+      nzType="primary"
+      href="https://github.com/altair-sossai/torneio-l4d2-regras"
+      target="_blank"
+      rel="noopener noreferrer">
+      Consultar regras
+      <i nz-icon nzType="github"></i>
+    </a>
   </section>
 
   @if (confrontosAgendados && confrontosAgendados.length) {
-    <section id="primeira-fase-proximos-jogos">
-      <h3>Próximos jogos agendados</h3>
-      <p>
-        Abaixo é possível conferir os próximos jogos do torneio.
-      </p>
-      <hr />
+    <section id="proximos-jogos">
+      <p class="section-label">Agenda</p>
+      <h2>Próximos jogos</h2>
       <div class="confrontos">
         @for (confronto of confrontosAgendados; track confronto) {
-          <app-confronto [confronto]="confronto" [podeEditar]="false">
-          </app-confronto>
+          <app-confronto [confronto]="confronto" [podeEditar]="false"></app-confronto>
         }
       </div>
     </section>
   }
 
-  <!--
-  <section>
-    <h3>Resultado do torneio!</h3>
-    <p>
-      Gostaríamos de agradecer a participação de todos os jogadores no torneio, foram ótimos jogos e temos a certeza
-      que cumprimos nosso objetivo, realizar um campeonato sadio, divertido e principalmente inclusivo para todos os
-      jogadores.
-    </p>
-    <p>
-      Abaixo é possível visualizar o resultado final do campeonato.
-    </p>
-    <hr />
-
-    <div class="resultado">
-      <img src="../../../../../assets/imgs/campeao.png" />
-    </div>
-
-    <div class="resultado">
-      <img src="../../../../../assets/imgs/vice.png" />
-    </div>
-
-    <div class="resultado">
-      <img src="../../../../../assets/imgs/terceiro_lugar_01.png" />
-      <img src="../../../../../assets/imgs/terceiro_lugar_02.png" />
-    </div>
-
-  </section>
-  -->
-
   @if (exibirPlayoff && playoff) {
-    <section>
-      <h3>Formato da Competição</h3>
-      <p>
-        A competição será disputada no formato mata-mata com 8 equipes. Todas as equipes começam diretamente nesta fase,
-        onde enfrentarão adversários em confrontos eliminatórios. As partidas serão em melhor de três jogos (md3).
-        Cada equipe terá a oportunidade de escolher um mapa para jogar, e o terceiro mapa, se necessário, será decidido
-        por sorteio. Vale ressaltar que não será permitido para uma equipe escolher a mesma campanha mais de uma vez
-        nesta fase.
-      </p>
-      <p>
-        Abaixo é possível acompanhar os jogos realizados na fase de play-off, clique no jogo para ver mais detalhes.
-      </p>
-      <hr />
+    <section id="chave">
+      <p class="section-label">Competição</p>
+      <h2>Semifinais e final</h2>
+      <p>Clique em um confronto para consultar os detalhes da série.</p>
       @if (playoff && classificacao) {
-        <div>
-          <app-playoff-matchs [fase1Finalizada]="fase1Finalizada" [rodadas]="playoff"
-          [classificacao]="classificacao"></app-playoff-matchs>
-        </div>
+        <app-playoff-matchs
+          [fase1Finalizada]="fase1Finalizada"
+          [rodadas]="playoff"
+          [classificacao]="classificacao">
+        </app-playoff-matchs>
       }
       @if (!playoff || !classificacao) {
         <nz-skeleton [nzActive]="true"></nz-skeleton>
@@ -112,11 +93,8 @@
   }
 
   <section id="equipes">
-    <h3>Equipes</h3>
-    <p>
-      Abaixo é possível visualizar todos os times participantes e seus respectivos jogadores.
-    </p>
-    <hr />
+    <p class="section-label">Elencos</p>
+    <h2>Equipes</h2>
     @if (times) {
       <div class="times">
         @for (time of times; track time) {
@@ -130,15 +108,16 @@
   </section>
 
   <section id="participantes">
-    <h3>Participantes</h3>
-    <p>
-      Abaixo é possível visualizar todos os participantes do torneio.
-    </p>
-    <hr />
+    <p class="section-label">Competidores</p>
+    <h2>Participantes</h2>
     @if (jogadores) {
       <div class="jogadores">
         @for (jogador of jogadores; track jogador) {
-          <app-jogador [jogador]="jogador" [podeExcluir]="false" [podeAtualizar]="false"></app-jogador>
+          <app-jogador
+            [jogador]="jogador"
+            [podeExcluir]="false"
+            [podeAtualizar]="false">
+          </app-jogador>
         }
       </div>
     }
@@ -146,3 +125,29 @@
       <nz-skeleton [nzActive]="true"></nz-skeleton>
     }
   </section>
+
+  <section class="follow">
+    <div>
+      <p class="section-label">Acompanhe o torneio</p>
+      <h2>Transmissões e contato</h2>
+      <p>Assista aos jogos e acompanhe as novidades da edição 2026.</p>
+    </div>
+    <div class="follow__links">
+      <a href="https://www.twitch.tv/torneiol4d2" target="_blank" rel="noopener noreferrer">
+        Twitch <i nz-icon nzType="play-circle"></i>
+      </a>
+      <a
+        href="https://www.youtube.com/@TorneioLeft4Dead2Brasil"
+        target="_blank"
+        rel="noopener noreferrer">
+        YouTube <i nz-icon nzType="youtube"></i>
+      </a>
+      <a
+        href="https://wa.me/5519996988174?text=Desejo%20participar%20do%20torneio"
+        target="_blank"
+        rel="noopener noreferrer">
+        WhatsApp <i nz-icon nzType="whats-app"></i>
+      </a>
+    </div>
+  </section>
+</main>

@@ -14,9 +14,9 @@
     @for (rodada of rodadas; track rodada) {
       <nz-tab nzTitle="{{ rodada.rodada + 'ª Rodada' }}">
         <nz-tabs nzTabPosition="left">
-          @for (playoff of rodada.playoffs; track playoff) {
+          @for (playoff of rodada.playoffs || []; track playoff) {
             <nz-tab
-              nzTitle="{{ (playoff.timeA.nome || '(A definir)') + ' vs ' + (playoff.timeB.nome || '(A definir)') }}">
+              nzTitle="{{ (playoff.timeA?.nome || '(A definir)') + ' vs ' + (playoff.timeB?.nome || '(A definir)') }}">
               <app-playoff [playoff]="playoff" [podeEditar]="podeEditar" (atualizado)="pesquisar()"></app-playoff>
             </nz-tab>
           }

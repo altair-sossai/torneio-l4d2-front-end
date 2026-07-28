@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { StatusConfronto } from '../../enums/status-confronto';
 import { Rodada } from '../../models/rodada';
@@ -15,6 +16,7 @@ import { ConfrontoEditComponent } from '../confronto-edit/confronto-edit.compone
 })
 export class ConfrontosComponent implements OnInit {
   private modalService = inject(NzModalService);
+  private messageService = inject(NzMessageService);
   private confrontoService = inject(ConfrontoService);
   private route = inject(ActivatedRoute);
 
@@ -85,6 +87,27 @@ export class ConfrontosComponent implements OnInit {
         this.busy = true;
         this.rodadaAtual = -1;
         this.confrontoService.sortearCampanhas().subscribe(_ => this.pesquisar());
+      }
+    });
+  }
+
+  gerar(): void {
+    this.modalService.confirm({
+      nzTitle: 'ATENÇÃO: apagar todos os confrontos e gerar novamente?',
+      nzContent: 'Esta operação vai APAGAR TODOS OS CONFRONTOS existentes e criar tudo novamente do zero. Esta ação não pode ser desfeita.',
+      nzOkText: 'Apagar tudo e gerar do zero',
+      nzOkDanger: true,
+      nzCancelText: 'Cancelar',
+      nzOnOk: () => {
+        this.busy = true;
+        this.rodadaAtual = -1;
+        this.confrontoService.gerar().subscribe({
+          next: () => {
+            this.messageService.success('Todos os confrontos foram recriados com sucesso.');
+            this.pesquisar();
+          },
+          error: () => this.busy = false
+        });
       }
     });
   }

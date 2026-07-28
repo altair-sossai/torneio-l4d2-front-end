@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Time } from '../../../times/models/time';
+import { Playoff } from '../../models/playoff';
 import { Rodada } from '../../models/rodada';
 
 @Component({
@@ -15,18 +16,16 @@ export class PlayoffMatchsComponent implements OnInit {
   @Input() rodadas!: Rodada[];
   @Input() classificacao!: Time[];
 
-  public winnerRounds: unknown[][] = [];
-  public finalMatches: unknown[] = [];
+  public semifinalMatches: Playoff[] = [];
+  public finalMatches: Playoff[] = [];
 
   ngOnInit(): void {
-    const primeiraRodada = this.rodadas[0];
-    const segundoRodada = this.rodadas[1];
-    const terceiraRodada = this.rodadas[2];
+    const rodadasComConfrontos = (this.rodadas || [])
+      .filter(rodada => rodada.playoffs?.length);
+    const rodadaSemifinal = rodadasComConfrontos.at(-2);
+    const rodadaFinal = rodadasComConfrontos.at(-1);
 
-    this.winnerRounds = [
-      primeiraRodada.playoffs!.slice(0, 4),
-      segundoRodada.playoffs!.slice(0, 2)
-    ];
-    this.finalMatches = terceiraRodada.playoffs!.slice(0, 1);
+    this.semifinalMatches = rodadaSemifinal?.playoffs?.slice(0, 2) || [];
+    this.finalMatches = rodadaFinal?.playoffs?.slice(0, 1) || [];
   }
 }

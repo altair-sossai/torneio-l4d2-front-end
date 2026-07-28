@@ -38,6 +38,10 @@ export class ConfrontoService {
         return this.http.post<Campanha[]>(`${environment.apiUrl}/api/confrontos/sortear-campanhas`, {});
     }
 
+    gerar(): Observable<void> {
+        return this.http.post<void>(`${environment.apiUrl}/api/confrontos/gerar`, {});
+    }
+
     delete(id: string | undefined): Observable<any> {
         return this.http.delete(`${environment.apiUrl}/api/confrontos/${id}`);
     }
