@@ -29,7 +29,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { NgChartsModule } from 'ng2-charts';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
@@ -184,12 +184,13 @@ registerLocaleData(pt);
     NzTypographyModule,
     NzEmptyModule,
     NzRadioModule,
-    NgChartsModule
+    BaseChartDirective
   ],
   providers: [
     { provide: NZ_I18N, useValue: pt_BR },
     { provide: LOCALE_ID, useValue: 'pt-br' },
     { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true, },
+    provideCharts(withDefaultRegisterables()),
     AuthGuard,
     CapitaoGuard
   ],

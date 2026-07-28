@@ -81,10 +81,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "torneio-l4d2:build:production"
+              "buildTarget": "torneio-l4d2:build:production"
             },
             "development": {
-              "browserTarget": "torneio-l4d2:build:development"
+              "buildTarget": "torneio-l4d2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,7 +92,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "torneio-l4d2:build"
+            "buildTarget": "torneio-l4d2:build"
           }
         },
         "test": {
