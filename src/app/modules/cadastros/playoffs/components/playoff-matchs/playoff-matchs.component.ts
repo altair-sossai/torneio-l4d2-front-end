@@ -3,9 +3,10 @@ import { Time } from '../../../times/models/time';
 import { Rodada } from '../../models/rodada';
 
 @Component({
-  selector: 'app-playoff-matchs',
-  templateUrl: './playoff-matchs.component.html',
-  styleUrls: ['./playoff-matchs.component.scss']
+    selector: 'app-playoff-matchs',
+    templateUrl: './playoff-matchs.component.html',
+    styleUrls: ['./playoff-matchs.component.scss'],
+    standalone: false
 })
 export class PlayoffMatchsComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { EquipeModel } from 'src/app/modules/cadastros/estatisticas/models/por-e
 import { EstatisticasService } from 'src/app/modules/cadastros/estatisticas/services/estatisticas.service';
 
 @Component({
-  selector: 'app-estatisticas-por-equipe',
-  templateUrl: './estatisticas-por-equipe.component.html',
-  styleUrls: ['./estatisticas-por-equipe.component.scss']
+    selector: 'app-estatisticas-por-equipe',
+    templateUrl: './estatisticas-por-equipe.component.html',
+    styleUrls: ['./estatisticas-por-equipe.component.scss'],
+    standalone: false
 })
 export class EstatisticasPorEquipeComponent implements OnInit {
 

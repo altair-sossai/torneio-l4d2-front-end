@@ -6,9 +6,10 @@ import { Jogador } from '../../models/jogador';
 import { JogadorService } from '../../services/jogador.service';
 
 @Component({
-  selector: 'app-jogador',
-  templateUrl: './jogador.component.html',
-  styleUrls: ['./jogador.component.scss']
+    selector: 'app-jogador',
+    templateUrl: './jogador.component.html',
+    styleUrls: ['./jogador.component.scss'],
+    standalone: false
 })
 export class JogadorComponent {
   loading = false;

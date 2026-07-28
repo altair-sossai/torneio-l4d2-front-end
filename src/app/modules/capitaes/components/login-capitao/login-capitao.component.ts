@@ -6,9 +6,10 @@ import { Capitao } from 'src/app/modules/cadastros/jogadores/models/capitao';
 import { JogadorService } from 'src/app/modules/cadastros/jogadores/services/jogador.service';
 
 @Component({
-  selector: 'app-login-capitao',
-  templateUrl: './login-capitao.component.html',
-  styleUrls: ['./login-capitao.component.scss']
+    selector: 'app-login-capitao',
+    templateUrl: './login-capitao.component.html',
+    styleUrls: ['./login-capitao.component.scss'],
+    standalone: false
 })
 export class LoginCapitaoComponent {
 

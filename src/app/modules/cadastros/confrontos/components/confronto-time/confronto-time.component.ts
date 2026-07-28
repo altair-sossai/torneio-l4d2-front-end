@@ -4,9 +4,10 @@ import { StatusConfronto } from '../../enums/status-confronto';
 import { Confronto } from '../../models/confronto';
 
 @Component({
-  selector: 'app-confronto-time',
-  templateUrl: './confronto-time.component.html',
-  styleUrls: ['./confronto-time.component.scss']
+    selector: 'app-confronto-time',
+    templateUrl: './confronto-time.component.html',
+    styleUrls: ['./confronto-time.component.scss'],
+    standalone: false
 })
 export class ConfrontoTimeComponent {
 

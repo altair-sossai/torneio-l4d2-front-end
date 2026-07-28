@@ -9,9 +9,10 @@ import { TimeService } from '../../services/time.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-sortear-jogador',
-  templateUrl: './sortear-jogador.component.html',
-  styleUrls: ['./sortear-jogador.component.scss']
+    selector: 'app-sortear-jogador',
+    templateUrl: './sortear-jogador.component.html',
+    styleUrls: ['./sortear-jogador.component.scss'],
+    standalone: false
 })
 export class SortearJogadorComponent implements OnInit {
 

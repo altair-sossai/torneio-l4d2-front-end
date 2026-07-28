@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'horario'
+    name: 'horario',
+    standalone: false
 })
 export class HorarioPipe implements PipeTransform {
   zeroPad(num: number, numZeros: number): string {

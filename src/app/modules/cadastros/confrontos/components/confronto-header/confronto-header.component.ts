@@ -7,9 +7,10 @@ import { Confronto } from '../../models/confronto';
 import { ConfrontoEditComponent } from '../confronto-edit/confronto-edit.component';
 
 @Component({
-  selector: 'app-confronto-header',
-  templateUrl: './confronto-header.component.html',
-  styleUrls: ['./confronto-header.component.scss']
+    selector: 'app-confronto-header',
+    templateUrl: './confronto-header.component.html',
+    styleUrls: ['./confronto-header.component.scss'],
+    standalone: false
 })
 export class ConfrontoHeaderComponent {
 

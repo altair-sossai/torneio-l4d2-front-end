@@ -5,9 +5,10 @@ import { Playoff } from '../../models/playoff';
 import { PlayoffComponent } from '../playoff/playoff.component';
 
 @Component({
-  selector: 'app-playoff-match',
-  templateUrl: './playoff-match.component.html',
-  styleUrls: ['./playoff-match.component.scss']
+    selector: 'app-playoff-match',
+    templateUrl: './playoff-match.component.html',
+    styleUrls: ['./playoff-match.component.scss'],
+    standalone: false
 })
 export class PlayoffMatchComponent implements OnInit {
 

@@ -6,9 +6,10 @@ import { PlayoffService } from '../../services/playoff.service';
 import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
 
 @Component({
-  selector: 'app-playoff',
-  templateUrl: './playoff.component.html',
-  styleUrls: ['./playoff.component.scss']
+    selector: 'app-playoff',
+    templateUrl: './playoff.component.html',
+    styleUrls: ['./playoff.component.scss'],
+    standalone: false
 })
 export class PlayoffComponent {
 

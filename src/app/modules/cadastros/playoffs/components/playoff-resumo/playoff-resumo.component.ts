@@ -4,9 +4,10 @@ import { Time } from '../../../times/models/time';
 import { Confronto, Playoff } from '../../models/playoff';
 
 @Component({
-  selector: 'app-playoff-resumo',
-  templateUrl: './playoff-resumo.component.html',
-  styleUrls: ['./playoff-resumo.component.scss']
+    selector: 'app-playoff-resumo',
+    templateUrl: './playoff-resumo.component.html',
+    styleUrls: ['./playoff-resumo.component.scss'],
+    standalone: false
 })
 export class PlayoffResumoComponent {
 

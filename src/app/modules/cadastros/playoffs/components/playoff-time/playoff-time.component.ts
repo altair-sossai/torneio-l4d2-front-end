@@ -4,9 +4,10 @@ import { StatusPlayoff, StatusPlayoffs } from '../../enums/status-playoff';
 import { Playoff } from '../../models/playoff';
 
 @Component({
-  selector: 'app-playoff-time',
-  templateUrl: './playoff-time.component.html',
-  styleUrls: ['./playoff-time.component.scss']
+    selector: 'app-playoff-time',
+    templateUrl: './playoff-time.component.html',
+    styleUrls: ['./playoff-time.component.scss'],
+    standalone: false
 })
 export class PlayoffTimeComponent {
 

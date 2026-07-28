@@ -8,9 +8,10 @@ import { SugestaoDataConfrontoModel } from 'src/app/modules/cadastros/data-confr
 import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confronto/services/periodo-confronto.service';
 
 @Component({
-  selector: 'app-responder-sugestao-data',
-  templateUrl: './responder-sugestao-data.component.html',
-  styleUrls: ['./responder-sugestao-data.component.scss']
+    selector: 'app-responder-sugestao-data',
+    templateUrl: './responder-sugestao-data.component.html',
+    styleUrls: ['./responder-sugestao-data.component.scss'],
+    standalone: false
 })
 export class ResponderSugestaoDataComponent {
 

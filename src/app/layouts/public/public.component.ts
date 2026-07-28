@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CapitaoService } from 'src/app/modules/cadastros/jogadores/services/capitao.service';
 
 @Component({
-  selector: 'app-public-root',
-  templateUrl: './public.component.html',
-  styleUrls: ['./public.component.scss']
+    selector: 'app-public-root',
+    templateUrl: './public.component.html',
+    styleUrls: ['./public.component.scss'],
+    standalone: false
 })
 export class PublicComponent implements OnInit {
 

@@ -4,9 +4,10 @@ import { Time } from '../../../times/models/time';
 import { Confronto } from '../../models/confronto';
 
 @Component({
-  selector: 'app-confronto-resumo',
-  templateUrl: './confronto-resumo.component.html',
-  styleUrls: ['./confronto-resumo.component.scss']
+    selector: 'app-confronto-resumo',
+    templateUrl: './confronto-resumo.component.html',
+    styleUrls: ['./confronto-resumo.component.scss'],
+    standalone: false
 })
 export class ConfrontoResumoComponent {
 

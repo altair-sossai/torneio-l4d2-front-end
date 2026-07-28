@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { StatusConfronto, StatusConfrontoLabel } from '../enums/status-confronto';
 
 @Pipe({
-  name: 'statusConfronto'
+    name: 'statusConfronto',
+    standalone: false
 })
 export class StatusConfrontoPipe implements PipeTransform {
 

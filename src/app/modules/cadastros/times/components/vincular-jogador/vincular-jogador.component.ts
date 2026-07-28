@@ -6,9 +6,10 @@ import { TimeJogadorCommand } from '../../commands/time-jogador.command';
 import { TimeService } from '../../services/time.service';
 
 @Component({
-  selector: 'app-vincular-jogador',
-  templateUrl: './vincular-jogador.component.html',
-  styleUrls: ['./vincular-jogador.component.scss']
+    selector: 'app-vincular-jogador',
+    templateUrl: './vincular-jogador.component.html',
+    styleUrls: ['./vincular-jogador.component.scss'],
+    standalone: false
 })
 export class VincularJogadorComponent implements OnInit {
 

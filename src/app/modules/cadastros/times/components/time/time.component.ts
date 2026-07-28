@@ -8,9 +8,10 @@ import { TimeEditComponent } from '../time-edit/time-edit.component';
 import { VincularJogadorComponent } from '../vincular-jogador/vincular-jogador.component';
 
 @Component({
-  selector: 'app-time',
-  templateUrl: './time.component.html',
-  styleUrls: ['./time.component.scss']
+    selector: 'app-time',
+    templateUrl: './time.component.html',
+    styleUrls: ['./time.component.scss'],
+    standalone: false
 })
 export class TimeComponent {
 

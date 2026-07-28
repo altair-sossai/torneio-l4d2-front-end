@@ -17,9 +17,10 @@ import { ResponderSugestaoDataComponent } from '../responder-sugestao-data/respo
 import { SugerirNovaDataComponent } from '../sugerir-nova-data/sugerir-nova-data.component';
 
 @Component({
-  selector: 'app-proximo-confronto',
-  templateUrl: './proximo-confronto.component.html',
-  styleUrls: ['./proximo-confronto.component.scss']
+    selector: 'app-proximo-confronto',
+    templateUrl: './proximo-confronto.component.html',
+    styleUrls: ['./proximo-confronto.component.scss'],
+    standalone: false
 })
 export class ProximoConfrontoComponent implements OnInit {
 

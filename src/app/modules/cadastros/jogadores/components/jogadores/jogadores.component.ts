@@ -5,9 +5,10 @@ import { Jogador } from '../../models/jogador';
 import { JogadorService } from '../../services/jogador.service';
 
 @Component({
-  selector: 'app-jogadores',
-  templateUrl: './jogadores.component.html',
-  styleUrls: ['./jogadores.component.scss']
+    selector: 'app-jogadores',
+    templateUrl: './jogadores.component.html',
+    styleUrls: ['./jogadores.component.scss'],
+    standalone: false
 })
 export class JogadoresComponent implements OnInit {
 

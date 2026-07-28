@@ -5,9 +5,10 @@ import { EstatisticasService } from 'src/app/modules/cadastros/estatisticas/serv
 import { EstatisticaJogador, EstatisticasJogadores } from 'src/app/modules/institucional/enums/estatistica-jogador.enum';
 
 @Component({
-  selector: 'app-estatisticas-por-jogador',
-  templateUrl: './estatisticas-por-jogador.component.html',
-  styleUrls: ['./estatisticas-por-jogador.component.scss']
+    selector: 'app-estatisticas-por-jogador',
+    templateUrl: './estatisticas-por-jogador.component.html',
+    styleUrls: ['./estatisticas-por-jogador.component.scss'],
+    standalone: false
 })
 export class EstatisticasPorJogadorComponent implements OnInit {
 

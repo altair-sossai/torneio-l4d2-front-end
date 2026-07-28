@@ -7,9 +7,10 @@ import { PlayoffService } from '../../services/playoff.service';
 import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
 
 @Component({
-  selector: 'app-playoffs',
-  templateUrl: './playoffs.component.html',
-  styleUrls: ['./playoffs.component.scss']
+    selector: 'app-playoffs',
+    templateUrl: './playoffs.component.html',
+    styleUrls: ['./playoffs.component.scss'],
+    standalone: false
 })
 export class PlayoffsComponent implements OnInit {
 

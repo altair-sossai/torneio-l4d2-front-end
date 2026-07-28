@@ -4,9 +4,10 @@ import { TimeCommand } from '../../commands/time.command';
 import { TimeService } from '../../services/time.service';
 
 @Component({
-  selector: 'app-time-edit',
-  templateUrl: './time-edit.component.html',
-  styleUrls: ['./time-edit.component.scss']
+    selector: 'app-time-edit',
+    templateUrl: './time-edit.component.html',
+    styleUrls: ['./time-edit.component.scss'],
+    standalone: false
 })
 export class TimeEditComponent implements OnInit {
 

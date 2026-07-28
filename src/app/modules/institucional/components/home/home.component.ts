@@ -12,9 +12,10 @@ import { Time } from 'src/app/modules/cadastros/times/models/time';
 import { TimeService } from 'src/app/modules/cadastros/times/services/time.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    standalone: false
 })
 export class HomeComponent implements OnInit {
 

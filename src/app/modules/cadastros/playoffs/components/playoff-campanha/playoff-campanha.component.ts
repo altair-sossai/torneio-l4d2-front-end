@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Campanha } from '../../../campanhas/models/campanha';
 
 @Component({
-  selector: 'app-playoff-campanha',
-  templateUrl: './playoff-campanha.component.html',
-  styleUrls: ['./playoff-campanha.component.scss']
+    selector: 'app-playoff-campanha',
+    templateUrl: './playoff-campanha.component.html',
+    styleUrls: ['./playoff-campanha.component.scss'],
+    standalone: false
 })
 export class PlayoffCampanhaComponent {
 

@@ -11,9 +11,10 @@ import { StatusPlayoff, StatusPlayoffs } from '../../enums/status-playoff';
 import { PlayoffService } from '../../services/playoff.service';
 
 @Component({
-  selector: 'app-playoff-edit',
-  templateUrl: './playoff-edit.component.html',
-  styleUrls: ['./playoff-edit.component.scss']
+    selector: 'app-playoff-edit',
+    templateUrl: './playoff-edit.component.html',
+    styleUrls: ['./playoff-edit.component.scss'],
+    standalone: false
 })
 export class PlayoffEditComponent implements OnInit {
 

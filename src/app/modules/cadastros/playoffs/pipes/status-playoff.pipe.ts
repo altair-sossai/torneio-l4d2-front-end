@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { StatusPlayoff, StatusPlayoffLabel } from '../enums/status-playoff';
 
 @Pipe({
-  name: 'statusPlayoff'
+    name: 'statusPlayoff',
+    standalone: false
 })
 export class StatusPlayoffPipe implements PipeTransform {
 

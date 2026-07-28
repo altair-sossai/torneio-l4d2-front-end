@@ -6,9 +6,10 @@ import { JogadorService } from '../../../jogadores/services/jogador.service';
 import { SenhaCapitaoComponent } from '../senha-capitao/senha-capitao.component';
 
 @Component({
-  selector: 'app-capitaes',
-  templateUrl: './capitaes.component.html',
-  styleUrls: ['./capitaes.component.scss']
+    selector: 'app-capitaes',
+    templateUrl: './capitaes.component.html',
+    styleUrls: ['./capitaes.component.scss'],
+    standalone: false
 })
 export class CapitaesComponent implements OnInit {
 

@@ -10,9 +10,10 @@ import { StatusConfronto, StatusConfrontos } from '../../enums/status-confronto'
 import { ConfrontoService } from '../../services/confronto.service';
 
 @Component({
-  selector: 'app-confronto-edit',
-  templateUrl: './confronto-edit.component.html',
-  styleUrls: ['./confronto-edit.component.scss']
+    selector: 'app-confronto-edit',
+    templateUrl: './confronto-edit.component.html',
+    styleUrls: ['./confronto-edit.component.scss'],
+    standalone: false
 })
 export class ConfrontoEditComponent implements OnInit {
 

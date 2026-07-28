@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { RespostaTime, RespostaTimeLabel } from '../enums/resposta-time.enum';
 
 @Pipe({
-  name: 'respostaTime'
+    name: 'respostaTime',
+    standalone: false
 })
 export class RespostaTimePipe implements PipeTransform {
   transform(respostaTime: RespostaTime): string {

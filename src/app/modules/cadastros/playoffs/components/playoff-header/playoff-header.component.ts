@@ -5,9 +5,10 @@ import { Time } from '../../../times/models/time';
 import { Confronto } from '../../models/playoff';
 
 @Component({
-  selector: 'app-playoff-header',
-  templateUrl: './playoff-header.component.html',
-  styleUrls: ['./playoff-header.component.scss']
+    selector: 'app-playoff-header',
+    templateUrl: './playoff-header.component.html',
+    styleUrls: ['./playoff-header.component.scss'],
+    standalone: false
 })
 export class PlayoffHeaderComponent {
   StatusConfronto = StatusConfronto;

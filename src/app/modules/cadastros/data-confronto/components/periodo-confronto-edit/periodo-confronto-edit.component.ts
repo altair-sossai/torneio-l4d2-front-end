@@ -8,9 +8,10 @@ import { RespostasTimes, RespostaTime } from '../../enums/resposta-time.enum';
 import { PeriodoConfrontoService } from '../../services/periodo-confronto.service';
 
 @Component({
-  selector: 'app-periodo-confronto-edit',
-  templateUrl: './periodo-confronto-edit.component.html',
-  styleUrls: ['./periodo-confronto-edit.component.scss']
+    selector: 'app-periodo-confronto-edit',
+    templateUrl: './periodo-confronto-edit.component.html',
+    styleUrls: ['./periodo-confronto-edit.component.scss'],
+    standalone: false
 })
 export class PeriodoConfrontoEditComponent implements OnInit {
 

@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Confronto, Playoff } from '../../models/playoff';
 
 @Component({
-  selector: 'app-playoff-corpo',
-  templateUrl: './playoff-corpo.component.html',
-  styleUrls: ['./playoff-corpo.component.scss']
+    selector: 'app-playoff-corpo',
+    templateUrl: './playoff-corpo.component.html',
+    styleUrls: ['./playoff-corpo.component.scss'],
+    standalone: false
 })
 export class PlayoffCorpoComponent {
 

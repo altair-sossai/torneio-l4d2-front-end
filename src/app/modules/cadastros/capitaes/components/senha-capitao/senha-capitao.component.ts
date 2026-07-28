@@ -6,9 +6,10 @@ import { Jogador } from '../../../jogadores/models/jogador';
 import { SenhaJogador } from '../../../jogadores/models/senha-jogador';
 
 @Component({
-  selector: 'app-senha-capitao',
-  templateUrl: './senha-capitao.component.html',
-  styleUrls: ['./senha-capitao.component.scss']
+    selector: 'app-senha-capitao',
+    templateUrl: './senha-capitao.component.html',
+    styleUrls: ['./senha-capitao.component.scss'],
+    standalone: false
 })
 export class SenhaCapitaoComponent {
 

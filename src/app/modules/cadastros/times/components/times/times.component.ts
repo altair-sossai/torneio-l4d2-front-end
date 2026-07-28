@@ -6,9 +6,10 @@ import { SortearJogadorComponent } from '../sortear-jogador/sortear-jogador.comp
 import { TimeEditComponent } from '../time-edit/time-edit.component';
 
 @Component({
-  selector: 'app-times',
-  templateUrl: './times.component.html',
-  styleUrls: ['./times.component.scss']
+    selector: 'app-times',
+    templateUrl: './times.component.html',
+    styleUrls: ['./times.component.scss'],
+    standalone: false
 })
 export class TimesComponent implements OnInit {
 

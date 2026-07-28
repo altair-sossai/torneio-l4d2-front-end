@@ -7,9 +7,10 @@ import { ConfrontoService } from '../../services/confronto.service';
 import { ConfrontoEditComponent } from '../confronto-edit/confronto-edit.component';
 
 @Component({
-  selector: 'app-confrontos',
-  templateUrl: './confrontos.component.html',
-  styleUrls: ['./confrontos.component.scss']
+    selector: 'app-confrontos',
+    templateUrl: './confrontos.component.html',
+    styleUrls: ['./confrontos.component.scss'],
+    standalone: false
 })
 export class ConfrontosComponent implements OnInit {
 

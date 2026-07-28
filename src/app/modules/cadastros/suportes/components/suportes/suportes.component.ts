@@ -4,9 +4,10 @@ import { Jogador } from '../../../jogadores/models/jogador';
 import { JogadorService } from '../../../jogadores/services/jogador.service';
 
 @Component({
-  selector: 'app-suportes',
-  templateUrl: './suportes.component.html',
-  styleUrls: ['./suportes.component.scss']
+    selector: 'app-suportes',
+    templateUrl: './suportes.component.html',
+    styleUrls: ['./suportes.component.scss'],
+    standalone: false
 })
 export class SuportesComponent implements OnInit {
 

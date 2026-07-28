@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { CadastradoPor, CadastradoPorLabel } from '../enums/cadastrado-por.enum';
 
 @Pipe({
-  name: 'cadastradoPor'
+    name: 'cadastradoPor',
+    standalone: false
 })
 export class CadastradoPorPipe implements PipeTransform {
   transform(cadastradoPor: CadastradoPor): string {

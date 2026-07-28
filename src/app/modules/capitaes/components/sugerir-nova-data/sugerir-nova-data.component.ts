@@ -7,9 +7,10 @@ import { PeriodoConfrontoModel } from 'src/app/modules/cadastros/data-confronto/
 import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confronto/services/periodo-confronto.service';
 
 @Component({
-  selector: 'app-sugerir-nova-data',
-  templateUrl: './sugerir-nova-data.component.html',
-  styleUrls: ['./sugerir-nova-data.component.scss']
+    selector: 'app-sugerir-nova-data',
+    templateUrl: './sugerir-nova-data.component.html',
+    styleUrls: ['./sugerir-nova-data.component.scss'],
+    standalone: false
 })
 export class SugerirNovaDataComponent implements OnInit {
 
