@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Observable, throwError } from 'rxjs';
@@ -10,14 +10,11 @@ import { CapitaoService } from '../modules/cadastros/jogadores/services/capitao.
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
+  private router = inject(Router);
+  private currentUserService = inject(CurrentUserService);
+  private capitaoService = inject(CapitaoService);
+  private message = inject(NzMessageService);
 
-  constructor(
-    private router: Router,
-    private currentUserService: CurrentUserService,
-    private capitaoService: CapitaoService,
-    private message: NzMessageService) {
-
-  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 

@@ -14,6 +14,10 @@ import { PeriodoConfrontoService } from '../../services/periodo-confronto.servic
     standalone: false
 })
 export class PeriodoConfrontoEditComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private messageService = inject(NzMessageService);
+  private periodoConfrontoService = inject(PeriodoConfrontoService);
+
 
   private readonly modalData = inject<{ confrontoId?: string } | null>(NZ_MODAL_DATA, { optional: true });
 
@@ -23,12 +27,6 @@ export class PeriodoConfrontoEditComponent implements OnInit {
 
   cadastradosPor = CadastradosPor;
   respostasTimes = RespostasTimes;
-
-  constructor(
-    private modal: NzModalRef,
-    private messageService: NzMessageService,
-    private periodoConfrontoService: PeriodoConfrontoService) {
-  }
 
   ngOnInit(): void {
     this.periodoConfrontoService.get(this.confrontoId!).subscribe({

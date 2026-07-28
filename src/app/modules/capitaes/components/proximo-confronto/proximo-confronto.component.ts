@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -23,6 +23,13 @@ import { SugerirNovaDataComponent } from '../sugerir-nova-data/sugerir-nova-data
     standalone: false
 })
 export class ProximoConfrontoComponent implements OnInit {
+  private router = inject(Router);
+  private modalService = inject(NzModalService);
+  private messageService = inject(NzMessageService);
+  private capitaoService = inject(CapitaoService);
+  private confrontoService = inject(ConfrontoService);
+  private periodoConfrontoService = inject(PeriodoConfrontoService);
+
 
   CadastradoPor = CadastradoPor;
   RespostaTime = RespostaTime;
@@ -38,15 +45,6 @@ export class ProximoConfrontoComponent implements OnInit {
   periodo?: PeriodoConfrontoModel | null;
 
   respostasTimes = RespostasTimes;
-
-  constructor(
-    private router: Router,
-    private modalService: NzModalService,
-    private messageService: NzMessageService,
-    private capitaoService: CapitaoService,
-    private confrontoService: ConfrontoService,
-    private periodoConfrontoService: PeriodoConfrontoService) {
-  }
 
   ngOnInit() {
     this.capitao = this.capitaoService.current();

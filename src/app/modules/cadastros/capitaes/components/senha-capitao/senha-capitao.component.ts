@@ -12,6 +12,10 @@ import { SenhaJogador } from '../../../jogadores/models/senha-jogador';
     standalone: false
 })
 export class SenhaCapitaoComponent {
+  private modal = inject(NzModalRef);
+  private messageService = inject(NzMessageService);
+  private clipboardService = inject(ClipboardService);
+
 
   private readonly modalData = inject<{ capitao: Jogador; senha: SenhaJogador } | null>(NZ_MODAL_DATA, { optional: true });
 
@@ -19,11 +23,6 @@ export class SenhaCapitaoComponent {
   @Input() senha = this.modalData?.senha!;
 
   @ViewChild('texto') texto!: ElementRef;
-
-  constructor(
-    private modal: NzModalRef,
-    private messageService: NzMessageService,
-    private clipboardService: ClipboardService) { }
 
   close(): void {
     this.modal.destroy();

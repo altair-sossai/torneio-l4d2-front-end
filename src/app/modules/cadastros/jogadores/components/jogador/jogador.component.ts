@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { JogadorCommand } from '../../commands/jogador.command';
@@ -12,18 +12,16 @@ import { JogadorService } from '../../services/jogador.service';
     standalone: false
 })
 export class JogadorComponent {
+  private messageService = inject(NzMessageService);
+  private modalService = inject(NzModalService);
+  private jogadorService = inject(JogadorService);
+
   loading = false;
 
   @Input() jogador!: Jogador;
   @Input() podeExcluir = true;
   @Input() podeAtualizar = true;
   @Output() excluido = new EventEmitter<Jogador>();
-
-  constructor(
-    private messageService: NzMessageService,
-    private modalService: NzModalService,
-    private jogadorService: JogadorService
-  ) { }
 
   atualizar(): void {
     this.loading = true;

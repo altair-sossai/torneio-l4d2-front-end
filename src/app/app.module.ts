@@ -16,7 +16,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
@@ -164,7 +163,6 @@ registerLocaleData(pt);
         NzToolTipModule,
         NzSpinModule,
         NzAlertModule,
-        NzMessageModule,
         NzModalModule,
         NzInputModule,
         NzFormModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { JogadorService } from '../../../jogadores/services/jogador.service';
@@ -10,14 +10,12 @@ import { JogadorService } from '../../../jogadores/services/jogador.service';
     standalone: false
 })
 export class SuportesComponent implements OnInit {
+  private modalService = inject(NzModalService);
+  private jogadorService = inject(JogadorService);
+
 
   suportes?: Jogador[];
   loading = false;
-
-  constructor(
-    private modalService: NzModalService,
-    private jogadorService: JogadorService) {
-  }
 
   ngOnInit(): void {
     this.pesquisar();

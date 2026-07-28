@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
@@ -14,18 +14,16 @@ import { VincularJogadorComponent } from '../vincular-jogador/vincular-jogador.c
     standalone: false
 })
 export class TimeComponent {
+  private messageService = inject(NzMessageService);
+  private modalService = inject(NzModalService);
+  private timeService = inject(TimeService);
+
 
   loading = false;
 
   @Input() time!: Time;
   @Input() readonly = false;
   @Output() atualizar = new EventEmitter<any>();
-
-  constructor(
-    private messageService: NzMessageService,
-    private modalService: NzModalService,
-    private timeService: TimeService
-  ) { }
 
   adicionarJogador(): void {
     this.modalService.create({

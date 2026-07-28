@@ -13,6 +13,10 @@ import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confront
     standalone: false
 })
 export class SugerirNovaDataComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private messageService = inject(NzMessageService);
+  private periodoConfrontoService = inject(PeriodoConfrontoService);
+
 
   private readonly modalData = inject<{ confronto: Confronto; periodo: PeriodoConfrontoModel | null } | null>(
     NZ_MODAL_DATA,
@@ -24,12 +28,6 @@ export class SugerirNovaDataComponent implements OnInit {
 
   busy = false;
   command?: NovaSugestaoDataCommand | null;
-
-  constructor(
-    private modal: NzModalRef,
-    private messageService: NzMessageService,
-    private periodoConfrontoService: PeriodoConfrontoService) {
-  }
 
   ngOnInit(): void {
     this.command = new NovaSugestaoDataCommand(this.periodo!);

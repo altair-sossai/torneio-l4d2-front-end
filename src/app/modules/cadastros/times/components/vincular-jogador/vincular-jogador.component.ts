@@ -12,18 +12,16 @@ import { TimeService } from '../../services/time.service';
     standalone: false
 })
 export class VincularJogadorComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private jogadorService = inject(JogadorService);
+  private timeService = inject(TimeService);
+
 
   private readonly modalData = inject<{ codigo?: string } | null>(NZ_MODAL_DATA, { optional: true });
 
   @Input() codigo = this.modalData?.codigo;
 
   jogadores: Jogador[] = [];
-
-  constructor(
-    private modal: NzModalRef,
-    private jogadorService: JogadorService,
-    private timeService: TimeService
-  ) { }
 
   ngOnInit(): void {
     this.jogadorService.disponiveis().subscribe(jogadores => {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { StatusConfronto } from 'src/app/modules/cadastros/confrontos/enums/status-confronto';
 import { Confronto } from 'src/app/modules/cadastros/confrontos/models/confronto';
 import { Rodada } from 'src/app/modules/cadastros/confrontos/models/rodada';
@@ -18,6 +18,11 @@ import { TimeService } from 'src/app/modules/cadastros/times/services/time.servi
     standalone: false
 })
 export class HomeComponent implements OnInit {
+  private jogadorService = inject(JogadorService);
+  private timeService = inject(TimeService);
+  private confrontoService = inject(ConfrontoService);
+  private playoffService = inject(PlayoffService);
+
 
   fase1Finalizada: boolean = false;
   exibirPlayoff: boolean = false;
@@ -29,13 +34,6 @@ export class HomeComponent implements OnInit {
   rodadas: Rodada[] | undefined;
   playoff: RodadaPlayoff[] | undefined;
   confrontosAgendados: Confronto[] | undefined;
-
-  constructor(
-    private jogadorService: JogadorService,
-    private timeService: TimeService,
-    private confrontoService: ConfrontoService,
-    private playoffService: PlayoffService,
-  ) { }
 
   ngOnInit(): void {
     this.jogadorService.get().subscribe(jogadores => this.jogadores = jogadores);

@@ -10,6 +10,9 @@ import { TimeService } from '../../services/time.service';
     standalone: false
 })
 export class TimeEditComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private timeService = inject(TimeService);
+
 
   private readonly modalData = inject<{ codigo?: string } | null>(NZ_MODAL_DATA, { optional: true });
 
@@ -18,10 +21,6 @@ export class TimeEditComponent implements OnInit {
   command: TimeCommand | undefined;
   busy = false;
   errors: any;
-
-  constructor(
-    private modal: NzModalRef,
-    private timeService: TimeService) { }
 
   ngOnInit(): void {
     if (this.codigo) {

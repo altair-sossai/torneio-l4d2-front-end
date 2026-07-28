@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { SenhaJogador } from '../../../jogadores/models/senha-jogador';
@@ -12,14 +12,12 @@ import { SenhaCapitaoComponent } from '../senha-capitao/senha-capitao.component'
     standalone: false
 })
 export class CapitaesComponent implements OnInit {
+  private modalService = inject(NzModalService);
+  private jogadorService = inject(JogadorService);
+
 
   capitaes?: Jogador[];
   loading = false;
-
-  constructor(
-    private modalService: NzModalService,
-    private jogadorService: JogadorService) {
-  }
 
   ngOnInit(): void {
     this.pesquisar();

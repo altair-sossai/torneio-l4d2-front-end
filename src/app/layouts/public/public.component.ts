@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CapitaoService } from 'src/app/modules/cadastros/jogadores/services/capitao.service';
 
 @Component({
@@ -8,11 +8,10 @@ import { CapitaoService } from 'src/app/modules/cadastros/jogadores/services/cap
     standalone: false
 })
 export class PublicComponent implements OnInit {
+  private capitaoService = inject(CapitaoService);
+
 
   capitao = false;
-
-  constructor(private capitaoService: CapitaoService) {
-  }
 
   ngOnInit(): void {
     this.capitao = this.capitaoService.autenticado();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AutenticarJogadorCommand } from 'src/app/modules/cadastros/jogadores/commands/autenticar-jogador.command';
@@ -12,15 +12,14 @@ import { JogadorService } from 'src/app/modules/cadastros/jogadores/services/jog
     standalone: false
 })
 export class LoginCapitaoComponent {
+  private messageService = inject(NzMessageService);
+  private jogadorService = inject(JogadorService);
+  private router = inject(Router);
+
 
   command = new AutenticarJogadorCommand();
   errors: any;
   busy = false;
-
-  constructor(
-    private messageService: NzMessageService,
-    private jogadorService: JogadorService,
-    private router: Router) { }
 
   login(): void {
     this.busy = true;

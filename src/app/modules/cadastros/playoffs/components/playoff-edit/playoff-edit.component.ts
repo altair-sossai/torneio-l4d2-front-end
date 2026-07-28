@@ -17,6 +17,12 @@ import { PlayoffService } from '../../services/playoff.service';
     standalone: false
 })
 export class PlayoffEditComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private playoffService = inject(PlayoffService);
+  private campanhaService = inject(CampanhaService);
+  private timeService = inject(TimeService);
+  private playstatsService = inject(PlaystatsService);
+
 
   private readonly modalData = inject<{ playoffId?: string } | null>(NZ_MODAL_DATA, { optional: true });
 
@@ -34,12 +40,7 @@ export class PlayoffEditComponent implements OnInit {
   StatusConfronto = StatusConfronto;
   StatusConfrontos = StatusConfrontos;
 
-  constructor(
-    private modal: NzModalRef,
-    private playoffService: PlayoffService,
-    private campanhaService: CampanhaService,
-    private timeService: TimeService,
-    private playstatsService: PlaystatsService) {
+  constructor() {
     this.campanhaService.get().subscribe(campanhas => this.campanhas = campanhas);
     this.timeService.get().subscribe(times => this.times = times);
   }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NovaSugestaoDataCommand } from '../commands/nova-sugestao-data.command';
@@ -11,9 +11,8 @@ import { PeriodoConfrontoModel } from '../models/periodo-confronto.model';
     providedIn: 'root'
 })
 export class PeriodoConfrontoService {
+    private http = inject(HttpClient);
 
-    constructor(private http: HttpClient) {
-    }
 
     get(confrontoId: string): Observable<PeriodoConfrontoModel> {
         return this.http.get<PeriodoConfrontoModel>(`${environment.apiUrl}/api/confrontos/${confrontoId}/periodo`);

@@ -12,17 +12,16 @@ import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
     standalone: false
 })
 export class PlayoffComponent {
+  private modalService = inject(NzModalService);
+  private messageService = inject(NzMessageService);
+  private playoffService = inject(PlayoffService);
+
 
   private readonly modalData = inject<{ playoff: Playoff } | null>(NZ_MODAL_DATA, { optional: true });
 
   @Input() playoff = this.modalData?.playoff!;
   @Input() podeEditar = false;
   @Output() atualizado = new EventEmitter<any>();
-
-  constructor(
-    private modalService: NzModalService,
-    private messageService: NzMessageService,
-    private playoffService: PlayoffService) { }
 
   atualizar(): void {
     this.atualizado.emit();

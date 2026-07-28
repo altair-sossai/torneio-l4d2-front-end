@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { JogadorService } from '../../../jogadores/services/jogador.service';
@@ -15,6 +15,10 @@ declare var $: any;
     standalone: false
 })
 export class SortearJogadorComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private timeService = inject(TimeService);
+  private jogadorService = inject(JogadorService);
+
 
   @ViewChild('audio') audio?: ElementRef;
 
@@ -29,12 +33,6 @@ export class SortearJogadorComponent implements OnInit {
   busy = false;
 
   command = new TimeJogadorCommand();
-
-  constructor(
-    private modal: NzModalRef,
-    private timeService: TimeService,
-    private jogadorService: JogadorService) {
-  }
 
   ngOnInit(): void {
     this.timeService.get().subscribe(times =>

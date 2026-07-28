@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { LoginCommand } from '../../commands/login-command';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
@@ -11,15 +11,14 @@ import { CurrentUserService } from '../../../current-user/services/current-user.
     standalone: false
 })
 export class LoginComponent implements OnInit {
+  private loginService = inject(LoginService);
+  private currentUserService = inject(CurrentUserService);
+  private router = inject(Router);
+
 
   command = new LoginCommand();
   errors: any;
   busy = false;
-
-  constructor(
-    private loginService: LoginService,
-    private currentUserService: CurrentUserService,
-    private router: Router) { }
 
   ngOnInit(): void {
     this.currentUserService.logout();

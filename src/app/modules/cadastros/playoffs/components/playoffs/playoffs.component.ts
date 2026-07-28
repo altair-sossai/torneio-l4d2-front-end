@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { StatusPlayoff } from '../../enums/status-playoff';
@@ -13,6 +13,10 @@ import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
     standalone: false
 })
 export class PlayoffsComponent implements OnInit {
+  private modalService = inject(NzModalService);
+  private playoffService = inject(PlayoffService);
+  private route = inject(ActivatedRoute);
+
 
   @Input() podeEditar = false;
 
@@ -20,11 +24,7 @@ export class PlayoffsComponent implements OnInit {
   busy = false;
   rodadaAtual = -1;
 
-  constructor(
-    private modalService: NzModalService,
-    private playoffService: PlayoffService,
-    private route: ActivatedRoute
-  ) {
+  constructor() {
     this.route.data.subscribe(data => this.podeEditar = data.podeEditar || this.podeEditar);
   }
 

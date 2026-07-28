@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AutenticarJogadorCommand } from '../commands/autenticar-jogador.command';
@@ -12,9 +12,8 @@ import { SenhaJogador } from '../models/senha-jogador';
     providedIn: 'root'
 })
 export class JogadorService {
+    private http = inject(HttpClient);
 
-    constructor(private http: HttpClient) {
-    }
 
     get(): Observable<Jogador[]> {
         return this.http.get<Jogador[]>(`${environment.apiUrl}/api/jogadores`);

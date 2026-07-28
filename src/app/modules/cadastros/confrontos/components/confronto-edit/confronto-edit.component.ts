@@ -16,6 +16,12 @@ import { ConfrontoService } from '../../services/confronto.service';
     standalone: false
 })
 export class ConfrontoEditComponent implements OnInit {
+  private modal = inject(NzModalRef);
+  private confrontoService = inject(ConfrontoService);
+  private campanhaService = inject(CampanhaService);
+  private timeService = inject(TimeService);
+  private playstatsService = inject(PlaystatsService);
+
 
   private readonly modalData = inject<{ confrontoId?: string } | null>(NZ_MODAL_DATA, { optional: true });
 
@@ -30,12 +36,7 @@ export class ConfrontoEditComponent implements OnInit {
   StatusConfronto = StatusConfronto;
   tiposStatus = StatusConfrontos;
 
-  constructor(
-    private modal: NzModalRef,
-    private confrontoService: ConfrontoService,
-    private campanhaService: CampanhaService,
-    private timeService: TimeService,
-    private playstatsService: PlaystatsService) {
+  constructor() {
     this.campanhaService.get().subscribe(campanhas => this.campanhas = campanhas);
     this.timeService.get().subscribe(times => this.times = times);
   }

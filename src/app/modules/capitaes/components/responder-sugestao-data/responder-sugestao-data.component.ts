@@ -14,6 +14,10 @@ import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confront
     standalone: false
 })
 export class ResponderSugestaoDataComponent {
+  private modal = inject(NzModalRef);
+  private messageService = inject(NzMessageService);
+  private periodoConfrontoService = inject(PeriodoConfrontoService);
+
 
   private readonly modalData = inject<{ confronto: Confronto; sugestao: SugestaoDataConfrontoModel } | null>(
     NZ_MODAL_DATA,
@@ -27,12 +31,6 @@ export class ResponderSugestaoDataComponent {
 
   busy = false;
   command = new ResponderSugestaoDataCommand();
-
-  constructor(
-    private modal: NzModalRef,
-    private messageService: NzMessageService,
-    private periodoConfrontoService: PeriodoConfrontoService) {
-  }
 
   salvar(): void {
     if (this.command == null)

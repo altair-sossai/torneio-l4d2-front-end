@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CapitaoService } from '../../cadastros/jogadores/services/capitao.service';
 
 @Injectable()
 export class CapitaoGuard  {
+    private capitaoService = inject(CapitaoService);
+    private router = inject(Router);
 
-    constructor(
-        private capitaoService: CapitaoService,
-        private router: Router) { }
 
     canActivate() {
         if (!this.capitaoService.autenticado()) {

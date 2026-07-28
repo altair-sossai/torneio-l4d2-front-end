@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { JogadorCommand } from '../../commands/jogador.command';
 import { Jogador } from '../../models/jogador';
@@ -11,13 +11,12 @@ import { JogadorService } from '../../services/jogador.service';
     standalone: false
 })
 export class JogadoresComponent implements OnInit {
+  private messageService = inject(NzMessageService);
+  private jogadorService = inject(JogadorService);
+
 
   loading = false;
   jogadores: Jogador[] = [];
-
-  constructor(private messageService: NzMessageService,
-    private jogadorService: JogadorService
-  ) { }
 
   ngOnInit(): void {
     this.atualizar();

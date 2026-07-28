@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { GoogleCalendar } from 'src/app/shared/google-calendar';
 import { PeriodoConfrontoEditComponent } from '../../../data-confronto/components/periodo-confronto-edit/periodo-confronto-edit.component';
@@ -13,15 +13,14 @@ import { ConfrontoEditComponent } from '../confronto-edit/confronto-edit.compone
     standalone: false
 })
 export class ConfrontoHeaderComponent {
+  private modalService = inject(NzModalService);
+
 
   StatusConfronto = StatusConfronto;
 
   @Input() confronto!: Confronto;
   @Input() podeEditar = false;
   @Output() atualizado = new EventEmitter<any>();
-
-  constructor(private modalService: NzModalService) {
-  }
 
   periodo(): void {
     this.modalService.create({

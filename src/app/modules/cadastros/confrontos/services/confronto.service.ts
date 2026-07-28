@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Campanha } from '../../campanhas/models/campanha';
@@ -11,9 +11,8 @@ import { Rodada } from '../models/rodada';
     providedIn: 'root'
 })
 export class ConfrontoService {
+    private http = inject(HttpClient);
 
-    constructor(private http: HttpClient) {
-    }
 
     find(id: string): Observable<Confronto> {
         return this.http.get<Confronto>(`${environment.apiUrl}/api/confrontos/${id}`);

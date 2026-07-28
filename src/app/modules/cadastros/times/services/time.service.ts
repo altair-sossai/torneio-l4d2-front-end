@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TimeJogadorCommand } from '../commands/time-jogador.command';
@@ -11,9 +11,8 @@ import { TimeJogador } from '../models/time-jogador';
     providedIn: 'root'
 })
 export class TimeService {
+    private http = inject(HttpClient);
 
-    constructor(private http: HttpClient) {
-    }
 
     find(codigo: string): Observable<Time> {
         return this.http.get<Time>(`${environment.apiUrl}/api/times/${codigo}`);

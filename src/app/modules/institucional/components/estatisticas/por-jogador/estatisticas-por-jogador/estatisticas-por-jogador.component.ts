@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { EstatisticaJogadorModel } from 'src/app/modules/cadastros/estatisticas/models/por-jogador/estatistica-jogador.model';
 import { JogadorModel } from 'src/app/modules/cadastros/estatisticas/models/por-jogador/jogador.model';
 import { EstatisticasService } from 'src/app/modules/cadastros/estatisticas/services/estatisticas.service';
@@ -11,6 +11,8 @@ import { EstatisticaJogador, EstatisticasJogadores } from 'src/app/modules/insti
     standalone: false
 })
 export class EstatisticasPorJogadorComponent implements OnInit {
+  private estatisticasService = inject(EstatisticasService);
+
 
   EstatisticasJogadores = EstatisticasJogadores;
 
@@ -20,8 +22,6 @@ export class EstatisticasPorJogadorComponent implements OnInit {
   public loading = true;
   public top5?: EstatisticaJogadorModel[];
   public jogadores?: EstatisticaJogadorModel[];
-
-  constructor(private estatisticasService: EstatisticasService) { }
 
   public get estatisticaAtual(): EstatisticaJogador {
     return this._estatisticaAtual || this.EstatisticasJogadores[0];

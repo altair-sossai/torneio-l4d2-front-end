@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Time } from '../../models/time';
 import { TimeService } from '../../services/time.service';
@@ -12,13 +12,12 @@ import { TimeEditComponent } from '../time-edit/time-edit.component';
     standalone: false
 })
 export class TimesComponent implements OnInit {
+  private timeService = inject(TimeService);
+  private modalService = inject(NzModalService);
+
 
   loading = false;
   times: Time[] = [];
-
-  constructor(private timeService: TimeService,
-    private modalService: NzModalService
-  ) { }
 
   ngOnInit(): void {
     this.atualizar();

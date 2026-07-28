@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Campanha } from '../models/campanha';
@@ -8,9 +8,8 @@ import { Campanha } from '../models/campanha';
     providedIn: 'root'
 })
 export class CampanhaService {
+    private http = inject(HttpClient);
 
-    constructor(private http: HttpClient) {
-    }
 
     get(): Observable<Campanha[]> {
         return this.http.get<Campanha[]>(`${environment.apiUrl}/api/campanhas`);

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { EquipeModel } from '../models/por-equipe/equipe.model';
@@ -9,9 +9,8 @@ import { JogadorModel } from '../models/por-jogador/jogador.model';
     providedIn: 'root'
 })
 export class EstatisticasService {
+    private http = inject(HttpClient);
 
-    constructor(private http: HttpClient) {
-    }
 
     porJogador(): Observable<JogadorModel[]> {
         return this.http.get<JogadorModel[]>(`${environment.apiUrl}/api/estatisticas/por-jogador`);
