@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { NzProgressStatusType } from 'ng-zorro-antd/progress';
 import { Time } from '../../../times/models/time';
 import { Confronto, Playoff } from '../../models/playoff';
@@ -7,6 +7,7 @@ import { Confronto, Playoff } from '../../models/playoff';
     selector: 'app-playoff-resumo',
     templateUrl: './playoff-resumo.component.html',
     styleUrls: ['./playoff-resumo.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffResumoComponent {

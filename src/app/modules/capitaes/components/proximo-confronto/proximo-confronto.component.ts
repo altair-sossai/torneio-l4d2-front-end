@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -20,6 +20,7 @@ import { SugerirNovaDataComponent } from '../sugerir-nova-data/sugerir-nova-data
     selector: 'app-proximo-confronto',
     templateUrl: './proximo-confronto.component.html',
     styleUrls: ['./proximo-confronto.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ProximoConfrontoComponent implements OnInit {

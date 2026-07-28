@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import pt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -186,6 +186,6 @@ registerLocaleData(pt);
         provideCharts(withDefaultRegisterables()),
         AuthGuard,
         CapitaoGuard,
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withXhr(), withInterceptorsFromDi())
     ] })
 export class AppModule { }

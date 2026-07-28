@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { StatusConfronto } from '../../enums/status-confronto';
@@ -10,6 +10,7 @@ import { ConfrontoEditComponent } from '../confronto-edit/confronto-edit.compone
     selector: 'app-confrontos',
     templateUrl: './confrontos.component.html',
     styleUrls: ['./confrontos.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConfrontosComponent implements OnInit {

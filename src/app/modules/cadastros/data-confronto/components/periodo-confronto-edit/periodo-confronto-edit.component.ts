@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { PeriodoConfrontoCommand } from '../../commands/periodo-confronto.command';
@@ -11,6 +11,7 @@ import { PeriodoConfrontoService } from '../../services/periodo-confronto.servic
     selector: 'app-periodo-confronto-edit',
     templateUrl: './periodo-confronto-edit.component.html',
     styleUrls: ['./periodo-confronto-edit.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PeriodoConfrontoEditComponent implements OnInit {

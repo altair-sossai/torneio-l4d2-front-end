@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { JogadorCommand } from '../../commands/jogador.command';
 import { Jogador } from '../../models/jogador';
@@ -8,6 +8,7 @@ import { JogadorService } from '../../services/jogador.service';
     selector: 'app-jogadores',
     templateUrl: './jogadores.component.html',
     styleUrls: ['./jogadores.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class JogadoresComponent implements OnInit {

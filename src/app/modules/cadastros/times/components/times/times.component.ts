@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Time } from '../../models/time';
 import { TimeService } from '../../services/time.service';
@@ -9,6 +9,7 @@ import { TimeEditComponent } from '../time-edit/time-edit.component';
     selector: 'app-times',
     templateUrl: './times.component.html',
     styleUrls: ['./times.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TimesComponent implements OnInit {

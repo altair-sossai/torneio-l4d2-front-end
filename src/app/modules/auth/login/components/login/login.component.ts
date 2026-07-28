@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { LoginCommand } from '../../commands/login-command';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { CurrentUserService } from '../../../current-user/services/current-user.
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LoginComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Time } from '../../../times/models/time';
 import { Playoff } from '../../models/playoff';
@@ -8,6 +8,7 @@ import { PlayoffComponent } from '../playoff/playoff.component';
     selector: 'app-playoff-match',
     templateUrl: './playoff-match.component.html',
     styleUrls: ['./playoff-match.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffMatchComponent implements OnInit {

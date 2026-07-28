@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { PlaystatsService } from 'src/app/modules/playstats/services/playstats.service';
 import { Campanha } from '../../../campanhas/models/campanha';
@@ -13,6 +13,7 @@ import { ConfrontoService } from '../../services/confronto.service';
     selector: 'app-confronto-edit',
     templateUrl: './confronto-edit.component.html',
     styleUrls: ['./confronto-edit.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConfrontoEditComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { JogadorService } from '../../../jogadores/services/jogador.service';
@@ -7,6 +7,7 @@ import { JogadorService } from '../../../jogadores/services/jogador.service';
     selector: 'app-suportes',
     templateUrl: './suportes.component.html',
     styleUrls: ['./suportes.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SuportesComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { ClipboardService } from 'ngx-clipboard';
@@ -9,6 +9,7 @@ import { SenhaJogador } from '../../../jogadores/models/senha-jogador';
     selector: 'app-senha-capitao',
     templateUrl: './senha-capitao.component.html',
     styleUrls: ['./senha-capitao.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SenhaCapitaoComponent {

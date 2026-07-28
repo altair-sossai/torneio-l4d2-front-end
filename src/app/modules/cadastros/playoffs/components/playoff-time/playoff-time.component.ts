@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Time } from '../../../times/models/time';
 import { StatusPlayoff, StatusPlayoffs } from '../../enums/status-playoff';
 import { Playoff } from '../../models/playoff';
@@ -7,6 +7,7 @@ import { Playoff } from '../../models/playoff';
     selector: 'app-playoff-time',
     templateUrl: './playoff-time.component.html',
     styleUrls: ['./playoff-time.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffTimeComponent {

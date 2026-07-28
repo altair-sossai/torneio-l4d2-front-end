@@ -1,10 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CapitaoService } from 'src/app/modules/cadastros/jogadores/services/capitao.service';
 
 @Component({
     selector: 'app-public-root',
     templateUrl: './public.component.html',
     styleUrls: ['./public.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PublicComponent implements OnInit {

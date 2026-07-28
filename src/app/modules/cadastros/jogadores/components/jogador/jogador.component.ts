@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { JogadorCommand } from '../../commands/jogador.command';
@@ -9,6 +9,7 @@ import { JogadorService } from '../../services/jogador.service';
     selector: 'app-jogador',
     templateUrl: './jogador.component.html',
     styleUrls: ['./jogador.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class JogadorComponent {

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { Confronto } from 'src/app/modules/cadastros/confrontos/models/confronto';
@@ -11,6 +11,7 @@ import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confront
     selector: 'app-responder-sugestao-data',
     templateUrl: './responder-sugestao-data.component.html',
     styleUrls: ['./responder-sugestao-data.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ResponderSugestaoDataComponent {

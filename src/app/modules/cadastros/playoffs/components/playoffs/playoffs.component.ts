@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { StatusPlayoff } from '../../enums/status-playoff';
@@ -10,6 +10,7 @@ import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
     selector: 'app-playoffs',
     templateUrl: './playoffs.component.html',
     styleUrls: ['./playoffs.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffsComponent implements OnInit {

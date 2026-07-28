@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { GoogleCalendar } from 'src/app/shared/google-calendar';
 import { PeriodoConfrontoEditComponent } from '../../../data-confronto/components/periodo-confronto-edit/periodo-confronto-edit.component';
@@ -10,6 +10,7 @@ import { ConfrontoEditComponent } from '../confronto-edit/confronto-edit.compone
     selector: 'app-confronto-header',
     templateUrl: './confronto-header.component.html',
     styleUrls: ['./confronto-header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConfrontoHeaderComponent {

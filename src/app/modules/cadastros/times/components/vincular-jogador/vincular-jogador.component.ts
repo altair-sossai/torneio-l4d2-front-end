@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { JogadorService } from '../../../jogadores/services/jogador.service';
@@ -9,6 +9,7 @@ import { TimeService } from '../../services/time.service';
     selector: 'app-vincular-jogador',
     templateUrl: './vincular-jogador.component.html',
     styleUrls: ['./vincular-jogador.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class VincularJogadorComponent implements OnInit {

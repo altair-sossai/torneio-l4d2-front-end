@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { TimeCommand } from '../../commands/time.command';
 import { TimeService } from '../../services/time.service';
@@ -7,6 +7,7 @@ import { TimeService } from '../../services/time.service';
     selector: 'app-time-edit',
     templateUrl: './time-edit.component.html',
     styleUrls: ['./time-edit.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TimeEditComponent implements OnInit {

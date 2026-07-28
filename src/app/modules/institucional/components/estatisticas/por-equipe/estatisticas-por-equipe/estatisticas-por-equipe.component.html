@@ -16,14 +16,14 @@
     <div class="charts">
       <div>
         @if (charts?.mvpSiDamage) {
-          <canvas baseChart [data]="charts?.mvpSiDamage.data" [options]="charts?.mvpSiDamage.options" type="line"
+          <canvas baseChart [data]="$safeNavigationMigration(charts?.mvpSiDamage.data)" [options]="$safeNavigationMigration(charts?.mvpSiDamage.options)" type="line"
             >
           </canvas>
         }
       </div>
       <div>
         @if (charts?.mvpCommon) {
-          <canvas baseChart [data]="charts?.mvpCommon.data" [options]="charts?.mvpCommon.options" type="line"
+          <canvas baseChart [data]="$safeNavigationMigration(charts?.mvpCommon.data)" [options]="$safeNavigationMigration(charts?.mvpCommon.options)" type="line"
             >
           </canvas>
         }

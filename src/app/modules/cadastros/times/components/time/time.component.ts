@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
@@ -11,6 +11,7 @@ import { VincularJogadorComponent } from '../vincular-jogador/vincular-jogador.c
     selector: 'app-time',
     templateUrl: './time.component.html',
     styleUrls: ['./time.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TimeComponent {

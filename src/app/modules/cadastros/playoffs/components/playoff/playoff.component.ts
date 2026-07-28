@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NZ_MODAL_DATA, NzModalService } from 'ng-zorro-antd/modal';
 import { Playoff } from '../../models/playoff';
@@ -9,6 +9,7 @@ import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
     selector: 'app-playoff',
     templateUrl: './playoff.component.html',
     styleUrls: ['./playoff.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffComponent {

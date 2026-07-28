@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { StatusConfronto } from 'src/app/modules/cadastros/confrontos/enums/status-confronto';
 import { Confronto } from 'src/app/modules/cadastros/confrontos/models/confronto';
 import { Rodada } from 'src/app/modules/cadastros/confrontos/models/rodada';
@@ -15,6 +15,7 @@ import { TimeService } from 'src/app/modules/cadastros/times/services/time.servi
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HomeComponent implements OnInit {

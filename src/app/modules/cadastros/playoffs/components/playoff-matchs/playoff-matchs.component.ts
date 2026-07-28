@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Time } from '../../../times/models/time';
 import { Rodada } from '../../models/rodada';
 
@@ -6,6 +6,7 @@ import { Rodada } from '../../models/rodada';
     selector: 'app-playoff-matchs',
     templateUrl: './playoff-matchs.component.html',
     styleUrls: ['./playoff-matchs.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffMatchsComponent implements OnInit {

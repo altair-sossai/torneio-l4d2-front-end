@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { SenhaJogador } from '../../../jogadores/models/senha-jogador';
@@ -9,6 +9,7 @@ import { SenhaCapitaoComponent } from '../senha-capitao/senha-capitao.component'
     selector: 'app-capitaes',
     templateUrl: './capitaes.component.html',
     styleUrls: ['./capitaes.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CapitaesComponent implements OnInit {

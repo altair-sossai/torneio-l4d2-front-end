@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { JogadorService } from '../../../jogadores/services/jogador.service';
@@ -12,6 +12,7 @@ declare var $: any;
     selector: 'app-sortear-jogador',
     templateUrl: './sortear-jogador.component.html',
     styleUrls: ['./sortear-jogador.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SortearJogadorComponent implements OnInit {

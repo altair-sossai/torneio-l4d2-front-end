@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { PlaystatsService } from 'src/app/modules/playstats/services/playstats.service';
 import { Campanha } from '../../../campanhas/models/campanha';
@@ -14,6 +14,7 @@ import { PlayoffService } from '../../services/playoff.service';
     selector: 'app-playoff-edit',
     templateUrl: './playoff-edit.component.html',
     styleUrls: ['./playoff-edit.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffEditComponent implements OnInit {

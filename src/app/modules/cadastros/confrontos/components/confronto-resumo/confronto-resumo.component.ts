@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { NzProgressStatusType } from 'ng-zorro-antd/progress';
 import { Time } from '../../../times/models/time';
 import { Confronto } from '../../models/confronto';
@@ -7,6 +7,7 @@ import { Confronto } from '../../models/confronto';
     selector: 'app-confronto-resumo',
     templateUrl: './confronto-resumo.component.html',
     styleUrls: ['./confronto-resumo.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConfrontoResumoComponent {

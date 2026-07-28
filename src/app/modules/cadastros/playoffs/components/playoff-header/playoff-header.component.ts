@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { GoogleCalendar } from 'src/app/shared/google-calendar';
 import { StatusConfronto } from '../../../confrontos/enums/status-confronto';
 import { Time } from '../../../times/models/time';
@@ -8,6 +8,7 @@ import { Confronto } from '../../models/playoff';
     selector: 'app-playoff-header',
     templateUrl: './playoff-header.component.html',
     styleUrls: ['./playoff-header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PlayoffHeaderComponent {

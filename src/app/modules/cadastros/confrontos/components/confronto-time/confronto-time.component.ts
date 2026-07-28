@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Time } from '../../../times/models/time';
 import { StatusConfronto } from '../../enums/status-confronto';
 import { Confronto } from '../../models/confronto';
@@ -7,6 +7,7 @@ import { Confronto } from '../../models/confronto';
     selector: 'app-confronto-time',
     templateUrl: './confronto-time.component.html',
     styleUrls: ['./confronto-time.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConfrontoTimeComponent {

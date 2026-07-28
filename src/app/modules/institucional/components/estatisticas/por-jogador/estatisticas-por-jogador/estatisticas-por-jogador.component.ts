@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { EstatisticaJogadorModel } from 'src/app/modules/cadastros/estatisticas/models/por-jogador/estatistica-jogador.model';
 import { JogadorModel } from 'src/app/modules/cadastros/estatisticas/models/por-jogador/jogador.model';
 import { EstatisticasService } from 'src/app/modules/cadastros/estatisticas/services/estatisticas.service';
@@ -8,6 +8,7 @@ import { EstatisticaJogador, EstatisticasJogadores } from 'src/app/modules/insti
     selector: 'app-estatisticas-por-jogador',
     templateUrl: './estatisticas-por-jogador.component.html',
     styleUrls: ['./estatisticas-por-jogador.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EstatisticasPorJogadorComponent implements OnInit {
