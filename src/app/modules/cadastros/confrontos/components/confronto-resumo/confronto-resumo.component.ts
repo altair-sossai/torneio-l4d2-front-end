@@ -44,13 +44,20 @@ export class ConfrontoResumoComponent {
     const pontosConquistados = this.pontosConquistados(time);
     const penalidade = this.penalidade(time);
     const pontos = pontosConquistados - penalidade;
-    const progresso = Math.max(0, Math.min(1, pontos / (this.confronto.campanha?.pontuacaoMaxima || 0))) * 100;
+    const pontuacaoMaxima = this.pontuacaoMaxima();
 
-    return progresso;
+    if (!pontuacaoMaxima)
+      return 0;
+
+    return Math.max(0, Math.min(1, pontos / pontuacaoMaxima)) * 100;
+  }
+
+  pontuacaoMaxima(): number {
+    return Math.max(0, this.confronto.campanha?.pontuacaoMaxima || 0);
   }
 
   formatar(progresso: number): string {
-    return `${Math.round(progresso)}%`;
+    return `${Math.round(Number.isFinite(progresso) ? progresso : 0)}%`;
   }
 
   status(time: Time): NzProgressStatusType {

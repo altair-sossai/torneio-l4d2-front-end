@@ -4,11 +4,15 @@
     <nz-progress [nzPercent]="progresso(time)" [nzFormat]="formatar" nzSize="small" [nzStatus]="status(time)">
     </nz-progress>
     <p class="pontos">
-      {{pontosConquistados(time)|number}}
-      @if (penalidade(time)) {
-        <span class="penalidade"> - {{penalidade(time)|number}}</span>
+      @if (pontuacaoMaxima()) {
+        {{pontosConquistados(time)|number}}
+        @if (penalidade(time)) {
+          <span class="penalidade"> - {{penalidade(time)|number}}</span>
+        }
+        / <span class="bold">{{pontuacaoMaxima()|number}}</span>
+      } @else {
+        Pontuação ainda não disponível
       }
-      /<span class="bold">{{(confronto.campanha?.pontuacaoMaxima || 0)|number}}</span>
     </p>
   }
 </section>
