@@ -11,16 +11,16 @@
     </ng-container>
 
     <ng-container *ngIf="playoff">
-        <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeA?.codigo !== playoff.codigoTimeVencedor">
-            {{playoff.timeA?.nome || 'A definir'}}</h2>
+        <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeA.codigo !== playoff.codigoTimeVencedor">
+            {{playoff.timeA.nome || 'A definir'}}</h2>
         <h2>{{playoff.quantidadeVitoriasTimeA}}</h2>
         <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
-            [hidden]="!playoff.codigoTimeVencedor || playoff.timeA?.codigo !== playoff.codigoTimeVencedor"></i>
+            [hidden]="!playoff.codigoTimeVencedor || playoff.timeA.codigo !== playoff.codigoTimeVencedor"></i>
         <nz-divider></nz-divider>
-        <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeB?.codigo !== playoff.codigoTimeVencedor">
-            {{playoff.timeB?.nome || 'A definir'}}</h2>
+        <h2 [class.derrota]="playoff.codigoTimeVencedor && playoff.timeB.codigo !== playoff.codigoTimeVencedor">
+            {{playoff.timeB.nome || 'A definir'}}</h2>
         <h2>{{playoff.quantidadeVitoriasTimeB}}</h2>
         <i nz-icon nzType="crown" nzTheme="outline" nz-tooltip nzTooltipTitle="Vitória"
-            [hidden]="!playoff.codigoTimeVencedor || playoff.timeB?.codigo !== playoff.codigoTimeVencedor"></i>
+            [hidden]="!playoff.codigoTimeVencedor || playoff.timeB.codigo !== playoff.codigoTimeVencedor"></i>
     </ng-container>
 </div>

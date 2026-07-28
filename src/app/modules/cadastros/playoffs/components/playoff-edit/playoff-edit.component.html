@@ -97,7 +97,7 @@
                     </nz-form-control>
                 </nz-form-item>
 
-                <nz-form-item *ngIf="confronto.status == StatusConfronto.Realizado">
+                <nz-form-item *ngIf="confronto.status === StatusConfronto.Realizado">
                     <nz-form-label [nzSpan]="4" nzFor="inicioEstatistica_{{i}}">
                         Início estatística
                     </nz-form-label>
