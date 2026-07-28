@@ -4,44 +4,44 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+  - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "16.x"
+    displayName: "Install Node.js"
 
-- script: |
-    npm install -g @angular/cli@13
-    npm install -force
-    ng lint
-    ng build
-  displayName: 'npm install and build'
+  - script: |
+      npm install -g @angular/cli@13
+      npm install -force
+      ng lint
+      ng build
+    displayName: "npm install and build"
 
-- script: |
-    tar -czf torneio.tar.gz -C '$(System.DefaultWorkingDirectory)/dist/torneio-l4d2' .
-  displayName: 'Compress files'
+  - script: |
+      tar -czf torneio.tar.gz -C '$(System.DefaultWorkingDirectory)/dist/torneio-l4d2' .
+    displayName: "Compress files"
 
-- task: CopyFilesOverSSH@0
-  inputs:
-    sshEndpoint: 'L4D2 - Resources'
-    sourceFolder: '$(Build.Repository.LocalPath)'
-    contents: '*.tar.gz'
-    targetFolder: '/home/devops'
-    cleanTargetFolder: true
-    overwrite: true
-    failOnEmptySource: true
-  displayName: 'Copy Build Artifacts via SSH'
+  - task: CopyFilesOverSSH@0
+    inputs:
+      sshEndpoint: "L4D2 - Resources"
+      sourceFolder: "$(Build.Repository.LocalPath)"
+      contents: "*.tar.gz"
+      targetFolder: "/home/devops"
+      cleanTargetFolder: true
+      overwrite: true
+      failOnEmptySource: true
+    displayName: "Copy Build Artifacts via SSH"
 
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'L4D2 - Resources'
-    readyTimeout: '20000'
-    commands: |
-      rm -rf /home/torneio/*
-      tar -xzf /home/devops/torneio.tar.gz -C /home/torneio
-      rm /home/devops/*.tar.gz
+  - task: SSH@0
+    inputs:
+      sshEndpoint: "L4D2 - Resources"
+      readyTimeout: "20000"
+      commands: |
+        rm -rf /home/torneio/*
+        tar -xzf /home/devops/torneio.tar.gz -C /home/torneio
+        rm /home/devops/*.tar.gz
