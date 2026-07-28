@@ -8,15 +8,10 @@ Este projeto foi criado para apoiar a comunidade de **Left 4 Dead 2**, na qual e
 
 Com a finalidade de facilitar a gestão do torneio, desenvolvi um site para auxiliar no controle dos confrontos, jogadores, equipes e pontuações. A aplicação é dividida em duas partes: um *front-end* construído em **Angular** e um *back-end* desenvolvido em **C#**, utilizando *Azure Functions*. Os dados são armazenados em um *Storage Account* no *Azure*.
 
-## Organizadores do Torneio
-- [Altair](https://steamcommunity.com/profiles/76561198141521946/)
-- [Fear](https://steamcommunity.com/profiles/76561198135872482/)
-- [Lyon](https://steamcommunity.com/profiles/76561198076227103/)
-
 ## Links da Aplicação
 A aplicação está hospedada e os códigos-fonte estão disponíveis nos links abaixo:
 
-- Site do Torneio: https://torneio-l4d2.azurewebsites.net/
+- Site do Torneio: https://torneio.l4d2.com.br/
 - Repositório do Front-end: https://github.com/altair-sossai/torneio-l4d2-front-end
 - Repositório do Back-end: https://github.com/altair-sossai/torneio-l4d2-back-end
 
