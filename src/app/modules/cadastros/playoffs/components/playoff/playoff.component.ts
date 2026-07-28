@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalService } from 'ng-zorro-antd/modal';
 import { Playoff } from '../../models/playoff';
 import { PlayoffService } from '../../services/playoff.service';
 import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
@@ -12,7 +12,9 @@ import { PlayoffEditComponent } from '../playoff-edit/playoff-edit.component';
 })
 export class PlayoffComponent {
 
-  @Input() playoff!: Playoff;
+  private readonly modalData = inject<{ playoff: Playoff } | null>(NZ_MODAL_DATA, { optional: true });
+
+  @Input() playoff = this.modalData?.playoff!;
   @Input() podeEditar = false;
   @Output() atualizado = new EventEmitter<any>();
 
@@ -44,7 +46,7 @@ export class PlayoffComponent {
       nzTitle: 'Editar um jogo',
       nzContent: PlayoffEditComponent,
       nzOnOk: () => this.atualizar(),
-      nzComponentParams: { playoffId },
+      nzData: { playoffId },
       nzWidth: 900
     });
   }

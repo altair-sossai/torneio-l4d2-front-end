@@ -1,6 +1,6 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { ClipboardService } from 'ngx-clipboard';
 import { Jogador } from '../../../jogadores/models/jogador';
 import { SenhaJogador } from '../../../jogadores/models/senha-jogador';
@@ -12,8 +12,10 @@ import { SenhaJogador } from '../../../jogadores/models/senha-jogador';
 })
 export class SenhaCapitaoComponent {
 
-  @Input() capitao!: Jogador;
-  @Input() senha!: SenhaJogador;
+  private readonly modalData = inject<{ capitao: Jogador; senha: SenhaJogador } | null>(NZ_MODAL_DATA, { optional: true });
+
+  @Input() capitao = this.modalData?.capitao!;
+  @Input() senha = this.modalData?.senha!;
 
   @ViewChild('texto') texto!: ElementRef;
 

@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { Confronto } from 'src/app/modules/cadastros/confrontos/models/confronto';
 import { ResponderSugestaoDataCommand } from 'src/app/modules/cadastros/data-confronto/commands/responder-sugestao-data.command';
 import { RespostaTime } from 'src/app/modules/cadastros/data-confronto/enums/resposta-time.enum';
@@ -14,10 +14,15 @@ import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confront
 })
 export class ResponderSugestaoDataComponent {
 
+  private readonly modalData = inject<{ confronto: Confronto; sugestao: SugestaoDataConfrontoModel } | null>(
+    NZ_MODAL_DATA,
+    { optional: true }
+  );
+
   RespostaTime = RespostaTime;
 
-  @Input() confronto!: Confronto;
-  @Input() sugestao!: SugestaoDataConfrontoModel;
+  @Input() confronto = this.modalData?.confronto!;
+  @Input() sugestao = this.modalData?.sugestao!;
 
   busy = false;
   command = new ResponderSugestaoDataCommand();

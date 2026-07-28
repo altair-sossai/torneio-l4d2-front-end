@@ -157,7 +157,7 @@ export class ProximoConfrontoComponent implements OnInit {
     this.modalService.create({
       nzTitle: 'Responder sugestão de data',
       nzContent: ResponderSugestaoDataComponent,
-      nzComponentParams: {
+      nzData: {
         confronto: this.confronto!,
         sugestao
       },
@@ -184,7 +184,7 @@ export class ProximoConfrontoComponent implements OnInit {
     this.modalService.create({
       nzTitle: 'Sugerir uma nova data',
       nzContent: SugerirNovaDataComponent,
-      nzComponentParams: {
+      nzData: {
         confronto: this.confronto!,
         periodo: this.periodo!
       },

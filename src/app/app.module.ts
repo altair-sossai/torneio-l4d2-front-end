@@ -5,7 +5,6 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgTournamentTreeModule } from 'ng-tournament-tree';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -161,7 +160,6 @@ registerLocaleData(pt);
     BrowserAnimationsModule,
     IconsProviderModule,
     ClipboardModule,
-    NgTournamentTreeModule,
     NzLayoutModule,
     NzMenuModule,
     NzButtonModule,

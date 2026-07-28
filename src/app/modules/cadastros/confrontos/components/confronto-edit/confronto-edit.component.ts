@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { PlaystatsService } from 'src/app/modules/playstats/services/playstats.service';
 import { Campanha } from '../../../campanhas/models/campanha';
 import { CampanhaService } from '../../../campanhas/services/campanha.service';
@@ -16,7 +16,9 @@ import { ConfrontoService } from '../../services/confronto.service';
 })
 export class ConfrontoEditComponent implements OnInit {
 
-  @Input() confrontoId: string | undefined;
+  private readonly modalData = inject<{ confrontoId?: string } | null>(NZ_MODAL_DATA, { optional: true });
+
+  @Input() confrontoId = this.modalData?.confrontoId;
 
   command: ConfrontoCommand | undefined;
   busy = false;

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { TimeCommand } from '../../commands/time.command';
 import { TimeService } from '../../services/time.service';
 
@@ -10,7 +10,9 @@ import { TimeService } from '../../services/time.service';
 })
 export class TimeEditComponent implements OnInit {
 
-  @Input() codigo: string | undefined;
+  private readonly modalData = inject<{ codigo?: string } | null>(NZ_MODAL_DATA, { optional: true });
+
+  @Input() codigo = this.modalData?.codigo;
 
   command: TimeCommand | undefined;
   busy = false;

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { PlaystatsService } from 'src/app/modules/playstats/services/playstats.service';
 import { Campanha } from '../../../campanhas/models/campanha';
 import { CampanhaService } from '../../../campanhas/services/campanha.service';
@@ -17,7 +17,9 @@ import { PlayoffService } from '../../services/playoff.service';
 })
 export class PlayoffEditComponent implements OnInit {
 
-  @Input() playoffId: string | undefined;
+  private readonly modalData = inject<{ playoffId?: string } | null>(NZ_MODAL_DATA, { optional: true });
+
+  @Input() playoffId = this.modalData?.playoffId;
 
   command: PlayoffCommand | undefined;
   busy = false;

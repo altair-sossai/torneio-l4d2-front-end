@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { Confronto } from 'src/app/modules/cadastros/confrontos/models/confronto';
 import { NovaSugestaoDataCommand } from 'src/app/modules/cadastros/data-confronto/commands/nova-sugestao-data.command';
 import { PeriodoConfrontoModel } from 'src/app/modules/cadastros/data-confronto/models/periodo-confronto.model';
@@ -13,8 +13,13 @@ import { PeriodoConfrontoService } from 'src/app/modules/cadastros/data-confront
 })
 export class SugerirNovaDataComponent implements OnInit {
 
-  @Input() confronto!: Confronto;
-  @Input() periodo!: PeriodoConfrontoModel | null;
+  private readonly modalData = inject<{ confronto: Confronto; periodo: PeriodoConfrontoModel | null } | null>(
+    NZ_MODAL_DATA,
+    { optional: true }
+  );
+
+  @Input() confronto = this.modalData?.confronto!;
+  @Input() periodo = this.modalData?.periodo ?? null;
 
   busy = false;
   command?: NovaSugestaoDataCommand | null;

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { PeriodoConfrontoCommand } from '../../commands/periodo-confronto.command';
 import { SugestaoDataConfrontoCommand } from '../../commands/sugestao-data-confronto.command';
 import { CadastradoPor, CadastradosPor } from '../../enums/cadastrado-por.enum';
@@ -14,7 +14,9 @@ import { PeriodoConfrontoService } from '../../services/periodo-confronto.servic
 })
 export class PeriodoConfrontoEditComponent implements OnInit {
 
-  @Input() confrontoId: string | undefined;
+  private readonly modalData = inject<{ confrontoId?: string } | null>(NZ_MODAL_DATA, { optional: true });
+
+  @Input() confrontoId = this.modalData?.confrontoId;
   command?: PeriodoConfrontoCommand;
   busy = false;
 

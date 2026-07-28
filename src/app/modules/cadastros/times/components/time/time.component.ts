@@ -32,7 +32,7 @@ export class TimeComponent {
       nzWidth: "70%",
       nzContent: VincularJogadorComponent,
       nzOnOk: () => this.atualizar.emit(),
-      nzComponentParams: { codigo: this.time.codigo }
+      nzData: { codigo: this.time.codigo }
     });
   }
 
@@ -58,7 +58,7 @@ export class TimeComponent {
       nzTitle: `Editar ${this.time.nome}`,
       nzContent: TimeEditComponent,
       nzOnOk: () => this.atualizar.emit(),
-      nzComponentParams: { codigo: this.time.codigo }
+      nzData: { codigo: this.time.codigo }
     });
   }
 

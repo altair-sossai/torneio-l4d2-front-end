@@ -28,7 +28,7 @@ export class ConfrontoHeaderComponent {
       nzContent: PeriodoConfrontoEditComponent,
       nzOnOk: () => this.atualizado.emit(),
       nzWidth: 800,
-      nzComponentParams: { confrontoId: this.confronto.id }
+      nzData: { confrontoId: this.confronto.id }
     });
   }
 
@@ -38,7 +38,7 @@ export class ConfrontoHeaderComponent {
       nzContent: ConfrontoEditComponent,
       nzOnOk: () => this.atualizado.emit(),
       nzWidth: 800,
-      nzComponentParams: { confrontoId: this.confronto.id }
+      nzData: { confrontoId: this.confronto.id }
     });
   }
 

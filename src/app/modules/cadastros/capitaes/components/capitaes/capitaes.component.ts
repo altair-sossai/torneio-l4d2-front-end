@@ -52,7 +52,7 @@ export class CapitaesComponent implements OnInit {
     this.modalService.create({
       nzTitle: 'Senha de acesso',
       nzContent: SenhaCapitaoComponent,
-      nzComponentParams: { capitao, senha }
+      nzData: { capitao, senha }
     });
   }
 

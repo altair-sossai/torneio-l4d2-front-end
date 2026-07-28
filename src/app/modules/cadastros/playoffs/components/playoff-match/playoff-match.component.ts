@@ -32,7 +32,7 @@ export class PlayoffMatchComponent implements OnInit {
       this.modalService.create({
         nzTitle: 'Detalhes do jogo',
         nzContent: PlayoffComponent,
-        nzComponentParams: { playoff: this.playoff },
+        nzData: { playoff: this.playoff },
         nzWidth: 700
       });
     }

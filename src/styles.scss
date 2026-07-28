@@ -1,17 +1,7 @@
 @import "../node_modules/ng-zorro-antd/ng-zorro-antd.dark.css";
-@import "ng-tournament-tree/styles/ngtt-single-elimination-styles";
 
 @media (max-width: 600px) {
     .ant-picker-datetime-panel {
         flex-flow: column;
     }
-}
-
-.ngtt-se__finale-component-container {
-    margin-bottom: 0 !important;
-    padding-right: 25px !important;
-}
-
-.ngtt-se__container {
-    background-color: black !important;
 }
