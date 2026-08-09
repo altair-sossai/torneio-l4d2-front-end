@@ -9,7 +9,7 @@ export class GoogleCalendar {
     static primeiraFase(confronto: ConfrontoPrimeiraFase): string {
         const inicio = new Date(confronto.data!);
         const fim = this.addOneHourAndThirtyMinutes(inicio);
-        const twitch = 'https://www.twitch.tv/torneiol4d2';
+        const twitch = 'https://www.twitch.tv/maalusisa';
         const site = 'http://l4d2.com.br';
 
         const titulo = `[L4D2] - ${confronto.timeA.nome} vs ${confronto.timeB.nome}`;
@@ -32,7 +32,7 @@ Organização do torneio`;
     static segundaFase(timeA: Time, timeB: Time, confronto: ConfrontoSegundaFase): string {
         const inicio = new Date(confronto.data!);
         const fim = this.addOneHourAndThirtyMinutes(inicio);
-        const twitch = 'https://www.twitch.tv/torneiol4d2';
+        const twitch = 'https://www.twitch.tv/maalusisa';
         const site = 'http://l4d2.com.br';
 
         const titulo = `[L4D2] - ${timeA.nome} vs ${timeB.nome}`;

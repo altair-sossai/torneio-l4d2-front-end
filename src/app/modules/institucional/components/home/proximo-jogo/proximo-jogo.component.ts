@@ -14,7 +14,7 @@ export class ProximoJogoComponent {
   @Input() confronto!: Confronto;
   @Input() destaque = false;
 
-  readonly twitch = 'https://www.twitch.tv/torneiol4d2';
+  readonly twitch = 'https://www.twitch.tv/maalusisa';
 
   get contagem(): string {
     if (!this.confronto?.data)
