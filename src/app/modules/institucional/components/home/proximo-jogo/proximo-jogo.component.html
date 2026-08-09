@@ -1,4 +1,22 @@
 <article class="jogo" [class.jogo--destaque]="destaque">
+  <div class="jogo__mapa" [class.jogo__mapa--vazio]="!confronto.campanha">
+    @if (confronto.campanha) {
+      <img src="../../../../../../assets/campanhas/{{ confronto.campanha.codigo }}.jpg"
+        alt="{{ confronto.campanha.nomeOriginal }}" />
+    } @else {
+      <img src="../../../../../../assets/imgs/empty.png" alt="Campanha a definir" />
+    }
+    <span class="jogo__contagem" [class.jogo__contagem--iminente]="iminente">
+      {{ contagem }}
+    </span>
+    <div class="jogo__mapa-nome">
+      <span>{{ confronto.campanha?.nomeOriginal || 'Campanha a definir' }}</span>
+      @if (confronto.campanha?.nome) {
+        <small>{{ confronto.campanha?.nome }}</small>
+      }
+    </div>
+  </div>
+
   <header class="jogo__quando">
     <div class="jogo__calendario">
       <span class="jogo__dia">{{ confronto.data | date:'dd':'-3' }}</span>
@@ -11,49 +29,54 @@
         {{ confronto.data | date:'HH:mm':'-3' }}
       </span>
     </div>
-    <span class="jogo__contagem" [class.jogo__contagem--iminente]="iminente">
-      {{ contagem }}
-    </span>
   </header>
 
   <div class="jogo__confronto">
     <div class="jogo__time">
-      <span class="jogo__avatar">{{ iniciais(confronto.timeA?.nome) }}</span>
-      <span class="jogo__time-nome">{{ confronto.timeA?.nome }}</span>
+      <div class="jogo__time-cabecalho">
+        <span class="jogo__avatar">{{ iniciais(confronto.timeA?.nome) }}</span>
+        <span class="jogo__time-nome">{{ confronto.timeA?.nome }}</span>
+      </div>
+      <ul class="jogo__jogadores">
+        @for (jogador of confronto.timeA?.jogadores; track jogador.steamId) {
+          <li>
+            <a [href]="jogador.urlPerfilSteam" target="_blank" rel="noopener noreferrer">
+              <img class="jogo__jogador-foto" [src]="jogador.urlFotoPerfil" [alt]="jogador.nome" />
+              <span>{{ jogador.nome }}</span>
+            </a>
+          </li>
+        }
+      </ul>
     </div>
+
     <span class="jogo__versus">VS</span>
+
     <div class="jogo__time">
-      <span class="jogo__avatar">{{ iniciais(confronto.timeB?.nome) }}</span>
-      <span class="jogo__time-nome">{{ confronto.timeB?.nome }}</span>
+      <div class="jogo__time-cabecalho">
+        <span class="jogo__avatar">{{ iniciais(confronto.timeB?.nome) }}</span>
+        <span class="jogo__time-nome">{{ confronto.timeB?.nome }}</span>
+      </div>
+      <ul class="jogo__jogadores">
+        @for (jogador of confronto.timeB?.jogadores; track jogador.steamId) {
+          <li>
+            <a [href]="jogador.urlPerfilSteam" target="_blank" rel="noopener noreferrer">
+              <img class="jogo__jogador-foto" [src]="jogador.urlFotoPerfil" [alt]="jogador.nome" />
+              <span>{{ jogador.nome }}</span>
+            </a>
+          </li>
+        }
+      </ul>
     </div>
   </div>
 
-  <footer class="jogo__rodape">
-    @if (confronto.campanha) {
-      <div class="jogo__campanha">
-        <img src="../../../../../../assets/campanhas/{{ confronto.campanha.codigo }}.jpg"
-          alt="{{ confronto.campanha.nomeOriginal }}" />
-        <div class="jogo__campanha-nome">
-          <span>{{ confronto.campanha.nomeOriginal }}</span>
-          <small>{{ confronto.campanha.nome }}</small>
-        </div>
-      </div>
-    } @else {
-      <div class="jogo__campanha jogo__campanha--vazia">
-        <i nz-icon nzType="question-circle" nzTheme="outline"></i>
-        <span>Campanha a definir</span>
-      </div>
-    }
-
-    <div class="jogo__acoes">
-      <a nz-button nzType="default" nzSize="small" (click)="addAgenda()">
-        <i nz-icon nzType="calendar" nzTheme="outline"></i>
-        Agenda
-      </a>
-      <a nz-button nzType="primary" nzSize="small" [href]="twitch" target="_blank" rel="noopener noreferrer">
-        <i nz-icon nzType="play-circle" nzTheme="outline"></i>
-        Assistir
-      </a>
-    </div>
+  <footer class="jogo__acoes">
+    <a nz-button nzType="default" nzSize="small" (click)="addAgenda()">
+      <i nz-icon nzType="calendar" nzTheme="outline"></i>
+      Agenda
+    </a>
+    <a nz-button nzType="primary" nzSize="small" [href]="twitch" target="_blank" rel="noopener noreferrer">
+      <i nz-icon nzType="play-circle" nzTheme="outline"></i>
+      Assistir
+    </a>
   </footer>
 </article>
