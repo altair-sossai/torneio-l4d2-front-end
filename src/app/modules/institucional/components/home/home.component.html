@@ -67,8 +67,8 @@
       <p class="section-label">Agenda</p>
       <h2>Próximos jogos</h2>
       <div class="confrontos">
-        @for (confronto of confrontosAgendados; track confronto) {
-          <app-confronto [confronto]="confronto" [podeEditar]="false"></app-confronto>
+        @for (confronto of confrontosAgendados; track confronto; let first = $first) {
+          <app-proximo-jogo [confronto]="confronto" [destaque]="first"></app-proximo-jogo>
         }
       </div>
     </section>

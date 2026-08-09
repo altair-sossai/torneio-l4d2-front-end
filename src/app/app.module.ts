@@ -87,6 +87,7 @@ import { EstatisticasPorEquipeComponent } from './modules/institucional/componen
 import { EstatisticaJogadorComponent } from './modules/institucional/components/estatisticas/por-jogador/estatistica-jogador/estatistica-jogador.component';
 import { EstatisticasPorJogadorComponent } from './modules/institucional/components/estatisticas/por-jogador/estatisticas-por-jogador/estatisticas-por-jogador.component';
 import { HomeComponent } from './modules/institucional/components/home/home.component';
+import { ProximoJogoComponent } from './modules/institucional/components/home/proximo-jogo/proximo-jogo.component';
 import { TabelaResultadosComponent } from './modules/institucional/components/tabela-resultados/tabela-resultados.component';
 import { EstatisticaJogadorPipe } from './modules/institucional/pipes/estatistica-jogador.pipe';
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -119,6 +120,7 @@ registerLocaleData(pt);
         ConfrontoEditComponent,
         LoginComponent,
         HomeComponent,
+        ProximoJogoComponent,
         TabelaResultadosComponent,
         SortearJogadorComponent,
         CapitaesComponent,

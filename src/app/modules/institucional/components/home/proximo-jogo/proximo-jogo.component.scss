@@ -1,0 +1,219 @@
+:host {
+    --accent: #52c41a;
+    --surface: #181818;
+    --border: #303030;
+    display: block;
+    height: 100%;
+}
+
+.jogo {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    transition: border-color .2s ease, transform .2s ease;
+
+    &:hover {
+        border-color: #454545;
+        transform: translateY(-2px);
+    }
+
+    &--destaque {
+        border-color: var(--accent);
+        background: linear-gradient(180deg, rgba(82, 196, 26, .1), transparent 60%), var(--surface);
+    }
+}
+
+/* Quando */
+.jogo__quando {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.jogo__calendario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: #0f0f0f;
+    border: 1px solid var(--border);
+    line-height: 1;
+}
+
+.jogo__dia {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.jogo__mes {
+    margin-top: 2px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.jogo__horario {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+.jogo__semana {
+    color: #d9d9d9;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.jogo__hora {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #a6a6a6;
+    font-size: 13px;
+}
+
+.jogo__contagem {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #262626;
+    color: #bfbfbf;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &--iminente {
+        background: rgba(82, 196, 26, .15);
+        color: var(--accent);
+    }
+}
+
+/* Confronto */
+.jogo__confronto {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 8px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.jogo__time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    min-width: 0;
+}
+
+.jogo__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #0f0f0f;
+    border: 1px solid var(--border);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.jogo__time-nome {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.jogo__versus {
+    color: #595959;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+
+/* Rodapé */
+.jogo__rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.jogo__campanha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+
+    img {
+        width: 46px;
+        height: 46px;
+        border-radius: 8px;
+        object-fit: cover;
+        border: 1px solid var(--border);
+    }
+}
+
+.jogo__campanha-nome {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    span {
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    small {
+        color: #8c8c8c;
+        font-size: 11px;
+    }
+}
+
+.jogo__campanha--vazia {
+    color: #8c8c8c;
+    font-size: 13px;
+}
+
+.jogo__acoes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 420px) {
+    .jogo__rodape {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .jogo__acoes {
+        justify-content: flex-end;
+    }
+}

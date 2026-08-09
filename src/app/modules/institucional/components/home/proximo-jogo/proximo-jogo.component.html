@@ -1,0 +1,59 @@
+<article class="jogo" [class.jogo--destaque]="destaque">
+  <header class="jogo__quando">
+    <div class="jogo__calendario">
+      <span class="jogo__dia">{{ confronto.data | date:'dd':'-3' }}</span>
+      <span class="jogo__mes">{{ confronto.data | date:'MMM':'-3' }}</span>
+    </div>
+    <div class="jogo__horario">
+      <span class="jogo__semana">{{ confronto.data | date:'EEEE':'-3' }}</span>
+      <span class="jogo__hora">
+        <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+        {{ confronto.data | date:'HH:mm':'-3' }}
+      </span>
+    </div>
+    <span class="jogo__contagem" [class.jogo__contagem--iminente]="iminente">
+      {{ contagem }}
+    </span>
+  </header>
+
+  <div class="jogo__confronto">
+    <div class="jogo__time">
+      <span class="jogo__avatar">{{ iniciais(confronto.timeA?.nome) }}</span>
+      <span class="jogo__time-nome">{{ confronto.timeA?.nome }}</span>
+    </div>
+    <span class="jogo__versus">VS</span>
+    <div class="jogo__time">
+      <span class="jogo__avatar">{{ iniciais(confronto.timeB?.nome) }}</span>
+      <span class="jogo__time-nome">{{ confronto.timeB?.nome }}</span>
+    </div>
+  </div>
+
+  <footer class="jogo__rodape">
+    @if (confronto.campanha) {
+      <div class="jogo__campanha">
+        <img src="../../../../../../assets/campanhas/{{ confronto.campanha.codigo }}.jpg"
+          alt="{{ confronto.campanha.nomeOriginal }}" />
+        <div class="jogo__campanha-nome">
+          <span>{{ confronto.campanha.nomeOriginal }}</span>
+          <small>{{ confronto.campanha.nome }}</small>
+        </div>
+      </div>
+    } @else {
+      <div class="jogo__campanha jogo__campanha--vazia">
+        <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+        <span>Campanha a definir</span>
+      </div>
+    }
+
+    <div class="jogo__acoes">
+      <a nz-button nzType="default" nzSize="small" (click)="addAgenda()">
+        <i nz-icon nzType="calendar" nzTheme="outline"></i>
+        Agenda
+      </a>
+      <a nz-button nzType="primary" nzSize="small" [href]="twitch" target="_blank" rel="noopener noreferrer">
+        <i nz-icon nzType="play-circle" nzTheme="outline"></i>
+        Assistir
+      </a>
+    </div>
+  </footer>
+</article>
